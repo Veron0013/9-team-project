@@ -1,44 +1,111 @@
 .header {
-  padding: 20px 0;
+  padding: 8px 0;
 }
-.nav {
+
+.header__container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
-.nav-logo {
+
+.logo__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  padding: 14px 0;
 }
-.nav-list {
+
+.nav.is-open {
+  animation: fadeInDown 2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.nav:not(.is-open) {
+  transform: translateY(-150%);
+  z-index: -1;
+  opacity: 0;
+}
+
+.nav__list {
+  padding-top: 16px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  flex-direction: column;
   gap: 40px;
 }
-.nav-link {
+
+.nav__item {
+  cursor: pointer;
+}
+
+.nav__link {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
   font-weight: 500;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  line-height: 150%;
+
   transition: 200ms ease-in;
+
+  &:hover,
+  &:focus {
+    color: var(--color-bamboo);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 110%;
+    height: 4px;
+
+    border-radius: 4px;
+    transform: translateX(-50%) translateY(100%);
+    transform-origin: center;
+    animation: stretch 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 200ms both;
+  }
+
+  &.nav__link--active {
+    color: var(--color-bamboo);
+  }
+
+  &.nav__link--active::after {
+    background: var(--color-bamboo);
+  }
 }
-.nav-link:hover,
-.nav-link:focus {
-  color: #747bff;
-}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  width: 110%;
-  height: 4px;
-  border-radius: 4px;
-  transform-origin: center;
-  animation: stretch 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 200ms both;
-}
-.nav-link.active::after {
-  background: #747bff;
+
+@media only screen and (min-width: 768px) {
+
+  .header__container,
+  .nav__list {
+    flex-direction: row;
+  }
+
+  .nav__link {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .nav__list {
+    padding: 0;
+  }
+
+  .burger-button {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
 }
