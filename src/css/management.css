@@ -1,0 +1,55 @@
+.management {
+	padding-top: 50px;
+	padding-bottom: 100px;
+}
+
+.management .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.management-left {
+	/*margin: 40px auto;*/
+}
+
+.management-text-bold {
+	font-weight: 600;
+	font-size: 16px;
+	color: #22343d;
+	margin-bottom: 8px;
+}
+
+.management-title {
+	font-weight: 700;
+	font-size: 32px;
+	color: #22343d;
+	margin-bottom: 25px;
+}
+
+.management-text {
+	line-height: 1.62;
+	color: #22343d;
+	margin-bottom: 25px;
+	max-width: 445px;
+}
+
+.management-list {}
+
+.management-list-itm:not(:last-child) {
+	margin-bottom: 25px;
+}
+
+.management-list-title {
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1.62;
+	color: #22343d;
+	margin-bottom: 12px;
+}
+
+.management-list-text {
+	line-height: 1.62;
+	color: #22343d;
+	max-width: 435px;
+}

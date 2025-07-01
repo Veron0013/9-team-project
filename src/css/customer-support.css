@@ -1,0 +1,58 @@
+.customer-support {
+	padding-top: 50px;
+	padding-bottom: 100px;
+}
+
+.customer-support .container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.customer-support-img {}
+
+.customer-support-block {
+	padding-bottom: 40px;
+	padding-left: 84px;
+}
+
+.customer-support-list {}
+
+.customer-support-list-itm:not(:last-child) {
+	margin-bottom: 25px;
+}
+
+.cs-list-itm-text {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 162%;
+	color: #22343d;
+}
+
+.cs-list-itm-text::before {
+	flex-shrink: 0;
+	content: '';
+	display: inline-block;
+	border: 2.92px solid #fff;
+	border-radius: 14px;
+	width: 35px;
+	height: 35px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url(../images/tick.svg);
+}
+
+.customer-support-list-itm:nth-child(1) .cs-list-itm-text::before {
+	background-color: #f90;
+}
+
+.customer-support-list-itm:nth-child(2) .cs-list-itm-text::before {
+	background-color: #f03e3d;
+}
+
+.customer-support-list-itm:nth-child(3) .cs-list-itm-text::before {
+	background-color: #4d8dff;
+}
