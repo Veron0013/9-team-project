@@ -1,11 +1,11 @@
 {
-  "name": "vanilla-app-template",
+  "name": "9-team-project",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/VAT-template-rep/",
+    "build": "vite build --base=/9-team-project/",
     "preview": "vite preview"
   },
   "devDependencies": {
