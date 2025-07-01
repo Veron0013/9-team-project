@@ -1,6 +1,8 @@
-import refs from "./js/refs.js";
-import * as render from "./js/render-function.js";
+import refs from "./js/refs";
+import * as render from "./js/render-function"
 
-refs.burgerButton.addEventListener("click", (e) => {
-	render.toggleClassElement(refs.navMenu, "is-open");
-})
+refs.btn_burger.addEventListener("click", (e) => {
+	refs.btn_burger.disabled = true;
+	const burger_icon = e.target.closest("img");
+	render.openCloseModalMenu(burger_icon);
+});
