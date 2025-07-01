@@ -3,5 +3,5 @@
 export default {
 	//elements
 	burgerButton: document.querySelector(".burger-button"),
-	navMenu: document.querySelector(".nav"),
+	navMenu: document.querySelector(".nav_modal"),
 };
