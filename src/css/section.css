@@ -1,0 +1,10 @@
+.section {
+  padding: 32px 0;
+}
+
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1400px) {
+  .section {
+    padding: 64px 0;
+  }
+}
