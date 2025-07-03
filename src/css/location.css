@@ -108,6 +108,11 @@
     text-align: start;
   }
 
+  .contacts-item:hover,
+  .contacts-item:focus {
+    color: var(--color-footer-bg);
+  }
+
   .location-container-title {
     width: 732px;
   }
