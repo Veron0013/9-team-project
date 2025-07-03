@@ -28,3 +28,23 @@ function openCloseModalMenu() {
 }
 
 
+//кнопка вгору
+const backoTop = document.querySelector('#back-to-top');
+
+console.log(backoTop);
+
+
+window.addEventListener("scroll", () => {
+	console.log(window.scrollY);
+
+	if (window.scrollY > 600) {
+		render.removeClassElement(backoTop, "hidden");
+	} else {
+		render.addClassElement(backoTop, "hidden");
+	}
+});
+
+backoTop.addEventListener("click", () => {
+	window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
