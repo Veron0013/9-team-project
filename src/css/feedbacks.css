@@ -145,7 +145,7 @@ ol {
 }
 
 @media only screen and (min-width: 1440px) {
-  .container {
+  .feedbacks-container-max {
     padding: 64px 64px;
   }
   .feedbacks-list-item {
