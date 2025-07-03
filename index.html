@@ -12,37 +12,37 @@
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/9-team-project/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/9-team-project/assets/vendor-CEeHTwBG.js">
+    <link rel="modulepreload" crossorigin href="/9-team-project/assets/vendor-TuCaI12L.js">
     <link rel="stylesheet" crossorigin href="/9-team-project/assets/vendor-Ds_YmOBQ.css">
-    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-BiB5sylq.css">
+    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-CRco69XF.css">
   </head>
   <body>
     <header class="header">
-  <div class="container header__container">
-    <div class="logo__container">
+  <div class="container header-container">
+    <div class="logo-container">
       <a class="logo" href="./index.html" aria-label="Site logo">
-        <svg class="logo__icon" width="84" height="36">
+        <svg class="logo-icon" width="84" height="36">
           <use href="/9-team-project/assets/logo-w-BDqGsvqk.svg"></use>
         </svg>
       </a>
-      <div class="burger_menu">
-        <svg class="burger_btn" width="36" height="36">
+      <div class="burger-menu">
+        <svg class="burger-btn" width="36" height="36">
           <use href="ico-sprite.svg#icon-menu-alt-right"></use>
         </svg>
       </div>
     </div>
     <nav class="nav">
-      <ul class="nav__list">
-        <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="#books" class="nav__link">Books</a></li>
-        <li class="nav__item">
-          <a href="#feedbacks" class="nav__link">Feedbacks</a>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#books" class="nav-link">Books</a></li>
+        <li class="nav-item">
+          <a href="#feedbacks" class="nav-link">Feedbacks</a>
         </li>
-        <li class="nav__item">
-          <a href="#events" class="nav__link">Events</a>
+        <li class="nav-item">
+          <a href="#events" class="nav-link">Events</a>
         </li>
-        <li class="nav__item">
-          <a href="#location" class="nav__link">Location</a>
+        <li class="nav-item">
+          <a href="#location" class="nav-link">Location</a>
         </li>
       </ul>
     </nav>
@@ -51,19 +51,35 @@
 
 
     <main>
-      <!-- Loads the specified .html file -->
       <section class="hero">
   <div class="container"></div>
 </section>
 
       <section class="books">
-  <div class="container books__container">
-    <div class="books__categories"></div>
-    <div class="books__data"></div>
+  <div class="container books-container">
+    <div class="books-categories">
+      <div class="books-categories-texts">
+        <h2 class="b-categories-title">Books</h2>
+        <p class="b-categories-_text">Showing 24 of 100</p>
+      </div>
+      <nav class="categories-nav">
+        <button class="categories-dropdown" aria-expanded="false">
+          Categories
+          <span class="dropdown-arrow">\/</span>
+        </button>
+        <ul class="b-categories-list"></ul>
+      </nav>
+    </div>
+    <div class="books-content">
+      <div class="books-data">
+        <ul class="books-data-list"></ul>
+      </div>
+      <button class="books-show-more">Show More</button>
+    </div>
   </div>
 </section>
 
-      <section class="feedbacks-section">
+      <section class="feedbacks-section" id="feedbacks">
   <div class="container">
     <h2 class="feedbacks-title">Customer Feedbacks</h2>
     <p class="feedbacks-paragraf">See what our readers are saying about us!</p>
@@ -230,6 +246,26 @@
         <!-- Details, Shipping, Returns -->
       </div>
     </div>
+  </div>
+</div>
+
+    <div class="modal-menu">
+  <div class="container">
+    <nav class="nav-modal">
+      <ul class="nav-modal-list">
+        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="#books" class="nav-link">Books</a></li>
+        <li class="nav-item">
+          <a href="#feedbacks" class="nav-link">Feedbacks</a>
+        </li>
+        <li class="nav-item">
+          <a href="#events" class="nav-link">Events</a>
+        </li>
+        <li class="nav-item">
+          <a href="#location" class="nav-link">Location</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 
