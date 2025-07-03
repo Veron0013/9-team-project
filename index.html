@@ -14,7 +14,7 @@
     <script type="module" crossorigin src="/9-team-project/index.js"></script>
     <link rel="modulepreload" crossorigin href="/9-team-project/assets/vendor-TuCaI12L.js">
     <link rel="stylesheet" crossorigin href="/9-team-project/assets/vendor-Ds_YmOBQ.css">
-    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-CRco69XF.css">
+    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-D0yG_hqy.css">
   </head>
   <body>
     <header class="header">
@@ -65,7 +65,11 @@
       <nav class="categories-nav">
         <button class="categories-dropdown" aria-expanded="false">
           Categories
-          <span class="dropdown-arrow">\/</span>
+          <span class="dropdown-arrow">
+            <svg class="burger-btn" width="24" height="24">
+              <use href="ico-sprite.svg#icon-chevron-down"></use>
+            </svg>
+          </span>
         </button>
         <ul class="b-categories-list"></ul>
       </nav>
@@ -268,6 +272,12 @@
     </nav>
   </div>
 </div>
+
+<button type="button" id="back-to-top" class="back-to-top hidden">
+  <svg class="logo__icon" width="24" height="24" fill="white">
+    <use href="ico-sprite.svg#icon-chevron-up"></use>
+  </svg>
+</button>
 
     <footer class="footer">
   <div class="container">
