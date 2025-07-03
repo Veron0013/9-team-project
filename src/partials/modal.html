@@ -1,13 +1,41 @@
-<div class="modal_menu">
-  <div class="container">
-    <nav class="nav_modal">
-      <ul class="nav_modal_list">
-        <li class="nav__item"><a href="" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="" class="nav__link">Books</a></li>
-        <li class="nav__item"><a href="" class="nav__link">Feedbacks</a></li>
-        <li class="nav__item"><a href="" class="nav__link">Events</a></li>
-        <li class="nav__item"><a href="" class="nav__link">Location</a></li>
-      </ul>
-    </nav>
+<div id="modal-backdrop" class="backdrop is-hidden">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close modal">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <path
+          d="M6 6l12 12M6 18L18 6"
+          stroke="#000"
+          stroke-width="2"
+          fill="none"
+        />
+      </svg>
+    </button>
+
+    <div class="modal-card">
+      <img id="book-image" alt="Обкладинка книги" class="modal-card__image" />
+
+      <div class="modal-card__info">
+        <h2 id="book-title" class="modal-card__title"></h2>
+        <p id="book-author" class="modal-card__author"></p>
+        <p id="book-price" class="modal-card__price"></p>
+      </div>
+
+      <form id="book-form" class="modal-card__form">
+        <div class="modal-card__quantity">
+          <button type="button" id="minus-btn">-</button>
+          <span id="quantity">1</span>
+          <button type="button" id="plus-btn">+</button>
+        </div>
+
+        <button type="button" id="add-to-cart" class="modal-card__btn primary">
+          Add to Cart
+        </button>
+        <button type="submit" class="modal-card__btn secondary">Buy Now</button>
+      </form>
+
+      <div id="accordion" class="modal-card__accordion">
+        <!-- Details, Shipping, Returns -->
+      </div>
+    </div>
   </div>
 </div>
