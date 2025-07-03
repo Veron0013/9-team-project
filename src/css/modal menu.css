@@ -1,0 +1,40 @@
+.modal-menu {
+  position: absolute;
+  top: 64px;
+  margin: 0 auto;
+  width: 100%;
+  height: calc(100% - 64px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  justify-content: center;
+  align-items: start;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  pointer-events: all;
+  animation: fadeInDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: var(--color-main-bg);
+  z-index: 90;
+}
+
+.nav-modal-list {
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal-menu {
+    display: none;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
