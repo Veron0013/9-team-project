@@ -1,3 +1,17 @@
+const form = document.querySelector('.form');
+const inputs = form.querySelectorAll('.form-input, .form-user-comment');
+const closeBtn = document.querySelector('.modal-close-btn');
+const backdrop = document.querySelector('.modal-overlay');
+const registerButtons = document.querySelectorAll('.card-btn');
+
+registerButtons.forEach(button => {
+  button.addEventListener('click', openModal);
+});
+
+form.addEventListener('submit', handleSubmit);
+backdrop.addEventListener('click', clickClose);
+closeBtn.addEventListener('click', handleClick);
+
 function openModal() {
   const modal = document.querySelector('.modal-overlay');
   modal.classList.add('is-open');
@@ -13,16 +27,6 @@ function closeModal() {
 
   window.removeEventListener('keydown', onEscKeyPress);
 }
-const registerButtons = document.querySelectorAll('.card-btn');
-
-registerButtons.forEach(button => {
-  button.addEventListener('click', openModal);
-});
-
-const form = document.querySelector('.form');
-const inputs = form.querySelectorAll('.form-input, .form-user-comment');
-
-form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
@@ -52,21 +56,15 @@ function handleSubmit(event) {
   }
 }
 
-const closeBtn = document.querySelector('.modal-close-btn');
-closeBtn.addEventListener('click', handleClick);
-
 function handleClick() {
   closeModal();
 }
-
-const backdrop = document.querySelector('.modal-overlay');
 
 function clickClose(event) {
   if (event.target === backdrop) {
     closeModal();
   }
 }
-backdrop.addEventListener('click', clickClose);
 
 function onEscKeyPress(event) {
   if (event.key === 'Escape') {
