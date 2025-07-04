@@ -13,6 +13,11 @@ function closeModal() {
 
   window.removeEventListener('keydown', onEscKeyPress);
 }
+const registerButtons = document.querySelectorAll('.card-btn');
+
+registerButtons.forEach(button => {
+  button.addEventListener('click', openModal);
+});
 
 const form = document.querySelector('.form');
 const inputs = form.querySelectorAll('.form-input, .form-user-comment');
