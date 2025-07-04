@@ -1,0 +1,57 @@
+<div class="modal-overlay is-open">
+  <div class="register-form-modal">
+    <button type="button" class="modal-close-btn" aria-label="Close modal">
+      <svg class="modal-close-icon" width="24" height="24">
+        <use href="../public/ico-sprite.svg#icon-x"></use>
+      </svg>
+    </button>
+
+    <section class="register-form" id="register">
+      <h2 class="form-title">Register</h2>
+      <p class="form-subtitle">Cozy Book Club — “The Midnight Library”</p>
+
+      <form class="form" novalidate>
+        <label class="form-label" for="fullname">
+          <span class="form-label-text">Name*</span>
+          <input
+            class="form-input"
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="Ann"
+            required
+          />
+          <span class="error-text">Enter your name</span>
+        </label>
+
+        <label class="form-label" for="email">
+          <span class="form-label-text">Email*</span>
+          <input
+            class="form-input"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="hello@booksy.com"
+            pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,})\.([A-z]{2,8})"
+            required
+          />
+          <span hidden class="error-text">Enter a valid email</span>
+        </label>
+
+        <label class="form-label" for="comment">
+          <span class="form-label-text">Message</span>
+          <textarea
+            class="form-user-comment"
+            id="comment"
+            name="comment"
+            placeholder="Type your message..."
+            required
+          ></textarea>
+          <span class="error-text">Message is required</span>
+        </label>
+
+        <button type="submit" class="submit-btn">Register</button>
+      </form>
+    </section>
+  </div>
+</div>

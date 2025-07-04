@@ -22,7 +22,7 @@
 @import url('./location.css');
 @import url('./footer.css');
 @import url('./modal.css');
-
+@import url('./modal menu.css');
 
 /*@import url('./not-found.css');
 @import url('./search-form.css');
@@ -30,3 +30,5 @@
 @import url('./products.css');
 @import url('./modal.css');
 @import url('./cart.css');*/
+
+@import url('./form.css');

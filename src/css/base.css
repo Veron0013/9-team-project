@@ -4,8 +4,8 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: var(--color-neutral-darkest);
-  background-color: var(--color-bamboo-lighter);
+  color: var(--color-main-black);
+  background-color: var(--color-main-bg);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,12 +13,36 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  /* основні кольори */
+  --color-white: #fff;
+  --color-error-red: #ad0000;
+  /* фон */
+  --color-main-bg: #fceee6;
+  --color-footer-bg: #ea8d50;
+  /* інпути текстбокси дроп-категорії */
+  --color-input-bg: rgba(11, 5, 0, 0.05);
+  /* шрифт і весь чорний*/
+  --color-main-black: #0b0500;
+
+  --color-fb-border: rgba(11, 5, 0, 0.15);
+
+  /* кнопки */
+  --color-main-btn: #e15d05;
+  --color-main-btn-hover: var(--color-main-black);
+  --color-main-btn-active: #b44a04;
+  --color-main-btn-disabled: rgba(255, 255, 255, 0.2);
+
+  --color-secondary-btn: var(--color-main-bg);
+  --color-secondary-btn-hover: var(--color-footer-bg);
+  --color-secondary-btn-active: #dad9d8;
+  --color-secondary-btn-disabled: var(--color-main-bg);
+
+  /* з макета */
   --color-scheme-1-background: var(--color-bamboo-lightest);
   --color-neutral-darkest: #0b0500;
   --color-scheme-1-border: var(--opacity-neutral-darkest-15);
   --color-scheme-1-text: var(--color-neutral-darkest);
   --color-neutral-lighter: #dad9d8;
-  --color-white: #fff;
   --color-neutral-lightest: #f2f2f2;
   --color-neutral-light: #b5b4b2;
   --color-neutral: #85827f;
@@ -60,17 +84,23 @@
   --color-scheme-3-border: var(--opacity-white-20);
   --color-scheme-3-accent: var(--color-white);
   --color-scheme-3-foreground: var(--color-bamboo);
-  --color-error-red: #ad0000;
+
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 .hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+body.locked,
+.header {
+  overflow: hidden;
 }
