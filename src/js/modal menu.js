@@ -31,11 +31,7 @@ function openCloseModalMenu() {
 //кнопка вгору
 const backoTop = document.querySelector('#back-to-top');
 
-console.log(backoTop);
-
-
 window.addEventListener("scroll", () => {
-	console.log(window.scrollY);
 
 	if (window.scrollY > 600) {
 		render.removeClassElement(backoTop, "hidden");
