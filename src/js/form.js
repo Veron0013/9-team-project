@@ -2,18 +2,24 @@ function openModal() {
   const modal = document.querySelector('.modal-overlay');
   modal.classList.add('is-open');
   document.body.classList.add('locked');
+
+  window.addEventListener('keydown', onEscKeyPress);
 }
 
 function closeModal() {
   const modal = document.querySelector('.modal-overlay');
   modal.classList.remove('is-open');
   document.body.classList.remove('locked');
+
+  window.removeEventListener('keydown', onEscKeyPress);
 }
 
 const form = document.querySelector('.form');
 const inputs = form.querySelectorAll('.form-input, .form-user-comment');
 
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', handleSubmit);
+
+function handleSubmit(event) {
   event.preventDefault();
 
   let isValid = true;
@@ -39,11 +45,26 @@ form.addEventListener('submit', function (event) {
     console.log('Форма валідна. Можна відправити.');
     closeModal();
   }
-});
+}
 
 const closeBtn = document.querySelector('.modal-close-btn');
-closeBtn.addEventListener('click', handleclick);
+closeBtn.addEventListener('click', handleClick);
 
-function handleclick() {
+function handleClick() {
   closeModal();
+}
+
+const backdrop = document.querySelector('.modal-overlay');
+
+function clickClose(event) {
+  if (event.target === backdrop) {
+    closeModal();
+  }
+}
+backdrop.addEventListener('click', clickClose);
+
+function onEscKeyPress(event) {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
 }
