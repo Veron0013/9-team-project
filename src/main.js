@@ -8,3 +8,4 @@ refs.btn_burger.addEventListener('click', e => {
 });
 
 import './js/feedbacks';
+import './js/events';
