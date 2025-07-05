@@ -66,12 +66,14 @@ async function renderBooksByCat(bookCat) {
 
 		refs.viewedBooks = Math.min(storage.StorageService.count(refs.BOOK_LIST), refs.itemsPerView);
 
-		console.log(storage.StorageService.count(refs.BOOK_LIST), refs.itemsPerView);
+		let renderData = mkData.slice(0, refs.viewedBooks);
+
+		//console.log(storage.StorageService.count(refs.BOOK_LIST), refs.itemsPerView);
 
 
-		counterText.textContent = `Showing ${mkData.length} of ${refs.itemsPerView}`;
+		counterText.textContent = `Showing ${refs.viewedBooks} of ${mkData.length}`;
 
-		render.createMarcup(books_list, mkData, render.markUpBooks, true);
+		render.createMarcup(books_list, renderData, render.markUpBooks, true);
 
 		render.toggleClassElement(category_list, "is-open");
 		render.toggleClassElement(category_button_dropdown, "is-open");
@@ -155,4 +157,29 @@ category_list.addEventListener("click", (e) => {
 modal_book_close.addEventListener("click", () => {
 	render.toggleClassElement(modal_book, "is-hidden");
 	render.toggleClassElement(refs.body, "locked");
+});
+
+//більше!!! 
+books_more_btn.addEventListener("click", () => {
+
+	books_more_btn.disabled = true;
+
+	const totalBooks = storage.StorageService.count(refs.BOOK_LIST);
+	const viewed = refs.viewedBooks;
+	const nextView = refs.viewedBooks + refs.itemsPerView;
+
+	const mkData = storage.StorageService.get(refs.BOOK_LIST);
+	const renderData = mkData.slice(viewed, nextView);
+
+	refs.viewedBooks = Math.min(nextView, totalBooks);
+
+	counterText.textContent = `Showing ${refs.viewedBooks} of ${mkData.length}`;
+
+	render.createMarcup(books_list, renderData, render.markUpBooks, false);
+
+	render.toggleClassElement(category_list, "is-open");
+	render.toggleClassElement(category_button_dropdown, "is-open");
+
+	showHideShowMoreButton();
+	books_more_btn.disabled = false;
 });
