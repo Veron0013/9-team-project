@@ -41,6 +41,6 @@ window.addEventListener("scroll", () => {
 });
 
 backoTop.addEventListener("click", () => {
-	window.scrollTo({ top: 0, behavior: "smooth" });
+	render.scrollToTop();
 });
 

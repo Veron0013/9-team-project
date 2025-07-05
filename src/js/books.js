@@ -43,7 +43,7 @@ async function renderBooksByCat(bookCat) {
 	//loader
 	refs.currentCat = bookCat;
 	try {
-		const vQuery = refs.currentCat === "All categories" ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${refs.currentCat}`;
+		const vQuery = refs.currentCat === refs.ALL_CATEGORIES ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${refs.currentCat}`;
 		const dataBook = await apiRest.getApiData(vQuery);
 
 		let mkData = [];
@@ -54,7 +54,7 @@ async function renderBooksByCat(bookCat) {
 			render.addClassElement(books_more_btn, "hidden");
 		}
 
-		if (refs.currentCat === "All categories") {
+		if (refs.currentCat === refs.ALL_CATEGORIES) {
 			mkData = dataBook.data
 				.map(category => category.books)
 				.reduce((acc, books) => acc.concat(books), []);
@@ -95,6 +95,10 @@ function showHideShowMoreButton() {
 
 function dafaultPagination() {
 	refs.itemsPerView = window.innerWidth >= 1440 ? 24 : 10;
+	if (refs.itemsPerView === 10) {
+		render.removeClassElement(category_list, "is-open");
+		render.removeClassElement(category_button_dropdown, "is-open");
+	}
 }
 
 async function renderCategories() {
@@ -113,7 +117,7 @@ async function renderCategories() {
 document.addEventListener("DOMContentLoaded", () => {
 	dafaultPagination();
 	renderCategories();
-	renderBooksByCat("All categories");
+	renderBooksByCat(refs.ALL_CATEGORIES);
 });
 
 window.addEventListener('resize', () => {
@@ -169,6 +173,16 @@ books_more_btn.addEventListener("click", () => {
 	const nextView = refs.viewedBooks + refs.itemsPerView;
 
 	const mkData = storage.StorageService.get(refs.BOOK_LIST);
+
+	//якийсь розумник почистить local storage
+	if (!mkData.length) {
+
+		//тост 
+		renderBooksByCat(refs.currentCat);
+		refs.scrollToTop();
+		return;
+	}
+
 	const renderData = mkData.slice(viewed, nextView);
 
 	refs.viewedBooks = Math.min(nextView, totalBooks);
@@ -176,9 +190,6 @@ books_more_btn.addEventListener("click", () => {
 	counterText.textContent = `Showing ${refs.viewedBooks} of ${mkData.length}`;
 
 	render.createMarcup(books_list, renderData, render.markUpBooks, false);
-
-	render.toggleClassElement(category_list, "is-open");
-	render.toggleClassElement(category_button_dropdown, "is-open");
 
 	showHideShowMoreButton();
 	books_more_btn.disabled = false;
