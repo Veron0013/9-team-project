@@ -5,6 +5,19 @@
 	box-sizing: border-box;
 }
 
+.not-found {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	width: 100%;
+}
+
+.not-found-title {
+	text-align: center;
+}
+
 .books-container {
 	display: flex;
 	align-items: start;
@@ -95,6 +108,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	width: 100%;
 }
 
 .books-data {
@@ -259,6 +273,10 @@
 
 	.books-data-img-container {
 		max-width: 227px;
+	}
+
+	.books-data {
+		width: 980px;
 	}
 
 	.books-data-itm {
