@@ -1,7 +1,7 @@
 .books {
 	position: relative;
-	margin: 0;
-	padding: 0;
+	/*margin: 0;
+	padding: 0;*/
 	box-sizing: border-box;
 }
 
@@ -13,7 +13,6 @@
 
 .books-categories {
 	width: 100%;
-	padding-top: 32px;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -91,6 +90,13 @@
 	cursor: pointer;
 }
 
+.books-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 .books-data {
 	padding-bottom: 24px;
 }
@@ -127,10 +133,18 @@
 	padding: 0;
 }
 
-.books-data-texts {
-	width: 100%;
+.books-data-info {
 	padding-top: 16px;
 	display: flex;
+	align-items: start;
+	justify-content: center;
+	gap: 8px;
+}
+
+.books-data-texts {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 	align-items: start;
 	justify-content: space-between;
 }
@@ -141,6 +155,9 @@
 	line-height: 150%;
 	text-transform: capitalize;
 	max-width: 270px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .books-data-price {
@@ -154,6 +171,9 @@
 	font-size: 14px;
 	line-height: 150%;
 	padding-bottom: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .books-data-button {
@@ -183,13 +203,18 @@
 }
 
 @media (min-width: 768px) {
-	.books-categories-texts {
+
+	/*.books-categories-texts {
 		padding: 24px 0;
+	}*/
+	.categories-nav {
+		padding: 0px;
 	}
 
 	.books-categories {
 		align-items: start;
 		flex-direction: row;
+		padding-bottom: 24px;
 		gap: 24px;
 	}
 
@@ -200,6 +225,14 @@
 		height: 100%;
 	}
 
+	.books-data-title,
+	.books-data-author {
+		max-width: 260px;
+	}
+
+	.books-data-img-container {
+		height: 484px;
+	}
 }
 
 @media (min-width: 1440px) {
@@ -232,6 +265,34 @@
 		max-width: 227px;
 		max-height: 440px;
 		width: 100%;
-		height: 100%;
 	}
+
+	.books-data-title,
+	.books-data-author {
+		max-width: 150px;
+	}
+
+	.books-data-info {
+		gap: 8px;
+	}
+
+	.books-data-img-container {
+		height: 322px;
+	}
+
+	.categories-nav,
+	.books-categories {
+		padding: 0;
+		gap: 0;
+	}
+
+	.books-categories-texts {
+		padding: 0 0 24px 0;
+	}
+
+	.b-categories-itm {
+		padding: 8px 0;
+		cursor: pointer;
+	}
+
 }

@@ -25,15 +25,17 @@ export function markUpBooks(data) {
           <div class="books-data-img-container">
             <img
               src="${book_image}"
-              alt="${list_name}"
+              alt="${title}"
               class="books-data-img"
             />
           </div>
-          <div class="books-data-texts">
-            <h3 class="books-data-title">${title}</h3>
-            <h3 class="books-data-price">${price}</h3>
-          </div>
-          <p class="books-data-author">${author}</p>
+          <div class="books-data-info">
+						<div class="books-data-texts">
+							<h3 class="books-data-title">${title}</h3>
+							<p class="books-data-author">${author}</p>
+						</div>
+						<h3 class="books-data-price">$${price}</h3>
+					</div>
           <button class="books-data-button">Learn More</button>
         </li>`	})
 		.join("");
@@ -41,14 +43,15 @@ export function markUpBooks(data) {
 	return mkData;
 }
 export function markUpCategories(data) {
-	const mkData = data.map(({ list_name }) => {
-		return `<li class="b-categories-itm" data-category="${list_name}">
-          <p class="b-categories-itm">${list_name}</p>
-        </li>`	})
+	const mkData = data.filter((itm) => itm.list_name.trim() !== "")
+		.map(({ list_name }) => {
+			return `<li class="b-categories-itm" data-category="${list_name}">
+          	<p class="b-categories-itm-text">${list_name}</p>
+        	</li>`	})
 		.join("");
 
 	return `<li class="b-categories-itm" data-category="all">
-						<p class="b-categories-itm">All categories</p>
+						<p class="b-categories-itm-text">All categories</p>
 					</li> ${mkData}`;
 }
 export function markUpBooksById({ _id, list_name, author, book_image, description, price, title, }) {
