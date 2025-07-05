@@ -70,8 +70,7 @@ async function renderBooksByCat(bookCat) {
 
 		//console.log(storage.StorageService.count(refs.BOOK_LIST), refs.itemsPerView);
 
-
-		counterText.textContent = `Showing ${refs.viewedBooks} of ${mkData.length}`;
+		updateCounterText(refs.viewedBooks, mkData.length);
 
 		render.createMarcup(books_list, renderData, render.markUpBooks, true);
 
@@ -110,6 +109,10 @@ async function renderCategories() {
 	catch (e) {
 		console.log(e.message);
 	}
+}
+
+function updateCounterText(viewed, total) {
+	counterText.textContent = `Showing ${viewed} of ${total}`;
 }
 
 //слухачі
@@ -187,7 +190,7 @@ books_more_btn.addEventListener("click", () => {
 
 	refs.viewedBooks = Math.min(nextView, totalBooks);
 
-	counterText.textContent = `Showing ${refs.viewedBooks} of ${mkData.length}`;
+	updateCounterText(refs.viewedBooks, mkData.length);
 
 	render.createMarcup(books_list, renderData, render.markUpBooks, false);
 
