@@ -7,8 +7,11 @@ export default {
 	END_BOOK_ID: "/books/",
 	//storage
 	BOOK_LIST: "bookList",
+	BOOK_CARD_LIST: "bookCardList",
 	//elements
 	currentCategory: "",
+	itemsPerView: 24,
+	viewedBooks: 0,
 	body: document.body,
 	scr_btn_burger_close: "ico-sprite.svg#icon-x",
 	scr_btn_burger_normal: "ico-sprite.svg#icon-menu-alt-right"

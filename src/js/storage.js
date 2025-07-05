@@ -1,34 +1,46 @@
 
 import refs from "./refs";
-
+//{
+//  bookList: [
+//    { id: 1, title: "Atomic Habits", price: 15, etc },
+//    { id: 2, title: "Deep Work", price: 20, etc }
+//  ],
+//  bookCartList: [
+//    { id: 1, price: 15, qty: 2 },
+//    { id: 2, price: 20, qty: 1 }
+//  ]
+//}
 
 export const StorageService = {
+	add(key, data) {
+		localStorage.setItem(key, JSON.stringify(data));
+	},
 	get(key) {
 		return JSON.parse(localStorage.getItem(key)) || [];
 	},
-	addToCard(key, id, price, qty = 1) {
+	addToCard(key, id, price, qty = 1, action) {
 		const data = this.get(key);
-		const index = data.findIndex(itm => itm.id === id);
+		const index = data.findIndex(item => item.id === id);
 
 		if (index === -1) {
 			data.push({ id, price, qty });
 		} else {
-			console.log("izitoast");
-			//data[index].qty += qty;
+			const currentItem = data[index];
+			currentItem.qty = Math.max(0, currentItem.qty + (action === '+' ? qty : -qty));
 		}
+
 		localStorage.setItem(key, JSON.stringify(data));
 	},
-	// isCard = true → масив об'єктів з id, false → масив простих id
-	removeFromStorage(key, id, isCard = false) {
+	removeItemFromStorage(key, id) {
 		const data = this.get(key);
-		const fArray = data.filter(itm => isCard ? itm.id !== id : itm !== id);
+		const fArray = data.filter(itm => itm.id !== id);
 		localStorage.setItem(key, JSON.stringify(fArray));
 	},
 	setTotalCard(el) {
-		const arrOfItems = this.get(refs.CD_DATA);
+		const arrOfItems = this.get(refs.BOOK_CARD_LIST);
 		let total = 0;
 		if (arrOfItems.length) {
-			total = arrOfItems.reduce((acc, val) => acc + val.price, 0);
+			total = arrOfItems.reduce((acc, val) => acc + val.price * val.qty, 0);
 		}
 		console.log(total);
 

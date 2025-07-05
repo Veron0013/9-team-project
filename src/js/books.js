@@ -15,8 +15,6 @@ const notFoundEl = document.querySelector(".not-found");
 const notFoundTitle = document.querySelector(".not-found-title");
 const counterText = document.querySelector(".b-categories-_text");
 
-const itemsPerView = window.innerWidth >= 1440 ? 24 : 40;
-
 
 const renderBookById = async (bookId) => {
 	return;
@@ -41,14 +39,14 @@ const renderBookById = async (bookId) => {
 	}
 }
 
-const renderBooksByCat = async (bookCat) => {
+async function renderBooksByCat(bookCat) {
 	//loader
 	refs.currentCat = bookCat;
 	try {
 		const vQuery = refs.currentCat === "All categories" ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${refs.currentCat}`;
 		const dataBook = await apiRest.getApiData(vQuery);
 
-		console.log("cat:", refs.currentCat, dataBook);
+		let mkData = [];
 
 		if (!dataBook.data.length) {
 			notFoundTitle.textContent = `No books found in "${refs.currentCat}"`;
@@ -57,38 +55,50 @@ const renderBooksByCat = async (bookCat) => {
 		}
 
 		if (refs.currentCat === "All categories") {
-			const mkData = dataBook.data
+			mkData = dataBook.data
 				.map(category => category.books)
 				.reduce((acc, books) => acc.concat(books), []);
-
-			console.log(mkData);
+		} else {
+			mkData = dataBook.data;
 		}
 
-		counterText.textContent = `Showing ${dataBook.data.length} of ${dataBook.data.length}`;
-		render.createMarcup(books_list, dataBook.data, render.markUpBooks, true);
+		storage.StorageService.add(refs.BOOK_LIST, mkData);
+
+		refs.viewedBooks = Math.min(storage.StorageService.count(refs.BOOK_LIST), refs.itemsPerView);
+
+		console.log(storage.StorageService.count(refs.BOOK_LIST), refs.itemsPerView);
+
+
+		counterText.textContent = `Showing ${mkData.length} of ${refs.itemsPerView}`;
+
+		render.createMarcup(books_list, mkData, render.markUpBooks, true);
+
 		render.toggleClassElement(category_list, "is-open");
 		render.toggleClassElement(category_button_dropdown, "is-open");
+
+		showHideShowMoreButton();
 	}
 	catch (e) {
 		console.log(e.message);
 	}
 }
 
-const renderTopBooks = async () => {
-	try {
-		const vQuery = `${refs.BASE_URL}${refs.END_TOP_BOOKS}`
-		const dataBook = await apiRest.getApiData(vQuery);
-		console.log(dataBook);
-		render.createMarcup(books_list, dataBook.data[4].books, render.markUpBooks, true);
-	}
-	catch (e) {
-		console.log(e.message);
+function showHideShowMoreButton() {
+	if (refs.viewedBooks < storage.StorageService.count(refs.BOOK_LIST)) {
+		render.removeClassElement(books_more_btn, "display-none");
+	} else {
+		render.addClassElement(books_more_btn, "display-none");
 	}
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+	dafaultPagination();
 	renderCategories();
-	renderTopBooks();
+	renderBooksByCat("All categories");
+});
+
+window.addEventListener('resize', () => {
+	dafaultPagination();
 });
 
 books_list.addEventListener("click", (e) => {
@@ -106,7 +116,11 @@ books_list.addEventListener("click", (e) => {
 	//renderBookById(bookItm.dataset.id);
 });
 
-const renderCategories = async () => {
+function dafaultPagination() {
+	refs.itemsPerView = window.innerWidth >= 1440 ? 24 : 10;
+}
+
+async function renderCategories() {
 	try {
 		const vQuery = `${refs.BASE_URL}${refs.END_CATEGORIES}`
 		const dataBook = await apiRest.getApiData(vQuery);
@@ -133,6 +147,7 @@ category_list.addEventListener("click", (e) => {
 
 });
 
+//x на модалки книжки
 modal_book_close.addEventListener("click", (e) => {
 	render.toggleClassElement(modal_book, "is-hidden");
 	render.toggleClassElement(refs.body, "locked");
