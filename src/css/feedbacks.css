@@ -7,6 +7,7 @@ ol {
   list-style-type: none;
   padding-left: 0;
 }
+
 .swiper-button-next::after,
 .swiper-button-prev::after {
   display: none;
@@ -20,7 +21,8 @@ ol {
   letter-spacing: -0.01em;
   color: var(--color-scheme-2-text);
   margin-bottom: 24px;
-  max-width: 342px;
+  /*max-width: 342px;*/
+  width: 100%;
 }
 
 .feedbacks-paragraf {
@@ -29,7 +31,8 @@ ol {
   font-size: 18px;
   line-height: 150%;
   color: var(--color-scheme-2-text);
-  max-width: 324px;
+  /*max-width: 324px;*/
+  width: 100%;
   margin-bottom: 80px;
 }
 
@@ -46,10 +49,12 @@ ol {
   display: flex;
   justify-content: space-between;
 }
+
 .feedbacks-container {
   display: flex;
   gap: 16px;
 }
+
 .feedbacks-text {
   font-family: var(--font-family);
   font-weight: 400;
@@ -58,6 +63,7 @@ ol {
   color: var(--color-scheme-2-text);
   margin-bottom: 24px;
 }
+
 .feedbacks-name {
   font-family: var(--font-family);
   font-weight: 600;
@@ -65,6 +71,7 @@ ol {
   line-height: 150%;
   color: var(--color-scheme-2-text);
 }
+
 .feedbacks-person {
   font-family: var(--font-family);
   font-weight: 400;
@@ -132,6 +139,7 @@ ol {
   width: 24px;
   height: 24px;
 }
+
 .button-disabled {
   opacity: 0.5;
   pointer-events: none;
@@ -139,21 +147,18 @@ ol {
 }
 
 @media only screen and (min-width: 768px) {
-  .feedbacks-title {
-    min-width: 768px;
-  }
+
   .feedbacks-list-item {
     min-height: 244px;
   }
-  .feedbacks-paragraf {
-    min-width: 768px;
-  }
+
 }
 
 @media only screen and (min-width: 1440px) {
   .feedbacks-container-max {
     padding: 64px 64px;
   }
+
   .feedbacks-title {
     font-size: 48px;
   }
