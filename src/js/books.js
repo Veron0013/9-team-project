@@ -2,21 +2,27 @@ import refs from '/js/refs';
 import * as render from '/js/render-function';
 import * as apiRest from '/js/products-api';
 
-const modal_book = document.querySelector(".modal-book");
+const modal_book = document.querySelector(".backdrop");
+const modal_book_data = document.querySelector(".modal-card");
+const modal_book_close = document.querySelector(".modal-close");
 const books_list = document.querySelector(".books-data-list");
 const category_list = document.querySelector(".b-categories-list");
 const category_button_dropdown = document.querySelector(".categories-dropdown");
-const books_more_btn = document.querySelector(".books-data-button");
+const books_more_btn = document.querySelector(".books-show-more");
+const notFoundEl = document.querySelector(".not-found");
+const notFoundTitle = document.querySelector(".not-found-title");
+const counterText = document.querySelector(".b-categories-_text");
 
 
 const renderBookById = async (bookId) => {
 	try {
 		const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}${bookId}`
 		const dataBook = await apiRest.getApiData(vQuery);
-		console.log(dataBook);
-		render.createMarcup(refs.modal_book, dataBook.data, render.markUpBooksById, true);
-		render.toggleClassElement(refs.modal_book, "is-open");
-		window.scrollTo({ top: 0, behavior: "smooth" });
+
+		modal_book_data.innerHTML = "";
+		render.createMarcup(modal_book_data, dataBook.data, render.markUpBooksById, true);
+		render.toggleClassElement(modal_book, "is-hidden");
+		render.toggleClassElement(refs.body, "locked");
 
 		const btnAddToCard = document.querySelector("#add-to-card");
 		console.log(btnAddToCard);
@@ -30,11 +36,23 @@ const renderBookById = async (bookId) => {
 	}
 }
 
+
+
 const renderBooksByCat = async (bookCat) => {
 	try {
 		const vQuery = bookCat === "All categories" ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${bookCat}`;
 		const dataBook = await apiRest.getApiData(vQuery);
+
 		console.log(dataBook);
+
+
+		if (!dataBook.data.length) {
+			notFoundTitle.textContent = `No books found in "${bookCat}"`;
+			render.removeClassElement(notFoundEl, "hidden");
+			render.addClassElement(books_more_btn, "hidden");
+		}
+
+		counterText.textContent = `Showing ${dataBook.data.length} of ${dataBook.data.length}`;
 		render.createMarcup(books_list, dataBook.data, render.markUpBooks, true);
 		render.toggleClassElement(category_list, "is-open");
 		render.toggleClassElement(category_button_dropdown, "is-open");
@@ -62,11 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 books_list.addEventListener("click", (e) => {
+
 	const button = e.target.closest(".books-data-button");
 	if (!button) return;
 
 	const bookItm = button.closest(".books-data-itm");
 	if (!bookItm) return;
+
 
 	renderBookById(bookItm.dataset.id);
 });
@@ -92,7 +112,13 @@ category_list.addEventListener("click", (e) => {
 	if (!currentCat) {
 		return;
 	}
+	render.addClassElement(notFoundEl, "hidden");
 	renderBooksByCat(currentCat.textContent);
 	console.log(e.target, e.target.closest("p").textContent);
 
+});
+
+modal_book_close.addEventListener("click", (e) => {
+	render.toggleClassElement(modal_book, "is-hidden");
+	render.toggleClassElement(refs.body, "locked");
 });
