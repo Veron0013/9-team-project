@@ -14,7 +14,7 @@
     <script type="module" crossorigin src="/9-team-project/index.js"></script>
     <link rel="modulepreload" crossorigin href="/9-team-project/assets/vendor-TuCaI12L.js">
     <link rel="stylesheet" crossorigin href="/9-team-project/assets/vendor-Ds_YmOBQ.css">
-    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-CvKkkBYC.css">
+    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-DaC8h7eM.css">
   </head>
   <body>
     <header class="header">
@@ -614,7 +614,13 @@
     <div class="footer-main-row">
       <div class="footer-left">
         <a href="#" class="footer-logo-link" aria-label="Booksy home">
-          <img src="/9-team-project/assets/logo-w-BDqGsvqk.svg" alt="Booksy logo" class="footer-logo" width="85" height="37" />
+          <img
+            src="/9-team-project/assets/logo-w-BDqGsvqk.svg"
+            alt="Booksy logo"
+            class="footer-logo"
+            width="85"
+            height="37"
+          />
         </a>
         <nav class="footer-nav" aria-label="Footer navigation">
           <ul class="footer-nav-list">
@@ -627,21 +633,30 @@
       </div>
       <div class="footer-right">
         <form class="footer-form" autocomplete="off" novalidate>
-          <label for="footer-email" class="footer-form-label">Join</label>
           <div class="footer-form-row">
-            <input type="email" id="footer-email" class="footer-input" placeholder="Enter your email" required pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" />
+            <div class="footer-input-block">
+              <label for="footer-email" class="footer-form-label">Join</label>
+              <input
+                type="email"
+                id="footer-email"
+                class="footer-input"
+                placeholder="Enter your email"
+                required
+                pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+              />
+              <p class="footer-form-note">* Required field</p>
+            </div>
             <button type="submit" class="footer-btn">Sign Up</button>
           </div>
-          <span class="footer-form-note">* Required field</span>
         </form>
       </div>
     </div>
-    <div class="footer-divider"></div>
     <div class="footer-copyright">
       <span>&copy; 2025 Booksy. All rights reserved.</span>
     </div>
   </div>
 </footer>
+
 
   </body>
 </html>
