@@ -1,5 +1,5 @@
 export default {
-	//constants
+	//endpoints
 	BASE_URL: "https://books-backend.p.goit.global",
 	END_CATEGORIES: "/books/category-list",
 	END_TOP_BOOKS: "/books/top-books",
