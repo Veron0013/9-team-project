@@ -5,7 +5,10 @@ export default {
 	END_TOP_BOOKS: "/books/top-books",
 	END_CATEGORIE_ID: "/books/category?category=",
 	END_BOOK_ID: "/books/",
+	//storage
+	BOOK_LIST: "bookList",
 	//elements
+	currentCategory: "",
 	body: document.body,
 	scr_btn_burger_close: "ico-sprite.svg#icon-x",
 	scr_btn_burger_normal: "ico-sprite.svg#icon-menu-alt-right"

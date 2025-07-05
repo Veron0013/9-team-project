@@ -8,11 +8,16 @@ const backdrop = document.querySelector('.modal-overlay');
 const eventList = document.querySelector('.events-list');
 
 eventList.addEventListener('click', event => {
+  const curLi = event.target.closest('.events-item');
+  if (!curLi) {
+    return;
+  }
   const btn = event.target.closest('.card-btn');
   if (!btn) {
     return;
   }
-  const eventName = event.target.closest('.events-card-heading').textContent;
+  const eventName = curLi.querySelector('.events-card-heading').textContent.trim();
+
   openModal(eventName);
 });
 

@@ -1,6 +1,8 @@
 import refs from '/js/refs';
 import * as render from '/js/render-function';
 import * as apiRest from '/js/products-api';
+import * as modal from '/js/modal';
+import * as storage from '/js/storage'
 
 const modal_book = document.querySelector(".backdrop");
 const modal_book_data = document.querySelector(".modal-card");
@@ -12,6 +14,8 @@ const books_more_btn = document.querySelector(".books-show-more");
 const notFoundEl = document.querySelector(".not-found");
 const notFoundTitle = document.querySelector(".not-found-title");
 const counterText = document.querySelector(".b-categories-_text");
+
+const itemsPerView = window.innerWidth >= 1440 ? 24 : 40;
 
 
 const renderBookById = async (bookId) => {
@@ -38,17 +42,26 @@ const renderBookById = async (bookId) => {
 }
 
 const renderBooksByCat = async (bookCat) => {
+	//loader
+	refs.currentCat = bookCat;
 	try {
-		const vQuery = bookCat === "All categories" ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${bookCat}`;
+		const vQuery = refs.currentCat === "All categories" ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${refs.currentCat}`;
 		const dataBook = await apiRest.getApiData(vQuery);
 
-		console.log(dataBook);
-
+		console.log("cat:", refs.currentCat, dataBook);
 
 		if (!dataBook.data.length) {
-			notFoundTitle.textContent = `No books found in "${bookCat}"`;
+			notFoundTitle.textContent = `No books found in "${refs.currentCat}"`;
 			render.removeClassElement(notFoundEl, "hidden");
 			render.addClassElement(books_more_btn, "hidden");
+		}
+
+		if (refs.currentCat === "All categories") {
+			const mkData = dataBook.data
+				.map(category => category.books)
+				.reduce((acc, books) => acc.concat(books), []);
+
+			console.log(mkData);
 		}
 
 		counterText.textContent = `Showing ${dataBook.data.length} of ${dataBook.data.length}`;
@@ -86,8 +99,11 @@ books_list.addEventListener("click", (e) => {
 	const bookItm = button.closest(".books-data-itm");
 	if (!bookItm) return;
 
+	//console.log("modal");
 
-	renderBookById(bookItm.dataset.id);
+	modal.openModal(bookItm.dataset.id);
+
+	//renderBookById(bookItm.dataset.id);
 });
 
 const renderCategories = async () => {
