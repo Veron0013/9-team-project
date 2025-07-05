@@ -32,7 +32,7 @@
 .events-item {
   width: 100%;
   max-width: 342px;
-  height: auto;
+  max-height: 545px;
   display: flex;
   justify-content: space-between;
 }
@@ -43,8 +43,8 @@
   line-height: 1.4;
   letter-spacing: -0.01em;
   color: var(--color-scheme-2-text);
-  margin-top: 24px;
 }
+
 .events-card-desc {
   font-weight: 400;
   font-size: 16px;
@@ -52,12 +52,14 @@
   color: var(--color-scheme-2-text);
   margin-bottom: 8px;
 }
+
 .events-card-text {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   color: var(--color-scheme-2-text);
   margin-bottom: 16px;
+  flex: 1;
 }
 
 /* Кнопка register */
@@ -66,8 +68,9 @@
   align-items: center;
   min-width: 95px;
   gap: 8px;
-  margin-bottom: 24px;
+  padding-top: 8px;
 }
+
 .card-btn {
   font-weight: 400;
   font-size: 16px;
@@ -77,6 +80,7 @@
   background-color: transparent;
   padding: 0;
 }
+
 .card-svg {
   width: 24px;
   height: 24px;
@@ -89,7 +93,7 @@
   position: relative;
 }
 
-.events-controls {
+.events-control {
   margin-top: 32px;
   display: flex;
   justify-content: space-between;
@@ -156,4 +160,27 @@
   opacity: 0.5;
   pointer-events: none;
   cursor: default;
+}
+
+.events-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  margin: 24px 0;
+}
+
+@media only screen and (min-width: 1440px) {
+
+  .events-item {
+    min-width: 421px;
+    max-height: 521px;
+  }
+
+  .events-control {
+    display: none;
+  }
+
+  .events-card img {
+    width: 421px;
+  }
 }
