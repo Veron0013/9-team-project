@@ -1,6 +1,6 @@
 import refs from '/js/refs';
 import * as render from '/js/render-function';
-import * as apiRest from '/js/products-api';
+import * as apiRest from '/js/books-api';
 import * as modal from '/js/modal';
 import * as storage from '/js/storage'
 
@@ -91,6 +91,23 @@ function showHideShowMoreButton() {
 	}
 }
 
+function dafaultPagination() {
+	refs.itemsPerView = window.innerWidth >= 1440 ? 24 : 10;
+}
+
+async function renderCategories() {
+	try {
+		const vQuery = `${refs.BASE_URL}${refs.END_CATEGORIES}`
+		const dataBook = await apiRest.getApiData(vQuery);
+		render.createMarcup(category_list, dataBook.data, render.markUpCategories, true);
+	}
+	catch (e) {
+		console.log(e.message);
+	}
+}
+
+//слухачі
+
 document.addEventListener("DOMContentLoaded", () => {
 	dafaultPagination();
 	renderCategories();
@@ -116,26 +133,13 @@ books_list.addEventListener("click", (e) => {
 	//renderBookById(bookItm.dataset.id);
 });
 
-function dafaultPagination() {
-	refs.itemsPerView = window.innerWidth >= 1440 ? 24 : 10;
-}
-
-async function renderCategories() {
-	try {
-		const vQuery = `${refs.BASE_URL}${refs.END_CATEGORIES}`
-		const dataBook = await apiRest.getApiData(vQuery);
-		render.createMarcup(category_list, dataBook.data, render.markUpCategories, true);
-	}
-	catch (e) {
-		console.log(e.message);
-	}
-}
-
-category_button_dropdown.addEventListener("click", (e) => {
+//дропдаун списку категорій
+category_button_dropdown.addEventListener("click", () => {
 	render.toggleClassElement(category_list, "is-open");
 	render.toggleClassElement(category_button_dropdown, "is-open");
 });
 
+//вибір категорії
 category_list.addEventListener("click", (e) => {
 	const currentCat = e.target.closest("p");
 	if (!currentCat) {
@@ -148,7 +152,7 @@ category_list.addEventListener("click", (e) => {
 });
 
 //x на модалки книжки
-modal_book_close.addEventListener("click", (e) => {
+modal_book_close.addEventListener("click", () => {
 	render.toggleClassElement(modal_book, "is-hidden");
 	render.toggleClassElement(refs.body, "locked");
 });
