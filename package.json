@@ -17,6 +17,8 @@
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "accordeon": "^1.0.0",
+    "accordion-js": "^3.4.1",
     "axios": "^1.10.0",
     "css-loader": "^7.1.2",
     "izitoast": "^1.4.0",

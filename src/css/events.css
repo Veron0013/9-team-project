@@ -1,0 +1,186 @@
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.events-pre-title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: capitalize;
+  color: var(--color-scheme-2-text);
+  margin-bottom: 16px;
+}
+
+.events-title {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-2-text);
+  margin-bottom: 16px;
+}
+
+.events-title-text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-scheme-2-text);
+  margin-bottom: 32px;
+}
+
+.events-item {
+  width: 100%;
+  max-width: 342px;
+  max-height: 545px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.events-card-heading {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--color-scheme-2-text);
+}
+
+.events-card-desc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-scheme-2-text);
+  margin-bottom: 8px;
+}
+
+.events-card-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-scheme-2-text);
+  margin-bottom: 16px;
+  flex: 1;
+}
+
+/* Кнопка register */
+.card-btn-cont {
+  display: flex;
+  align-items: center;
+  min-width: 95px;
+  gap: 8px;
+  padding-top: 8px;
+}
+
+.card-btn {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-scheme-2-text);
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.card-svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Перемикачі */
+
+.events-swiper {
+  position: relative;
+}
+
+.events-control {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+/* .events-control-cont {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  gap: 16px;
+} */
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-scheme-2-text);
+  opacity: 0.3;
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.events-control-cont {
+  display: flex;
+  gap: 16px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  background-color: var(--color-accent, #e2570b);
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+  color: #fff;
+}
+
+.control-svg {
+  fill: #fff;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+}
+
+.button-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+.events-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 220px;
+  margin: 24px 0;
+}
+
+@media only screen and (min-width: 1440px) {
+
+  .events-item {
+    min-width: 421px;
+    max-height: 521px;
+  }
+
+  .events-control {
+    display: none;
+  }
+
+  .events-card img {
+    width: 421px;
+  }
+}

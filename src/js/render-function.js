@@ -21,51 +21,61 @@ export function createMarcup(element, data, callBack, clearElement = false) {
 }
 export function markUpBooks(data) {
 	const mkData = data.map(({ _id, list_name, author, price, title, book_image, book_image_width, book_image_height }) => {
-		return `<li class="books__data__itm" data-id="${_id}">
-          <div class="books__data__img__container">
+		return `<li class="books-data-itm" data-id="${_id}">
+          <div class="books-data-img-container">
             <img
               src="${book_image}"
-              alt="${list_name}"
-              class="books__data__img"
-							width="${book_image_width}"
-							height="${book_image_height}"
+              alt="${title}"
+              class="books-data-img"
             />
           </div>
-          <div class="books__data__texts">
-            <h3 class="books__data__title">${author}</h3>
-            <h3 class="books__data__price">${price}</h3>
-          </div>
-          <p class="books__data__author">${author}</p>
-          <button class="books__data__button">Learn More</button>
+          <div class="books-data-info">
+						<div class="books-data-texts">
+							<h3 class="books-data-title">${title}</h3>
+							<p class="books-data-author">${author}</p>
+						</div>
+						<h3 class="books-data-price">$${price}</h3>
+					</div>
+          <button class="books-data-button">Learn More</button>
         </li>`	})
 		.join("");
 
 	return mkData;
 }
 export function markUpCategories(data) {
-	const mkData = data.map(({ list_name }) => {
-		return `<li class="b__categories__itm" data-category="${list_name}">
-          <p class="b__categories__itm">${list_name}</p>
-        </li>`	})
+	const mkData = data.filter((itm) => itm.list_name.trim() !== "")
+		.map(({ list_name }) => {
+			return `<li class="b-categories-itm" data-category="${list_name}">
+          	<p class="b-categories-itm-text">${list_name}</p>
+        	</li>`	})
 		.join("");
 
-	return `<li class="b__categories__itm" data-category="all">
-						<p class="b__categories__itm">All categories</p>
+	return `<li class="b-categories-itm" data-category="all">
+						<p class="b-categories-itm-text">All categories</p>
 					</li> ${mkData}`;
 }
 export function markUpBooksById({ _id, list_name, author, book_image, description, price, title, }) {
-	return `<img src="" alt="" class="modal__book_close" />
-						<img src="${book_image}" alt="${list_name}" class="books__data__img" />
-						<h3 class="books__data__title">${title}</h3>
-						<p class="books__data__author">${author}</p>
-						<p class="books__data__price">${price}</p>
-						<button class="books__data__button" id="add__to__card">Add to card</button
-						><button class="books__show__more"id="buy__now">Buy Now</button>
-						<h3 class="modal__book__details">DETAILS</h3>
-						<p class="modal__book__details__text">${description}</p>
-						<h3 class="modal__book__shipping">SHIPPING</h3>
-						<p class="modal__book__shipping__text">${description}</p>
-						<h3 class="modal__book__returns">RETURNS</h3>
-						<p class="modal__book__returns__text">${description}</p>`
+	return `
+						<img src="${book_image}" alt="${list_name}" class="modal-card__image" />
+						<h3 class="modal-card__title">${title}</h3>
+						<p class="modal-card__author">${author}</p>
+						<p class="modal-card__price">$${price}</p>
+						<form id="book-form" class="modal-card__form">
+							<div class="modal-card__quantity">
+								<button type="button" id="minus-btn">-</button>
+								<span id="quantity">1</span>
+								<button type="button" id="plus-btn">+</button>
+							</div>
+							<button type="button" id="add-to-cart" class="modal-card__btn primary">Add to Cart
+							</button>
+							<button type="submit" class="modal-card__btn secondary">Buy Now</button>
+						</form>
+						<div id="accordion" class="modal-card__accordion">
+						<h3 class="modal-book-details">DETAILS</h3>
+						<p class="modal-book-details-text">${description}</p>
+						<h3 class="modal-book-shipping">SHIPPING</h3>
+						<p class="modal-book-shipping-text">We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier service. Enjoy free standard shipping on orders over $50.</p>
+						<h3 class="modal-book-returns">RETURNS</h3>
+						<p class="modal-book-returns-text">You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.</p>
+						</div>`
 };
-

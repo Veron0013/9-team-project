@@ -8,28 +8,55 @@
   z-index: 1000;
 }
 
+  .modal-card__left {
+    flex-shrink: 0;
+  }
+
+  .modal-card__right {
+    flex: 1;
+    width: 307px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-left: 24px;
+  }
+
 .is-hidden {
   display: none;
 }
 
 .modal {
-  background: #fffaf4;
-  border-radius: 12px;
-  padding: 20px;
-  width: 90%;
-  max-width: 400px;
+  background: #fef7f1;
+  border-radius: 16px;
+  padding: 32px 16px 64px;
+  max-width: 375px;
+  min-width: 343px;
   overflow-y: auto;
-  max-height: 90vh;
   position: relative;
+  z-index: 1000;
+  height: 100vh;
 }
 
 .modal-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 16px;
+  right: 16px;
   background: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #0b0500;
+}
+
+.modal-close svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  pointer-events: none;
+  display: block;
 }
 
 .quantity-control {
@@ -39,22 +66,86 @@
   gap: 10px;
 }
 
-.accordion details {
+.accordion-container {
+  width: 100%;
   margin-top: 1rem;
+}
+
+.ac {
+  border-top: 1px solid #e0e0e0;
+}
+
+.ac:last-child {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ac-header {
+  margin: 0;
+}
+
+.ac-trigger {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 1rem 0;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  color: #0b0500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-left: auto;
+}
+
+.ac-trigger::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-image: url('/icons/chevron-down.svg'); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  margin-left: 0;
+  position: absolute;
+  right: 16px;
+  filter: brightness(0);
+}
+
+.ac.is-active .ac-trigger::after {
+  transform: rotate(180deg);
+}
+
+.ac-panel {
+  display: none;
+  padding: 0 0 1rem;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #0b0500;
+}
+
+.is-active .ac-panel {
+  display: block;
 }
 
 .modal-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  
 }
 
 .modal-card__image {
-  width: 100%;
-  max-width: 240px;
-  border-radius: 12px;
-  object-fit: cover;
+  min-width: 309px;
+  min-height: 467px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin: 16px 0 24px 0;
 }
 
 .modal-card__text {
@@ -62,20 +153,26 @@
 }
 
 .modal-card__title {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin: 0.5rem 0 0;
+  font-weight: 600;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #0b0500;
 }
 
 .modal-card__author {
-  font-size: 1rem;
-  color: #555;
+  font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #0b0500;
 }
 
 .modal-card__price {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #000;
+  font-weight: 400;
+    font-size: 24px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: #0b0500;
 }
 
 .modal-card__form {
@@ -118,17 +215,72 @@
 }
 
 .modal-card__btn.primary {
-  background-color: #4a90e2;
+  background-color: #f85f02;
   color: #fff;
 }
 
 .modal-card__btn.secondary {
   background-color: transparent;
-  border: 2px solid #4a90e2;
-  color: #4a90e2;
+  border: 1px solid #111;
+  color: #111;
 }
 
 .modal-card__accordion {
   width: 100%;
   margin-top: 1rem;
+}
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+
+@media screen and (min-width: 768px) {
+  .modal {
+    max-width: 704px;
+    padding: 32px;
+    gap: 24px;
+  }
+
+  .modal-card {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .modal-card__image {
+    width: 309px;
+    height: 467px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+
+  .modal-card__text {
+    text-align: left;
+    flex: 1;
+  }
+
+  .modal-card__form {
+    align-items: flex-start;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .modal {
+    min-width: 1300px;
+    padding: 40px;
+  }
+  .modal-card__right {
+    min-width: 759px;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal-card__title {
+    font-size: 48px;
+  }
+  .modal-card__price {
+    font-size: 28px;
+  }
 }

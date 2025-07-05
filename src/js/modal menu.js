@@ -28,3 +28,19 @@ function openCloseModalMenu() {
 }
 
 
+//кнопка вгору
+const backoTop = document.querySelector('#back-to-top');
+
+window.addEventListener("scroll", () => {
+
+	if (window.scrollY > 600) {
+		render.removeClassElement(backoTop, "hidden");
+	} else {
+		render.addClassElement(backoTop, "hidden");
+	}
+});
+
+backoTop.addEventListener("click", () => {
+	window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
