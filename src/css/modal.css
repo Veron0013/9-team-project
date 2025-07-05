@@ -34,7 +34,7 @@
   overflow-y: auto;
   position: relative;
   z-index: 1000;
-  height: auto;
+  height: 100vh;
 }
 
 .modal-close {
@@ -232,6 +232,8 @@
 
 body.modal-open {
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 
