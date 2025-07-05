@@ -1,0 +1,72 @@
+.modal-menu {
+  position: absolute;
+  top: 64px;
+  margin: 0 auto;
+  width: 100%;
+  height: calc(100% - 64px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  justify-content: center;
+  align-items: start;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  animation: fadeInDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: var(--color-main-bg);
+  z-index: 90;
+}
+
+.nav-modal-list {
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .modal-menu {
+    display: none;
+    z-index: 0;
+    pointer-events: none;
+  }
+}
+
+
+/* back-to-top */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-main-btn);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--color-secondary-btn-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--color-main-btn-disabled);
+}
