@@ -14,7 +14,7 @@
     <script type="module" crossorigin src="/9-team-project/index.js"></script>
     <link rel="modulepreload" crossorigin href="/9-team-project/assets/vendor-DgXuePoo.js">
     <link rel="stylesheet" crossorigin href="/9-team-project/assets/vendor-BE7bUg82.css">
-    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-DLbxUSjC.css">
+    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-Cjg6K4L8.css">
   </head>
   <body>
     <header class="header">
@@ -511,40 +511,99 @@
     <div id="modal-backdrop" class="backdrop is-hidden">
   <div class="modal">
     <button class="modal-close" aria-label="Close modal">
-      <svg viewBox="0 0 24 24" width="24" height="24">
+      <svg
+        class="modal-close-icon"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <path
-          d="M6 6l12 12M6 18L18 6"
-          stroke="#000"
+          d="M6 6L18 18M6 18L18 6"
+          stroke="currentColor"
           stroke-width="2"
-          fill="none"
+          stroke-linecap="round"
         />
       </svg>
     </button>
 
     <div class="modal-card">
-      <img id="book-image" alt="Обкладинка книги" class="modal-card__image" />
-
-      <div class="modal-card__info">
-        <h2 id="book-title" class="modal-card__title"></h2>
-        <p id="book-author" class="modal-card__author"></p>
-        <p id="book-price" class="modal-card__price"></p>
+      <div class="modal-card__left">
+        <img id="book-image" alt="Обкладинка книги" class="modal-card__image" />
       </div>
-
-      <form id="book-form" class="modal-card__form">
-        <div class="modal-card__quantity">
-          <button type="button" id="minus-btn">-</button>
-          <span id="quantity">1</span>
-          <button type="button" id="plus-btn">+</button>
+      <div class="modal-card__right">
+        <div class="modal-card__info">
+          <h2 id="book-title" class="modal-card__title">Назва книги</h2>
+          <p id="book-author" class="modal-card__author">Автор книги</p>
+          <p id="book-price" class="modal-card__price">Ціна книги</p>
         </div>
-
-        <button type="button" id="add-to-cart" class="modal-card__btn primary">
-          Add to Cart
-        </button>
-        <button type="submit" class="modal-card__btn secondary">Buy Now</button>
-      </form>
-
-      <div id="accordion" class="modal-card__accordion">
-        <!-- Details, Shipping, Returns -->
+        <form id="book-form" class="modal-card__form">
+          <div class="modal-card__quantity">
+            <button type="button" id="minus-btn">-</button>
+            <span id="quantity">1</span>
+            <button type="button" id="plus-btn">+</button>
+          </div>
+          <button
+            type="button"
+            id="add-to-cart"
+            class="modal-card__btn primary"
+          >
+            Add to Cart
+          </button>
+          <button type="submit" class="modal-card__btn secondary">
+            Buy Now
+          </button>
+        </form>
+        <div class="accordion-container">
+          <div class="ac">
+            <h2 class="ac-header">
+              <button type="button" class="ac-trigger">
+                Details
+                <svg class="accordion-icon" width="16" height="16">
+                  <use href="/9-team-project/ico-sprite.svg#icon-chevron-down"></use>
+                </svg>
+              </button>
+            </h2>
+            <div class="ac-panel">
+              <p id="book-details">Loading...</p>
+            </div>
+          </div>
+          <div class="ac">
+            <h2 class="ac-header">
+              <button type="button" class="ac-trigger">
+                Shipping
+                <svg class="accordion-icon" width="16" height="16">
+                  <use href="/9-team-project/ico-sprite.svg#icon-chevron-down"></use>
+                </svg>
+              </button>
+            </h2>
+            <div class="ac-panel">
+              <p id="book-shipping">
+                We ship across the United States within 2–5 business days. All
+                orders are processed through USPS or a reliable courier service.
+                Enjoy free standard shipping on orders over $50.
+              </p>
+            </div>
+          </div>
+          <div class="ac">
+            <h2 class="ac-header">
+              <button type="button" class="ac-trigger">
+                Returns
+                <svg class="accordion-icon" width="16" height="16">
+                  <use href="/9-team-project/ico-sprite.svg#icon-chevron-down"></use>
+                </svg>
+              </button>
+            </h2>
+            <div class="ac-panel">
+              <p id="book-returns">
+                You can return an item within 14 days of receiving your order,
+                provided it hasn’t been used and is in its original condition.
+                To start a return, please contact our support team — we’ll guide
+                you through the process quickly and hassle-free.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
