@@ -14,6 +14,10 @@
 	width: 100%;
 }
 
+.not-found.hidden {
+	display: none;
+}
+
 .not-found-title {
 	text-align: center;
 }

@@ -113,6 +113,10 @@
   pointer-events: none;
 }
 
+.display-none {
+  display: none;
+}
+
 body.locked,
 .header {
   overflow: hidden;

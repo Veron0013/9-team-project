@@ -37,8 +37,6 @@ const renderBookById = async (bookId) => {
 	}
 }
 
-
-
 const renderBooksByCat = async (bookCat) => {
 	try {
 		const vQuery = bookCat === "All categories" ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${bookCat}`;
