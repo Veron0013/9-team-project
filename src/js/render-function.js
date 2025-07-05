@@ -1,4 +1,5 @@
 //Функцію для створення, рендеру або видалення розмітки
+import refs from '/js/refs';
 
 export function clearElement(element) {
 	element.innerHTML = '';
@@ -51,7 +52,7 @@ export function markUpCategories(data) {
 		.join("");
 
 	return `<li class="b-categories-itm" data-category="all">
-						<p class="b-categories-itm-text">All categories</p>
+						<p class="b-categories-itm-text">${refs.ALL_CATEGORIES}</p>
 					</li> ${mkData}`;
 }
 export function markUpBooksById({ _id, list_name, author, book_image, description, price, title, }) {
@@ -79,3 +80,8 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 						<p class="modal-book-returns-text">You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.</p>
 						</div>`
 };
+
+//
+export function scrollToTop() {
+	window.scrollTo({ top: 0, behavior: "smooth" });
+}

@@ -6,6 +6,7 @@ export default {
 	END_CATEGORIE_ID: "/books/category?category=",
 	END_BOOK_ID: "/books/",
 	//storage
+	ALL_CATEGORIES: "All categories",
 	BOOK_LIST: "bookList",
 	BOOK_CARD_LIST: "bookCardList",
 	//elements
