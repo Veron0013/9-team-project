@@ -15,6 +15,7 @@ const counterText = document.querySelector(".b-categories-_text");
 
 
 const renderBookById = async (bookId) => {
+	return;
 	try {
 		const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}${bookId}`
 		const dataBook = await apiRest.getApiData(vQuery);
