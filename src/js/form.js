@@ -1,3 +1,6 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 const form = document.querySelector('.form');
 const inputs = form.querySelectorAll('.form-input, .form-user-comment');
 const closeBtn = document.querySelector('.modal-close-btn');
@@ -52,7 +55,25 @@ function handleSubmit(event) {
 
   if (isValid) {
     console.log('Форма валідна. Можна відправити.');
-    closeModal();
+
+    const formData = {
+      fullname: form.elements.fullname.value.trim(),
+      email: form.elements.email.value.trim(),
+      comment: form.elements.comment.value.trim(),
+    };
+
+    console.log('Дані для відправки:', formData);
+
+    setTimeout(() => {
+      iziToast.success({
+        title: 'Успішно!',
+        message: 'Форма відправлена.',
+        position: 'topRight',
+        class: 'custom-toast',
+      });
+      form.reset();
+      closeModal();
+    }, 500);
   }
 }
 

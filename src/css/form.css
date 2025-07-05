@@ -160,6 +160,18 @@
   display: none;
 }
 
+.custom-toast {
+  font-size: 20px;
+  padding: 20px 30px;
+}
+.custom-toast .iziToast-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+.custom-toast .iziToast-message {
+  font-size: 18px;
+}
+
 @media only screen and (min-width: 768px) {
   .modal-overlay {
     padding: 64px 32px;
