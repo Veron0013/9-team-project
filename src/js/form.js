@@ -5,19 +5,27 @@ const form = document.querySelector('.form');
 const inputs = form.querySelectorAll('.form-input, .form-user-comment');
 const closeBtn = document.querySelector('.modal-close-btn');
 const backdrop = document.querySelector('.modal-overlay');
-const registerButtons = document.querySelectorAll('.card-btn');
+const eventList = document.querySelector('.events-list');
 
-registerButtons.forEach(button => {
-  button.addEventListener('click', openModal);
+eventList.addEventListener('click', event => {
+  const btn = event.target.closest('.card-btn');
+  if (!btn) {
+    return;
+  }
+  const eventName = event.target.closest('.events-card-heading').textContent;
+  openModal(eventName);
 });
 
 form.addEventListener('submit', handleSubmit);
 backdrop.addEventListener('click', clickClose);
 closeBtn.addEventListener('click', handleClick);
 
-function openModal() {
+function openModal(eventName) {
   const modal = document.querySelector('.modal-overlay');
   modal.classList.add('is-open');
+
+  const titleTwo = modal.querySelector('.form-subtitle');
+  titleTwo.textContent = eventName;
   document.body.classList.add('locked');
 
   window.addEventListener('keydown', onEscKeyPress);
