@@ -32,10 +32,10 @@
             id="email"
             name="email"
             placeholder="hello@booksy.com"
-            pattern="([A-z0-9_.-]{1,})@([A-z0-9_.-]{1,})\.([A-z]{2,8})"
+            pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
             required
           />
-          <span hidden class="error-text">Enter a valid email</span>
+          <span class="error-text">Enter a valid email</span>
         </label>
 
         <label class="form-label" for="comment">
