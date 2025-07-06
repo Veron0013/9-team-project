@@ -185,7 +185,7 @@ books_more_btn.addEventListener("click", () => {
 
 	const totalBooks = storage.StorageService.count(refs.BOOK_LIST);
 	const viewed = refs.viewedBooks;
-	const nextView = refs.viewedBooks + refs.itemsPerView;
+	const nextView = refs.viewedBooks + refs.itemsToAdd;
 
 	const mkData = storage.StorageService.get(refs.BOOK_LIST);
 
