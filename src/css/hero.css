@@ -197,16 +197,19 @@
   .swiper-btn-prev:active {
     background-color: var(--color-bamboo-darker);
   }
+
   .hero-svg {
     fill: var(--color-white);
     align-items: center;
     width: 24px;
     height: 24px;
   }
+
   .hero-svg:hover,
   .hero-svg:focus {
     fill: var(--color-neutral-darkest);
   }
+
   .hero-svg:active {
     fill: var(--color-white);
   }

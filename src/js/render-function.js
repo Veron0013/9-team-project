@@ -20,6 +20,7 @@ export function createMarcup(element, data, callBack, clearElement = false) {
 	}
 	element.insertAdjacentHTML("beforeend", callBack(data));
 }
+
 export function markUpBooks(data) {
 	const mkData = data.map(({ _id, list_name, author, price, title, book_image, book_image_width, book_image_height }) => {
 		return `<li class="books-data-itm" data-id="${_id}">
