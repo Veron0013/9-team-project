@@ -105,6 +105,14 @@
 .b-categories-itm {
 	padding: 8px 12px;
 	cursor: pointer;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.is-active {
+		transform: translateY(-2px);
+		background-color: var(--color-input-bg);
+	}
 }
 
 .books-content {
