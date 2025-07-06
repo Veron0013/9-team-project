@@ -1,4 +1,5 @@
 import refs from '/js/refs';
+import { showLoader, hideLoader } from './loader';
 import * as render from '/js/render-function';
 import * as apiRest from '/js/products-api';
 
@@ -34,7 +35,8 @@ const renderBooksByCat = async (bookCat) => {
 	try {
 		const vQuery = bookCat === "All categories" ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${bookCat}`;
 		const dataBook = await apiRest.getApiData(vQuery);
-		console.log(dataBook);
+    console.log(dataBook);
+    hideLoader()
 		render.createMarcup(books_list, dataBook.data, render.markUpBooks, true);
 		render.toggleClassElement(category_list, "is-open");
 		render.toggleClassElement(category_button_dropdown, "is-open");
@@ -48,7 +50,8 @@ const renderTopBooks = async () => {
 	try {
 		const vQuery = `${refs.BASE_URL}${refs.END_TOP_BOOKS}`
 		const dataBook = await apiRest.getApiData(vQuery);
-		console.log(dataBook);
+    console.log(dataBook);
+    hideLoader();
 		render.createMarcup(books_list, dataBook.data[4].books, render.markUpBooks, true);
 	}
 	catch (e) {
@@ -57,6 +60,7 @@ const renderTopBooks = async () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  showLoader()
 	renderCategories();
 	renderTopBooks();
 });
@@ -91,7 +95,8 @@ category_list.addEventListener("click", (e) => {
 	const currentCat = e.target.closest("p");
 	if (!currentCat) {
 		return;
-	}
+  }
+  showLoader();
 	renderBooksByCat(currentCat.textContent);
 	console.log(e.target, e.target.closest("p").textContent);
 
