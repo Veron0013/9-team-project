@@ -69,15 +69,30 @@
 }
 
 .slide2 {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-1x.webp');
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url('/img/hero/baner-2-1x.webp');
 }
 
 .slide3 {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-1x.webp');
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url('/img/hero/baner-3-1x.webp');
 }
 
 .slide4 {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-1x.webp');
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url('/img/hero/baner-4-1x.webp');
 }
 
 @media (min-resolution: 2x) {
@@ -86,15 +101,30 @@
   }
 
   .slide2 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-2x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url('/img/hero/baner-2-2x.webp');
   }
 
   .slide3 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-2x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),
+      url('/img/hero/baner-3-2x.webp');
   }
 
   .slide4 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-2x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ),
+      url('/img/hero/baner-4-2x.webp');
   }
 }
 
@@ -156,28 +186,28 @@
     color: var(--color-neutral-darkest);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-.swiper-btn-prev:hover,
-.swiper-btn-prev:focus,
-.swiper-btn-next:hover,
-.swiper-btn-next:focus{
-background-color: var(--color-bamboo-lightest);
-}
+  .swiper-btn-prev:hover,
+  .swiper-btn-prev:focus,
+  .swiper-btn-next:hover,
+  .swiper-btn-next:focus {
+    background-color: var(--color-bamboo-lightest);
+  }
 
-.swiper-btn-next:active,
-.swiper-btn-prev:active{
-background-color: var(--color-bamboo-darker);
-}
+  .swiper-btn-next:active,
+  .swiper-btn-prev:active {
+    background-color: var(--color-bamboo-darker);
+  }
   .hero-svg {
     fill: var(--color-white);
     align-items: center;
     width: 24px;
     height: 24px;
   }
-.hero-svg:hover,
-.hero-svg:focus{
-fill:var(--color-neutral-darkest)
-}
-  .hero-svg:active{
+  .hero-svg:hover,
+  .hero-svg:focus {
+    fill: var(--color-neutral-darkest);
+  }
+  .hero-svg:active {
     fill: var(--color-white);
   }
 
@@ -192,15 +222,30 @@ fill:var(--color-neutral-darkest)
   }
 
   .slide2 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-tablet-1x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url('/img/hero/baner-2-tablet-1x.webp');
   }
 
   .slide3 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-tablet-1x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),
+      url('/img/hero/baner-3-tablet-1x.webp');
   }
 
   .slide4 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-tablet-1x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ),
+      url('/img/hero/baner-4-tablet-1x.webp');
   }
 
   @media (min-resolution: 2x) {
@@ -209,15 +254,30 @@ fill:var(--color-neutral-darkest)
     }
 
     .slide2 {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-tablet-2x.webp');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.4)
+        ),
+        url('/img/hero/baner-2-tablet-2x.webp');
     }
 
     .slide3 {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-tablet-2x.webp');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0.2)
+        ),
+        url('/img/hero/baner-3-tablet-2x.webp');
     }
 
     .slide4 {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-tablet-2x.webp');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.3)
+        ),
+        url('/img/hero/baner-4-tablet-2x.webp');
     }
   }
 }
@@ -261,15 +321,30 @@ fill:var(--color-neutral-darkest)
   }
 
   .slide2 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-desktop-1x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url('/img/hero/baner-2-desktop-1x.webp');
   }
 
   .slide3 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-desktop-1x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),
+      url('/img/hero/baner-3-desktop-1x.webp');
   }
 
   .slide4 {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-desktop-1x.webp');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+      ),
+      url('/img/hero/baner-4-desktop-1x.webp');
   }
 
   @media (min-resolution: 2x) {
@@ -278,15 +353,30 @@ fill:var(--color-neutral-darkest)
     }
 
     .slide2 {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-desktop-2x.webp');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.4),
+          rgba(0, 0, 0, 0.4)
+        ),
+        url('/img/hero/baner-2-desktop-2x.webp');
     }
 
     .slide3 {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-desktop-2x.webp');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0.2)
+        ),
+        url('/img/hero/baner-3-desktop-2x.webp');
     }
 
     .slide4 {
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-desktop-2x.webp');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.3)
+        ),
+        url('/img/hero/baner-4-desktop-2x.webp');
     }
   }
 }
