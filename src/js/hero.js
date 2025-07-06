@@ -2,30 +2,29 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import Swiper from 'swiper';
-import { Navigation} from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
-
-
-const swiper = new Swiper('.swiper', {
-    loop: false,
-    speed: 600,
-    grabCursor: true,
-    slidesPerView: 1,
-    modules: [Navigation],
-        navigation: {
-            nextEl: '.swiper-btn-next',
-            prevEl: '.swiper-btn-prev',
-        },
-    breakpoints: {
-      768: {
-        speed: 700,
-      },
-      1440: {
-        speed: 800,
-      },
+const swiper = new Swiper('.hero-swiper', {
+  loop: false,
+  speed: 600,
+  grabCursor: true,
+  slidesPerView: 1,
+  spaceBetween: 20,
+  modules: [Navigation],
+  navigation: {
+    nextEl: '.swiper-btn-next',
+    prevEl: '.swiper-btn-prev',
+  },
+  breakpoints: {
+    768: {
+      speed: 700,
     },
+    1440: {
+      speed: 800,
+    },
+  },
 
-    on: {
+  on: {
     init: function () {
       updateNavButtons(this);
     },
@@ -35,26 +34,23 @@ const swiper = new Swiper('.swiper', {
   },
 });
 
-
 // функція для вмикання/вимикання стрілок
-function updateNavButtons(swiperInstan) {
-  const prev = document.querySelector('.swiper-btn-prev');
-  const next = document.querySelector('.swiper-btn-next');
+function updateNavButtons(swiperIns) {
+  const prevBut = document.querySelector('.swiper-btn-prev');
+  const nextBut = document.querySelector('.swiper-btn-next');
 
-  if (swiperInstan.isBeginning) {
-    prev.classList.add('button-disabled');
+  if (swiperIns.isBeginning) {
+    prevBut.classList.add('button-dis');
   } else {
-    prev.classList.remove('button-disabled');
+    prevBut.classList.remove('button-dis');
   }
 
-  if (swiperInstan.isEnd) {
-    next.classList.add('button-disabled');
+  if (swiperIns.isEnd) {
+    nextBut.classList.add('button-dis');
   } else {
-    next.classList.remove('button-disabled');
+    nextBut.classList.remove('button-dis');
   }
 }
-
-
 
 const heroButtons = document.querySelectorAll('.hero-btn');
 
