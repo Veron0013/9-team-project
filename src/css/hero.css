@@ -64,15 +64,15 @@
 }
 
 .slide2 {
-  background-image: url('/img/hero/baner-2-1x.webp');
+  background-image:linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/img/hero/baner-2-1x.webp');
 }
 
 .slide3 {
-  background-image: url('/img/hero/baner-3-1x.webp');
+  background-image:linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-1x.webp');
 }
 
 .slide4 {
-  background-image: url('/img/hero/baner-4-1x.webp');
+  background-image:linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-1x.webp');
 }
 
 @media (min-resolution: 2x) {
@@ -81,15 +81,15 @@
   }
 
   .slide2 {
-    background-image: url('/img/hero/baner-2-2x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-2x.webp');
   }
 
   .slide3 {
-    background-image: url('/img/hero/baner-3-2x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-2x.webp');
   }
 
   .slide4 {
-    background-image: url('/img/hero/baner-4-2x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-2x.webp');
   }
 }
 
@@ -149,7 +149,7 @@
     height: 24px;
   }
 
-  .button-disabled {
+  .button-dis {
     opacity: 0.5;
     pointer-events: none;
     cursor: default;
@@ -160,15 +160,15 @@
   }
 
   .slide2 {
-    background-image: url('/img/hero/baner-2-tablet-1x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-tablet-1x.webp');
   }
 
   .slide3 {
-    background-image: url('/img/hero/baner-3-tablet-1x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-tablet-1x.webp');
   }
 
   .slide4 {
-    background-image: url('/img/hero/baner-4-tablet-1x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-tablet-1x.webp');
   }
 
   @media (min-resolution: 2x) {
@@ -177,15 +177,15 @@
     }
 
     .slide2 {
-      background-image: url('/img/hero/baner-2-tablet-2x.webp');
+      background-image:linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-tablet-2x.webp');
     }
 
     .slide3 {
-      background-image: url('/img/hero/baner-3-tablet-2x.webp');
+      background-image:linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-tablet-2x.webp');
     }
 
     .slide4 {
-      background-image: url('/img/hero/baner-4-tablet-2x.webp');
+      background-image:linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-tablet-2x.webp');
     }
   }
 }
@@ -226,15 +226,15 @@
   }
 
   .slide2 {
-    background-image: url('/img/hero/baner-2-desktop-1x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-desktop-1x.webp');
   }
 
   .slide3 {
-    background-image: url('/img/hero/baner-3-desktop-1x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-desktop-1x.webp');
   }
 
   .slide4 {
-    background-image: url('/img/hero/baner-4-desktop-1x.webp');
+    background-image:linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-desktop-1x.webp');
   }
 
   @media (min-resolution: 2x) {
@@ -243,15 +243,15 @@
     }
 
     .slide2 {
-      background-image: url('/img/hero/baner-2-desktop-2x.webp');
+      background-image:linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-desktop-2x.webp');
     }
 
     .slide3 {
-      background-image: url('/img/hero/baner-3-desktop-2x.webp');
+      background-image:linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-desktop-2x.webp');
     }
 
     .slide4 {
-      background-image: url('/img/hero/baner-4-desktop-2x.webp');
+      background-image:linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-desktop-2x.webp');
     }
   }
 }
