@@ -29,6 +29,7 @@
   background-color: var(--color-bamboo);
   margin-left: 16px;
   margin-bottom: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-btn:hover,
@@ -140,6 +141,7 @@
 
   .swiper-btn-prev,
   .swiper-btn-next {
+    border-radius: 4px;
     cursor: pointer;
     background-color: var(--color-bamboo);
     width: 48px;
@@ -152,6 +154,7 @@
     justify-content: center;
     position: static;
     color: var(--color-neutral-darkest);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 .swiper-btn-prev:hover,
 .swiper-btn-prev:focus,
@@ -165,12 +168,15 @@ background-color: var(--color-bamboo-lightest);
 background-color: var(--color-bamboo-darker);
 }
   .hero-svg {
-    fill: var(--color-neutral-darkest);
+    fill: var(--color-white);
     align-items: center;
     width: 24px;
     height: 24px;
   }
-
+.hero-svg:hover,
+.hero-svg:focus{
+fill:var(--color-neutral-darkest)
+}
   .hero-svg:active{
     fill: var(--color-white);
   }
