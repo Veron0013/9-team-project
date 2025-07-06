@@ -12,9 +12,9 @@
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/9-team-project/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/9-team-project/assets/vendor-00AYbfjz.js">
-    <link rel="stylesheet" crossorigin href="/9-team-project/assets/vendor-CgKu-GdK.css">
-    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-DyZI4B_L.css">
+    <link rel="modulepreload" crossorigin href="/9-team-project/assets/vendor-DgXuePoo.js">
+    <link rel="stylesheet" crossorigin href="/9-team-project/assets/vendor-BE7bUg82.css">
+    <link rel="stylesheet" crossorigin href="/9-team-project/assets/index-yiwoyKYM.css">
   </head>
   <body>
     <header class="header">
@@ -512,7 +512,7 @@
     </main>
 
     <div id="modal-backdrop" class="backdrop is-hidden">
-  <div class="modal">
+  <div class="modal" role="dialog" aria-modal="true">
     <button class="modal-close" aria-label="Close modal">
       <svg
         class="modal-close-icon"
@@ -531,9 +531,7 @@
     </button>
 
     <div class="modal-card">
-      <div class="modal-card__left">
-        <img id="book-image" alt="Обкладинка книги" class="modal-card__image" />
-      </div>
+      <img id="book-image" alt="Обкладинка книги" class="modal-card__image" />
       <div class="modal-card__right">
         <div class="modal-card__info">
           <h2 id="book-title" class="modal-card__title">Назва книги</h2>
@@ -542,20 +540,22 @@
         </div>
         <form id="book-form" class="modal-card__form">
           <div class="modal-card__quantity">
-            <button type="button" id="minus-btn">-</button>
-            <span id="quantity">1</span>
-            <button type="button" id="plus-btn">+</button>
+            <button id="decrease-quantity" type="button">-</button>
+            <input id="book-quantity" type="number" min="1" value="1" />
+            <button id="increase-quantity" type="button">+</button>
           </div>
-          <button
-            type="button"
-            id="add-to-cart"
-            class="modal-card__btn primary"
-          >
-            Add to Cart
-          </button>
-          <button type="submit" class="modal-card__btn secondary">
-            Buy Now
-          </button>
+          <div class="modal-card__buttons">
+            <button
+              type="button"
+              id="add-to-cart"
+              class="modal-card__btn primary"
+            >
+              Add to Cart
+            </button>
+            <button type="submit" class="modal-card__btn secondary">
+              Buy Now
+            </button>
+          </div>
         </form>
         <div class="accordion-container">
           <div class="ac">
