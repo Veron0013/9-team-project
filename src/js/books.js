@@ -150,13 +150,25 @@ category_button_dropdown.addEventListener("click", () => {
 
 //вибір категорії
 category_list.addEventListener("click", (e) => {
+
+	const items = category_list.querySelectorAll(".b-categories-itm");
+	items.forEach((item) => {
+		render.removeClassElement(item, "is-active");
+	});
+
 	const currentCat = e.target.closest("p");
 	if (!currentCat) {
 		return;
 	}
+
+	const activeLi = e.target.closest(".b-categories-itm");
+	if (activeLi) {
+		render.addClassElement(activeLi, "is-active");
+	}
+
 	render.addClassElement(notFoundEl, "hidden");
 	renderBooksByCat(currentCat.textContent);
-	console.log(e.target, e.target.closest("p").textContent);
+	//console.log(e.target, e.target.closest("p").textContent);
 
 });
 
