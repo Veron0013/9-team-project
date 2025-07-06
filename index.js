@@ -13,7 +13,7 @@ import{S as w,N as E,a as F,A as z,P as x,i as J}from"./assets/vendor-00AYbfjz.j
 						</div>
 						<h3 class="books-data-price">$${r}</h3>
 					</div>
-          <button class="books-data-button">Learn More</button>
+          <button class="secondary-button books-data-button">Learn More</button>
         </li>`).join("")}function H(t){const e=t.filter(o=>o.list_name.trim()!=="").map(({list_name:o})=>`<li class="b-categories-itm" data-category="${o}">
           	<p class="b-categories-itm-text">${o}</p>
         	</li>`).join("");return`<li class="b-categories-itm" data-category="all">
