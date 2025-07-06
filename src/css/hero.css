@@ -64,7 +64,8 @@
 }
 
 .slide2 {
-  background-image: url('/img/hero/baner-2-1x.webp');
+  background-image:
+   url('/img/hero/baner-2-1x.webp');
 }
 
 .slide3 {
@@ -77,11 +78,12 @@
 
 @media (min-resolution: 2x) {
   .slide1 {
-    background-image: url('/img/hero/baner-1-2x.webp');
+    background-image: 
+    url('/img/hero/baner-1-2x.webp');
   }
 
   .slide2 {
-    background-image: url('/img/hero/baner-2-2x.webp');
+    background-image:url('/img/hero/baner-2-2x.webp');
   }
 
   .slide3 {
@@ -177,7 +179,7 @@
     }
 
     .slide2 {
-      background-image: url('/img/hero/baner-2-tablet-2x.webp');
+      background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/img/hero/baner-2-tablet-2x.webp');
     }
 
     .slide3 {
@@ -226,7 +228,7 @@
   }
 
   .slide2 {
-    background-image: url('/img/hero/baner-2-desktop-1x.webp');
+    background-image:url('/img/hero/baner-2-desktop-1x.webp');
   }
 
   .slide3 {

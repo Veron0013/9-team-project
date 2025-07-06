@@ -37,20 +37,20 @@ const swiper = new Swiper('.swiper', {
 
 
 // функція для вмикання/вимикання стрілок
-function updateNavButtons(swiperInstance) {
-  const left = document.querySelector('.swiper-btn-prev');
-  const right = document.querySelector('.swiper-btn-next');
+function updateNavButtons(swiperInstan) {
+  const prev = document.querySelector('.swiper-btn-prev');
+  const next = document.querySelector('.swiper-btn-next');
 
-  if (swiperInstance.isBeginning) {
-    left.classList.add('button-disabled');
+  if (swiperInstan.isBeginning) {
+    prev.classList.add('button-disabled');
   } else {
-    left.classList.remove('button-disabled');
+    prev.classList.remove('button-disabled');
   }
 
-  if (swiperInstance.isEnd) {
-    right.classList.add('button-disabled');
+  if (swiperInstan.isEnd) {
+    next.classList.add('button-disabled');
   } else {
-    right.classList.remove('button-disabled');
+    next.classList.remove('button-disabled');
   }
 }
 
