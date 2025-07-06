@@ -1,10 +1,37 @@
-
-import Accordion from 'accordion-js';
-import 'accordion-js/dist/accordion.min.css';
-
 const modalBackdrop = document.querySelector('#modal-backdrop');
 const body = document.body;
 let accordionInstance = null;
+
+function setupQuantityControls(quantityInput, decreaseBtn, increaseBtn) {
+  if (decreaseBtn && increaseBtn && quantityInput) {
+    decreaseBtn.addEventListener('click', () => {
+      let value = parseInt(quantityInput.value, 10);
+      if (!isNaN(value) && value > 1) {
+        quantityInput.value = value - 1;
+      }
+    });
+
+    increaseBtn.addEventListener('click', () => {
+      let value = parseInt(quantityInput.value, 10);
+      const max = parseInt(quantityInput.dataset.max, 10);
+      if (!isNaN(value) && !isNaN(max) && value < max) {
+        quantityInput.value = value + 1;
+      }
+    });
+  }
+}
+
+function initModalListeners() {
+  modalBackdrop.addEventListener('click', e => {
+    if (e.target === modalBackdrop || e.target.closest('.modal-close')) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+}
 
 export async function openModal(bookId) {
   try {
@@ -15,15 +42,41 @@ export async function openModal(bookId) {
 
     const data = await response.json();
 
-    document.querySelector('#book-image').src = data.book_image;
-    document.querySelector('#book-title').textContent = data.title;
-    document.querySelector('#book-author').textContent = data.author;
-    document.querySelector('#book-price').textContent = `$${data.price}`;
-    document.querySelector('#book-details').textContent = data.description;
-    document.querySelector('#book-shipping').textContent =
-      'We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier service. Enjoy free standard shipping on orders over $50.';
-    document.querySelector('#book-returns').textContent =
-      'You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.';
+    const elements = {
+      bookImage: document.querySelector('#book-image'),
+      bookTitle: document.querySelector('#book-title'),
+      bookAuthor: document.querySelector('#book-author'),
+      bookPrice: document.querySelector('#book-price'),
+      quantityInput: document.querySelector('#book-quantity'),
+      bookDetails: document.querySelector('#book-details'),
+      bookShipping: document.querySelector('#book-shipping'),
+      bookReturns: document.querySelector('#book-returns'),
+    };
+
+    if (elements.bookImage) elements.bookImage.src = data.book_image;
+
+    const textContentMap = {
+      bookTitle: data.title,
+      bookAuthor: data.author,
+      bookPrice: `$${data.price}`,
+      bookDetails: data.description,
+      bookShipping:
+        'We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier service. Enjoy free standard shipping on orders over $50.',
+      bookReturns:
+        'You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.',
+    };
+
+    for (const [key, value] of Object.entries(textContentMap)) {
+      if (elements[key]) {
+        elements[key].textContent = value;
+      }
+    }
+
+    const maxAvailable = data.quantity || 100;
+    if (elements.quantityInput) {
+      elements.quantityInput.dataset.max = maxAvailable;
+      elements.quantityInput.value = 1;
+    }
 
     modalBackdrop.classList.remove('is-hidden');
     body.classList.add('locked');
@@ -33,38 +86,38 @@ export async function openModal(bookId) {
       accordionInstance.destroy();
     }
     if (container) {
-      accordionInstance = new Accordion(container, {
-        duration: 300,
-        showMultiple: false,
-        openOnInit: [],
-      });
-    }
+      const items = container.querySelectorAll('.ac');
+      items.forEach(item => {
+        const trigger = item.querySelector('.ac-trigger');
+        const panel = item.querySelector('.ac-panel');
 
-    const quantityInput = document.querySelector('#book-quantity');
-    if (quantityInput) {
-      quantityInput.value = 1;
+        trigger.addEventListener('click', () => {
+          const isOpen = item.classList.contains('is-active');
+
+          if (isOpen) {
+            panel.style.height = '0px';
+            item.classList.remove('is-active');
+          } else {
+            item.classList.add('is-active');
+            panel.style.height = panel.scrollHeight + 'px';
+          }
+        });
+
+        panel.style.height = '0px';
+      });
     }
   } catch (error) {
     console.error('Помилка при відкритті модального вікна:', error);
   }
 }
 
-// Закрытие модального окна
 function closeModal() {
   modalBackdrop.classList.add('is-hidden');
   body.classList.remove('modal-open');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  modalBackdrop.addEventListener('click', e => {
-    if (e.target === modalBackdrop || e.target.closest('.modal-close')) {
-      closeModal();
-    }
-  });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
+  initModalListeners();
 
   const form = document.querySelector('#book-form');
   if (form) {
@@ -81,4 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(`Кількість обраних книг: ${quantity}`);
     });
   }
+
+  const quantityInput = document.querySelector('#book-quantity');
+  const decreaseBtn = document.querySelector('#decrease-quantity');
+  const increaseBtn = document.querySelector('#increase-quantity');
+
+  setupQuantityControls(quantityInput, decreaseBtn, increaseBtn);
 });
