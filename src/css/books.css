@@ -57,7 +57,7 @@
 }
 
 .dropdown-arrow {
-	transition: transform 0.3s ease;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .categories-dropdown.is-open .dropdown-arrow {
@@ -67,7 +67,7 @@
 .b-categories-list {
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.3s ease;
+	transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	margin: 0;
 	padding: 0;
 	list-style: none;
