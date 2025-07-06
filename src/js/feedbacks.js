@@ -10,15 +10,15 @@ const swiper = new Swiper('.feedbacks-swiper', {
   loop: false,
   grabCursor: true,
   spaceBetween: 20,
-  slidesPerView: 1, // базовий варіант для мобільних
+  slidesPerView: 1,
 
   navigation: {
-    prevEl: '.swiper-button-left',
-    nextEl: '.swiper-button-right',
+    prevEl: '.feedbacks-swiper-button-left',
+    nextEl: '.feedbacks-swiper-button-right',
   },
 
   pagination: {
-    el: '.custom-swiper-pagination',
+    el: '.feedbacks-custom-swiper-pagination',
     clickable: true,
   },
 
@@ -32,7 +32,7 @@ const swiper = new Swiper('.feedbacks-swiper', {
       spaceBetween: 24,
     },
   },
-  // події для оновлення кнопок
+
   on: {
     init: function () {
       updateNavButtons(this);
@@ -43,20 +43,19 @@ const swiper = new Swiper('.feedbacks-swiper', {
   },
 });
 
-// функція для вмикання/вимикання стрілок
 function updateNavButtons(swiperInstance) {
-  const left = document.querySelector('.swiper-button-left');
-  const right = document.querySelector('.swiper-button-right');
+  const left = document.querySelector('.feedbacks-swiper-button-left');
+  const right = document.querySelector('.feedbacks-swiper-button-right');
 
   if (swiperInstance.isBeginning) {
-    left.classList.add('button-disabled');
+    left.classList.add('feedbacks-button-disabled');
   } else {
-    left.classList.remove('button-disabled');
+    left.classList.remove('feedbacks-button-disabled');
   }
 
   if (swiperInstance.isEnd) {
-    right.classList.add('button-disabled');
+    right.classList.add('feedbacks-button-disabled');
   } else {
-    right.classList.remove('button-disabled');
+    right.classList.remove('feedbacks-button-disabled');
   }
 }
