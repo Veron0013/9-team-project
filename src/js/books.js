@@ -6,55 +6,52 @@ import * as modal from '/js/modal';
 import * as storage from '/js/storage'
 
 const modal_book = document.querySelector(".backdrop");
+
 const modal_book_data = document.querySelector(".modal-card");
 const modal_book_close = document.querySelector(".modal-close");
+
 const books_list = document.querySelector(".books-data-list");
 const category_list = document.querySelector(".b-categories-list");
 const category_button_dropdown = document.querySelector(".categories-dropdown");
 const books_more_btn = document.querySelector(".books-show-more");
+
 const notFoundEl = document.querySelector(".not-found");
+const notFoundElDesc = document.querySelector(".not-found-description");
 const notFoundTitle = document.querySelector(".not-found-title");
+
 const counterText = document.querySelector(".b-categories-_text");
 
-
-const renderBookById = async (bookId) => {
-	return;
+async function renderCategories() {
 	try {
-		const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}${bookId}`
+		const vQuery = `${refs.BASE_URL}${refs.END_CATEGORIES}`
 		const dataBook = await apiRest.getApiData(vQuery);
-
-		modal_book_data.innerHTML = "";
-		render.createMarcup(modal_book_data, dataBook.data, render.markUpBooksById, true);
-		render.toggleClassElement(modal_book, "is-hidden");
-		render.toggleClassElement(refs.body, "locked");
-
-		const btnAddToCard = document.querySelector("#add-to-card");
-		console.log(btnAddToCard);
-
-		btnAddToCard.addEventListener("click", (e) => {
-			//helper.showMessage("Вітаю", "Вас розіграли");
-		});
+		console.log("cats", dataBook);
+		render.createMarcup(category_list, dataBook.data, render.markUpCategories, true);
+		return true;
 	}
 	catch (e) {
-		console.log(e.message);
+		handleError(e);
+		return false;
 	}
 }
 
 async function renderBooksByCat(bookCat, firstLoad = false) {
+	books_list.innerHTML = "";
+	showLoader();
 	//loader
 	refs.currentCat = bookCat;
 	try {
 		const vQuery = refs.currentCat === refs.ALL_CATEGORIES ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${refs.currentCat}`;
 		const dataBook = await apiRest.getApiData(vQuery);
 
-    hideLoader();
-
 		let mkData = [];
 
-		if (!dataBook.data.length) {
-			notFoundTitle.textContent = `No books found in "${refs.currentCat}"`;
-			render.removeClassElement(notFoundEl, "hidden");
-			render.addClassElement(books_more_btn, "hidden");
+		if (!dataBook?.data?.length) {
+			throw new apiRest.ErrorService({
+				message: `No books found in "${refs.currentCat}"`,
+				secondaryMessage: "We couldn't find any books in this category.<br />Please try a different one.",
+				name: refs.NO_BOOKS
+			});
 		}
 
 		if (refs.currentCat === refs.ALL_CATEGORIES) {
@@ -81,11 +78,59 @@ async function renderBooksByCat(bookCat, firstLoad = false) {
 			render.toggleClassElement(category_list, "is-open");
 			render.toggleClassElement(category_button_dropdown, "is-open");
 		}
+		hideLoader();
 		showHideShowMoreButton();
+	}
+	catch (e) {
+		//notFoundTitle.textContent = `No books found in "${refs.currentCat}"`;
+		//render.removeClassElement(notFoundEl, "hidden");
+		//render.addClassElement(books_more_btn, "display-none");
+		//hideLoader();
+		//console.log("error", e.message);
+		handleError(e);
+	}
+}
+
+const renderBookById = async (bookId) => {
+	return;
+	try {
+		const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}${bookId}`
+		const dataBook = await apiRest.getApiData(vQuery);
+
+		modal_book_data.innerHTML = "";
+		render.createMarcup(modal_book_data, dataBook.data, render.markUpBooksById, true);
+		render.toggleClassElement(modal_book, "is-hidden");
+		render.toggleClassElement(refs.body, "locked");
+
+		const btnAddToCard = document.querySelector("#add-to-card");
+		console.log(btnAddToCard);
+
+		btnAddToCard.addEventListener("click", (e) => {
+			//helper.showMessage("Вітаю", "Вас розіграли");
+		});
 	}
 	catch (e) {
 		console.log(e.message);
 	}
+}
+
+function handleError(error) {
+	console.log(error);
+
+	if (error instanceof apiRest.ErrorService) {
+		notFoundTitle.textContent = error.message;
+		notFoundElDesc.innerHTML = error.secondaryMessage;
+	} else {
+		notFoundTitle.textContent = "Unexpected error occurred.";
+	}
+	render.removeClassElement(category_list, "is-open");
+	render.removeClassElement(category_button_dropdown, "is-open");
+	render.removeClassElement(notFoundEl, "hidden");
+	render.addClassElement(books_more_btn, "display-none");
+
+	updateCounterText(0, 0);
+	hideLoader();
+	console.log("Error:", error.stack);
 }
 
 function showHideShowMoreButton() {
@@ -104,30 +149,21 @@ function dafaultPagination() {
 	}
 }
 
-async function renderCategories() {
-	try {
-		const vQuery = `${refs.BASE_URL}${refs.END_CATEGORIES}`
-		const dataBook = await apiRest.getApiData(vQuery);
-    console.log(dataBook);
-    hideLoader();
-		render.createMarcup(category_list, dataBook.data, render.markUpCategories, true);
-	}
-	catch (e) {
-		console.log(e.message);
-	}
-}
-
 function updateCounterText(viewed, total) {
 	counterText.textContent = `Showing ${viewed} of ${total}`;
 }
 
 //слухачі
 
-document.addEventListener("DOMContentLoaded", () => {
-  showLoader();
+document.addEventListener("DOMContentLoaded", async () => {
+	showLoader();
 	dafaultPagination();
-	renderCategories();
-	renderBooksByCat(refs.ALL_CATEGORIES, true);
+
+	const hasCategories = await renderCategories();
+
+	if (hasCategories) {
+		renderBooksByCat(refs.ALL_CATEGORIES, true);
+	}
 });
 
 window.addEventListener('resize', () => {
@@ -157,8 +193,10 @@ category_button_dropdown.addEventListener("click", () => {
 
 //вибір категорії
 category_list.addEventListener("click", (e) => {
+	render.addClassElement(books_more_btn, "display-none");
 
 	const items = category_list.querySelectorAll(".b-categories-itm");
+
 	items.forEach((item) => {
 		render.removeClassElement(item, "is-active");
 	});
@@ -166,8 +204,8 @@ category_list.addEventListener("click", (e) => {
 	const currentCat = e.target.closest("p");
 	if (!currentCat) {
 		return;
-  }
-  showLoader();
+	}
+
 	const activeLi = e.target.closest(".b-categories-itm");
 	if (activeLi) {
 		render.addClassElement(activeLi, "is-active");
@@ -186,7 +224,12 @@ modal_book_close.addEventListener("click", () => {
 });
 
 //більше!!! 
-books_more_btn.addEventListener("click", () => {
+books_more_btn.addEventListener("click", async () => {
+
+	showLoader();
+	render.addClassElement(books_more_btn, "display-none");
+	await new Promise(resolve => setTimeout(resolve, 400));
+	console.log("wait");
 
 	books_more_btn.disabled = true;
 
@@ -214,5 +257,6 @@ books_more_btn.addEventListener("click", () => {
 	render.createMarcup(books_list, renderData, render.markUpBooks, false);
 
 	showHideShowMoreButton();
+	hideLoader();
 	books_more_btn.disabled = false;
 });

@@ -228,6 +228,10 @@
 	background-color: var(--color-main-btn);
 }
 
+.not-found-description {
+	text-align: center;
+}
+
 @media (min-width: 768px) {
 
 	/*.books-categories-texts {
