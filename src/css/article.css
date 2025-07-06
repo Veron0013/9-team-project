@@ -68,7 +68,7 @@
   border-radius: 16px;
   object-fit: cover;
 }
-
+/* Tablet */
 @media (min-width: 768px) {
   .article-sect {
     padding: 64px 32px;
@@ -101,12 +101,11 @@
   .article-image-block {
     width: 100%;
   }
-
   .article-image {
     max-width: 100%;
   }
 }
-
+/* Desktop */
 @media (min-width: 1024px) {
   .article-sect {
     padding: 64px 0;
