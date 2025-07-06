@@ -123,8 +123,8 @@ function handleError(error) {
 	} else {
 		notFoundTitle.textContent = "Unexpected error occurred.";
 	}
-	render.toggleClassElement(category_list, "is-open");
-	render.toggleClassElement(category_button_dropdown, "is-open");
+	render.removeClassElement(category_list, "is-open");
+	render.removeClassElement(category_button_dropdown, "is-open");
 	render.removeClassElement(notFoundEl, "hidden");
 	render.addClassElement(books_more_btn, "display-none");
 
