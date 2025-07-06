@@ -1,4 +1,5 @@
 import refs from '/js/refs';
+import { showLoader, hideLoader } from './loader';
 import * as render from '/js/render-function';
 import * as apiRest from '/js/books-api';
 import * as modal from '/js/modal';
@@ -45,6 +46,8 @@ async function renderBooksByCat(bookCat, firstLoad = false) {
 	try {
 		const vQuery = refs.currentCat === refs.ALL_CATEGORIES ? `${refs.BASE_URL}${refs.END_TOP_BOOKS}` : `${refs.BASE_URL}${refs.END_CATEGORIE_ID}${refs.currentCat}`;
 		const dataBook = await apiRest.getApiData(vQuery);
+
+    hideLoader();
 
 		let mkData = [];
 
@@ -105,6 +108,8 @@ async function renderCategories() {
 	try {
 		const vQuery = `${refs.BASE_URL}${refs.END_CATEGORIES}`
 		const dataBook = await apiRest.getApiData(vQuery);
+    console.log(dataBook);
+    hideLoader();
 		render.createMarcup(category_list, dataBook.data, render.markUpCategories, true);
 	}
 	catch (e) {
@@ -119,6 +124,7 @@ function updateCounterText(viewed, total) {
 //слухачі
 
 document.addEventListener("DOMContentLoaded", () => {
+  showLoader();
 	dafaultPagination();
 	renderCategories();
 	renderBooksByCat(refs.ALL_CATEGORIES, true);
@@ -160,8 +166,8 @@ category_list.addEventListener("click", (e) => {
 	const currentCat = e.target.closest("p");
 	if (!currentCat) {
 		return;
-	}
-
+  }
+  showLoader();
 	const activeLi = e.target.closest(".b-categories-itm");
 	if (activeLi) {
 		render.addClassElement(activeLi, "is-active");
