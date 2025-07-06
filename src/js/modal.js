@@ -116,8 +116,8 @@ export async function openModal(bookId) {
 }
 
 function closeModal() {
-  const modal = document.querySelector('.modal-overlay');
-  modal.classList.remove('is-open');
+  const modal = document.querySelector('#modal-backdrop');
+  modal.classList.add('is-hidden');
   document.body.classList.remove('locked');
   window.removeEventListener('keydown', onEscKeyPress);
 }

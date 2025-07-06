@@ -13,6 +13,7 @@ export default {
 	currentCategory: "",
 	itemsPerView: 24,
 	viewedBooks: 0,
+	itemsToAdd: 4,
 	body: document.body,
 	scr_btn_burger_close: "ico-sprite.svg#icon-x",
 	scr_btn_burger_normal: "ico-sprite.svg#icon-menu-alt-right"
