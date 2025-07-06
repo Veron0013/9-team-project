@@ -30,7 +30,9 @@
   max-height: 100vh;
   overflow-y: auto;
   position: relative;
-  z-index: 10000;
+  z-index: 1000;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .modal-close {
