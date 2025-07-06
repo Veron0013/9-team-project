@@ -16,7 +16,9 @@ eventList.addEventListener('click', event => {
   if (!btn) {
     return;
   }
-  const eventName = curLi.querySelector('.events-card-heading').textContent.trim();
+  const eventName = curLi
+    .querySelector('.events-card-heading')
+    .textContent.trim();
 
   openModal(eventName);
 });
@@ -51,8 +53,10 @@ function handleSubmit(event) {
 
   inputs.forEach(input => {
     const errorSpan = input.nextElementSibling;
+    const trimmedValue = input.value.trim();
+    const isEmptyOrInvalid = !input.checkValidity() || trimmedValue === '';
 
-    if (!input.checkValidity()) {
+    if (isEmptyOrInvalid) {
       input.classList.add('error');
       if (errorSpan && errorSpan.classList.contains('error-text')) {
         errorSpan.style.display = 'block';
