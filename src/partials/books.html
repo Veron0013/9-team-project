@@ -1,8 +1,9 @@
-<section class="books">
+<section class="section books" id="books">
   <div class="container books-container">
+    <h2 class="visually-hidden">Trending books</h2>
     <div class="books-categories">
       <div class="books-categories-texts">
-        <h2 class="b-categories-title">Books</h2>
+        <h3 class="b-categories-title">Books</h3>
         <p class="b-categories-_text">Showing 24 of 100</p>
       </div>
       <nav class="categories-nav">
@@ -17,12 +18,38 @@
         <ul class="b-categories-list"></ul>
       </nav>
     </div>
+
     <div class="books-content">
       <div class="loader hidden"></div>
       <div class="books-data">
         <ul class="books-data-list"></ul>
       </div>
-      <button class="books-show-more">Show More</button>
+      <div class="not-found hidden">
+        <div class="not-found-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="64"
+            height="64"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#FF6B0A"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+          </svg>
+        </div>
+        <h2 class="not-found-title"></h2>
+        <p class="not-found-description">
+          We couldn't find any books in this category.<br />Please try different
+          one.
+        </p>
+      </div>
+      <button class="main-button books-show-more display-none">
+        Show More
+      </button>
     </div>
   </div>
 </section>

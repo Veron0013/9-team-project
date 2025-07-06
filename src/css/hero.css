@@ -9,12 +9,13 @@
   margin-bottom: 16px;
   width: 172px;
 }
+
 .hero-text3 span {
   display: block;
   width: 250px;
 }
 
-.hero-text4{
+.hero-text4 {
   width: 240px;
 }
 
@@ -28,6 +29,7 @@
   background-color: var(--color-bamboo);
   margin-left: 16px;
   margin-bottom: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-btn:hover,
@@ -36,10 +38,12 @@
   color: var(--color-neutral-darkest);
   border: 1px solid var(--color-neutral-darkest);
 }
+
 .swiper-btn-prev,
 .swiper-btn-next {
   display: none;
 }
+
 .hero-title {
   font-weight: 600;
   font-size: 40px;
@@ -59,20 +63,21 @@
   border-radius: 8px;
   margin-bottom: 24px;
 }
+
 .slide1 {
   background-image: url('/img/hero/baner-1-1x.webp');
 }
 
 .slide2 {
-  background-image: url('/img/hero/baner-2-1x.webp');
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-1x.webp');
 }
 
 .slide3 {
-  background-image: url('/img/hero/baner-3-1x.webp');
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-1x.webp');
 }
 
 .slide4 {
-  background-image: url('/img/hero/baner-4-1x.webp');
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-1x.webp');
 }
 
 @media (min-resolution: 2x) {
@@ -81,15 +86,15 @@
   }
 
   .slide2 {
-    background-image: url('/img/hero/baner-2-2x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-2x.webp');
   }
 
   .slide3 {
-    background-image: url('/img/hero/baner-3-2x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-2x.webp');
   }
 
   .slide4 {
-    background-image: url('/img/hero/baner-4-2x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-2x.webp');
   }
 }
 
@@ -101,12 +106,15 @@
     padding-left: 40px;
     width: 290px;
   }
+
   .hero-text3 span {
     width: 350px;
   }
-    .hero-text4 {
-      width: 390px;
-    }
+
+  .hero-text4 {
+    width: 390px;
+  }
+
   .hero-btn {
     font-size: 16px;
     border: 1px solid var(--color-bamboo);
@@ -116,19 +124,25 @@
     margin-left: 40px;
     margin-bottom: 32px;
   }
+
   .hero-title {
     width: 560px;
   }
+
   .swiper-slide {
     border-radius: 0%;
   }
+
   .swiper-btn-container {
     display: flex;
     flex-direction: row;
     gap: 24px;
   }
+
   .swiper-btn-prev,
   .swiper-btn-next {
+    border-radius: 4px;
+    cursor: pointer;
     background-color: var(--color-bamboo);
     width: 48px;
     height: 48px;
@@ -140,16 +154,34 @@
     justify-content: center;
     position: static;
     color: var(--color-neutral-darkest);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+.swiper-btn-prev:hover,
+.swiper-btn-prev:focus,
+.swiper-btn-next:hover,
+.swiper-btn-next:focus{
+background-color: var(--color-bamboo-lightest);
+}
 
+.swiper-btn-next:active,
+.swiper-btn-prev:active{
+background-color: var(--color-bamboo-darker);
+}
   .hero-svg {
-    fill: var(--color-neutral-darkest);
+    fill: var(--color-white);
     align-items: center;
     width: 24px;
     height: 24px;
   }
+.hero-svg:hover,
+.hero-svg:focus{
+fill:var(--color-neutral-darkest)
+}
+  .hero-svg:active{
+    fill: var(--color-white);
+  }
 
-  .button-disabled {
+  .button-dis {
     opacity: 0.5;
     pointer-events: none;
     cursor: default;
@@ -160,15 +192,15 @@
   }
 
   .slide2 {
-    background-image: url('/img/hero/baner-2-tablet-1x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-tablet-1x.webp');
   }
 
   .slide3 {
-    background-image: url('/img/hero/baner-3-tablet-1x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-tablet-1x.webp');
   }
 
   .slide4 {
-    background-image: url('/img/hero/baner-4-tablet-1x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-tablet-1x.webp');
   }
 
   @media (min-resolution: 2x) {
@@ -177,15 +209,15 @@
     }
 
     .slide2 {
-      background-image: url('/img/hero/baner-2-tablet-2x.webp');
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-tablet-2x.webp');
     }
 
     .slide3 {
-      background-image: url('/img/hero/baner-3-tablet-2x.webp');
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-tablet-2x.webp');
     }
 
     .slide4 {
-      background-image: url('/img/hero/baner-4-tablet-2x.webp');
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-tablet-2x.webp');
     }
   }
 }
@@ -198,12 +230,15 @@
     margin-bottom: 20px;
     width: 450px;
   }
+
   .hero-text3 span {
     width: 550px;
   }
-    .hero-text4 {
-      width: 650px;
-    }
+
+  .hero-text4 {
+    width: 650px;
+  }
+
   .hero-btn {
     border: 1px solid var(--color-bamboo);
     width: 227px;
@@ -226,15 +261,15 @@
   }
 
   .slide2 {
-    background-image: url('/img/hero/baner-2-desktop-1x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-desktop-1x.webp');
   }
 
   .slide3 {
-    background-image: url('/img/hero/baner-3-desktop-1x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-desktop-1x.webp');
   }
 
   .slide4 {
-    background-image: url('/img/hero/baner-4-desktop-1x.webp');
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-desktop-1x.webp');
   }
 
   @media (min-resolution: 2x) {
@@ -243,15 +278,15 @@
     }
 
     .slide2 {
-      background-image: url('/img/hero/baner-2-desktop-2x.webp');
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/img/hero/baner-2-desktop-2x.webp');
     }
 
     .slide3 {
-      background-image: url('/img/hero/baner-3-desktop-2x.webp');
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/img/hero/baner-3-desktop-2x.webp');
     }
 
     .slide4 {
-      background-image: url('/img/hero/baner-4-desktop-2x.webp');
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/img/hero/baner-4-desktop-2x.webp');
     }
   }
 }

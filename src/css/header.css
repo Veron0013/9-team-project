@@ -12,7 +12,7 @@
 }
 
 .burger-btn {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .burger-btn.fade {
@@ -59,38 +59,27 @@
   align-items: center;
   gap: 5px;
 
+  padding: 8px 0 8px 0;
+
   font-weight: 500;
   font-size: 20px;
   line-height: 150%;
 
-  transition: 200ms ease-in;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover,
   &:focus {
-    color: var(--color-bamboo);
+    transform: scale(1.2);
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 50%;
-    width: 110%;
-    height: 4px;
-
-    border-radius: 4px;
-    transform: translateX(-50%) translateY(100%);
-    transform-origin: center;
-    animation: stretch 400ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 200ms both;
+  &:active {
+    opacity: 0.8;
   }
 
-  &.nav-link--active {
-    color: var(--color-bamboo);
+  &:disabled {
+    opacity: 0.2;
   }
 
-  &.nav-link--active::after {
-    background: var(--color-bamboo);
-  }
 }
 
 @media only screen and (min-width: 768px) {

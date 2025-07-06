@@ -57,10 +57,12 @@ function checkScreenSize() {
   const pagination = document.querySelector('.swiper-pagination');
 
   if (screenWidth >= 1440) {
-    console.log("event");
+    //console.log("event");
     destroySwiper();
     controls?.classList.add('hidden');
     pagination?.classList.add('hidden');
+    //console.log(swiperInstance);
+
   } else {
     if (!swiperInstance) {
       initSwiper();

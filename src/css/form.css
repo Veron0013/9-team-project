@@ -38,6 +38,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   margin: auto;
 }
+
 .modal-close-btn {
   position: absolute;
   top: 16px;
@@ -51,6 +52,7 @@
 .modal-close-icon {
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .modal-close-icon:hover,
 .modal-close-icon:focus {
   fill: #e15d05;
@@ -160,10 +162,25 @@
   display: none;
 }
 
+.custom-toast {
+  font-size: 20px;
+  padding: 20px 30px;
+}
+
+.custom-toast .iziToast-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.custom-toast .iziToast-message {
+  font-size: 18px;
+}
+
 @media only screen and (min-width: 768px) {
   .modal-overlay {
     padding: 64px 32px;
   }
+
   .register-form-modal {
     max-width: 704px;
     padding: 64px 32px;
@@ -175,6 +192,7 @@
     max-width: 866px;
     padding: 64px 64px;
   }
+
   .modal-overlay {
     padding: 64px 287px;
   }

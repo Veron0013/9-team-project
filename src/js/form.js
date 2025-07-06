@@ -1,20 +1,38 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 const form = document.querySelector('.form');
 const inputs = form.querySelectorAll('.form-input, .form-user-comment');
 const closeBtn = document.querySelector('.modal-close-btn');
 const backdrop = document.querySelector('.modal-overlay');
-const registerButtons = document.querySelectorAll('.card-btn');
+const eventList = document.querySelector('.events-list');
 
-registerButtons.forEach(button => {
-  button.addEventListener('click', openModal);
+eventList.addEventListener('click', event => {
+  const curLi = event.target.closest('.events-item');
+  if (!curLi) {
+    return;
+  }
+  const btn = event.target.closest('.card-btn');
+  if (!btn) {
+    return;
+  }
+  const eventName = curLi
+    .querySelector('.events-card-heading')
+    .textContent.trim();
+
+  openModal(eventName);
 });
 
 form.addEventListener('submit', handleSubmit);
 backdrop.addEventListener('click', clickClose);
 closeBtn.addEventListener('click', handleClick);
 
-function openModal() {
+function openModal(eventName) {
   const modal = document.querySelector('.modal-overlay');
   modal.classList.add('is-open');
+
+  const titleTwo = modal.querySelector('.form-subtitle');
+  titleTwo.textContent = eventName;
   document.body.classList.add('locked');
 
   window.addEventListener('keydown', onEscKeyPress);
@@ -35,8 +53,10 @@ function handleSubmit(event) {
 
   inputs.forEach(input => {
     const errorSpan = input.nextElementSibling;
+    const trimmedValue = input.value.trim();
+    const isEmptyOrInvalid = !input.checkValidity() || trimmedValue === '';
 
-    if (!input.checkValidity()) {
+    if (isEmptyOrInvalid) {
       input.classList.add('error');
       if (errorSpan && errorSpan.classList.contains('error-text')) {
         errorSpan.style.display = 'block';
@@ -52,7 +72,25 @@ function handleSubmit(event) {
 
   if (isValid) {
     console.log('Форма валідна. Можна відправити.');
-    closeModal();
+
+    const formData = {
+      fullname: form.elements.fullname.value.trim(),
+      email: form.elements.email.value.trim(),
+      comment: form.elements.comment.value.trim(),
+    };
+
+    console.log('Дані для відправки:', formData);
+
+    setTimeout(() => {
+      iziToast.success({
+        title: 'Успішно!',
+        message: 'Форма відправлена.',
+        position: 'topRight',
+        class: 'custom-toast',
+      });
+      form.reset();
+      closeModal();
+    }, 500);
   }
 }
 
