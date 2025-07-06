@@ -140,6 +140,7 @@
 
   .swiper-btn-prev,
   .swiper-btn-next {
+    cursor: pointer;
     background-color: var(--color-bamboo);
     width: 48px;
     height: 48px;
@@ -152,12 +153,26 @@
     position: static;
     color: var(--color-neutral-darkest);
   }
+.swiper-btn-prev:hover,
+.swiper-btn-prev:focus,
+.swiper-btn-next:hover,
+.swiper-btn-next:focus{
+background-color: var(--color-bamboo-lightest);
+}
 
+.swiper-btn-next:active,
+.swiper-btn-prev:active{
+background-color: var(--color-bamboo-darker);
+}
   .hero-svg {
     fill: var(--color-neutral-darkest);
     align-items: center;
     width: 24px;
     height: 24px;
+  }
+
+  .hero-svg:active{
+    fill: var(--color-white);
   }
 
   .button-dis {
