@@ -52,13 +52,13 @@
   color: var(--color-main-black);
   text-decoration: none;
   font-weight: 400;
-  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer-nav-link:hover,
+/*.footer-nav-link:hover,
 .footer-nav-link:focus {
   color: var(--color-main-btn);
-}
+}*/
 
 .footer-form {
   width: 100%;

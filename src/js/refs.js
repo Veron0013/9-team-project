@@ -5,6 +5,9 @@ export default {
 	END_TOP_BOOKS: "/books/top-books",
 	END_CATEGORIE_ID: "/books/category?category=",
 	END_BOOK_ID: "/books/",
+	//error types
+	API_ERROR: "ApiError",
+	NO_BOOKS: "NoBooks",
 	//storage
 	ALL_CATEGORIES: "All categories",
 	BOOK_LIST: "bookList",

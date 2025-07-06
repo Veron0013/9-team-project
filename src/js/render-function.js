@@ -15,6 +15,7 @@ export function toggleClassElement(element, className) {
 }
 
 export function createMarcup(element, data, callBack, clearElement = false) {
+
 	if (clearElement) {
 		element.innerHTML = "";
 	}
@@ -45,6 +46,7 @@ export function markUpBooks(data) {
 	return mkData;
 }
 export function markUpCategories(data) {
+
 	const mkData = data.filter((itm) => itm.list_name.trim() !== "")
 		.map(({ list_name }) => {
 			return `<li class="b-categories-itm" data-category="${list_name}">
