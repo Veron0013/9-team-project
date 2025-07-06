@@ -39,7 +39,7 @@ const renderBookById = async (bookId) => {
 	}
 }
 
-async function renderBooksByCat(bookCat) {
+async function renderBooksByCat(bookCat, firstLoad = false) {
 	//loader
 	refs.currentCat = bookCat;
 	try {
@@ -74,9 +74,10 @@ async function renderBooksByCat(bookCat) {
 
 		render.createMarcup(books_list, renderData, render.markUpBooks, true);
 
-		render.toggleClassElement(category_list, "is-open");
-		render.toggleClassElement(category_button_dropdown, "is-open");
-
+		if (!firstLoad) {
+			render.toggleClassElement(category_list, "is-open");
+			render.toggleClassElement(category_button_dropdown, "is-open");
+		}
 		showHideShowMoreButton();
 	}
 	catch (e) {
@@ -120,7 +121,7 @@ function updateCounterText(viewed, total) {
 document.addEventListener("DOMContentLoaded", () => {
 	dafaultPagination();
 	renderCategories();
-	renderBooksByCat(refs.ALL_CATEGORIES);
+	renderBooksByCat(refs.ALL_CATEGORIES, true);
 });
 
 window.addEventListener('resize', () => {
@@ -174,8 +175,8 @@ category_list.addEventListener("click", (e) => {
 
 //x на модалки книжки
 modal_book_close.addEventListener("click", () => {
-	render.toggleClassElement(modal_book, "is-hidden");
-	render.toggleClassElement(refs.body, "locked");
+	render.addClassElement(modal_book, "is-hidden");
+	render.removeClassElement(refs.body, "locked");
 });
 
 //більше!!! 
