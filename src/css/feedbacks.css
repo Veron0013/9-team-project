@@ -107,7 +107,7 @@ ol {
   background-color: var(--color-scheme-2-text);
   opacity: 0.3;
   border-radius: 50%;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .custom-swiper-pagination .swiper-pagination-bullet-active {
