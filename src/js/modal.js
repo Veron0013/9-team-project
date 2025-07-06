@@ -2,6 +2,12 @@ const modalBackdrop = document.querySelector('#modal-backdrop');
 const body = document.body;
 let accordionInstance = null;
 
+function onEscKeyPress(e) {
+  if (e.key === 'Escape') {
+    closeModal();
+  }
+}
+
 function setupQuantityControls(quantityInput, decreaseBtn, increaseBtn) {
   if (decreaseBtn && increaseBtn && quantityInput) {
     decreaseBtn.addEventListener('click', () => {
@@ -28,9 +34,7 @@ function initModalListeners() {
     }
   });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
+  window.addEventListener('keydown', onEscKeyPress);
 }
 
 export async function openModal(bookId) {
@@ -79,7 +83,7 @@ export async function openModal(bookId) {
     }
 
     modalBackdrop.classList.remove('is-hidden');
-    body.classList.add('locked');
+    document.body.classList.add('locked');
 
     const container = document.querySelector('.accordion-container');
     if (accordionInstance) {
@@ -112,8 +116,10 @@ export async function openModal(bookId) {
 }
 
 function closeModal() {
-  modalBackdrop.classList.add('is-hidden');
-  body.classList.remove('modal-open');
+  const modal = document.querySelector('.modal-overlay');
+  modal.classList.remove('is-open');
+  document.body.classList.remove('locked');
+  window.removeEventListener('keydown', onEscKeyPress);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
