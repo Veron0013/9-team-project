@@ -319,3 +319,24 @@
     align-self: center;
   }
 }
+
+@media (max-width: 320px) {
+  .footer-form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-input {
+    width: 100%;
+  }
+
+  .footer-btn {
+    width: 100%;
+  }
+
+  .footer-form-label,
+  .footer-form-note {
+    align-self: center;
+    text-align: center;
+  }
+}
