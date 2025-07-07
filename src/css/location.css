@@ -54,14 +54,14 @@
   letter-spacing: -0.01em;
 }
 
-.contacts-list-wrapper {
-  text-decoration: underline;
-}
-
 .location-map-wrapper {
   margin-top: 32px;
   width: 100%;
   overflow: hidden;
+}
+
+.contacts-list > .contacts-item:not(:last-child) .contacts-list-wrapper {
+  text-decoration: underline;
 }
 
 .location-map {
@@ -108,8 +108,8 @@
     text-align: start;
   }
 
-  .contacts-item:hover,
-  .contacts-item:focus {
+  .contacts-list-wrapper:hover,
+  .contacts-list-wrapper:focus {
     color: var(--color-footer-bg);
   }
 
