@@ -69,9 +69,25 @@
   min-width: 95px;
   gap: 8px;
   padding-top: 8px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.02) translateX(6px);
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+
+  &:disabled {
+    opacity: 0.2;
+  }
+
 }
 
 .card-btn {
+  position: relative;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -79,12 +95,14 @@
   border: none;
   background-color: transparent;
   padding: 0;
+
 }
 
 .card-svg {
   width: 24px;
   height: 24px;
   display: block;
+
 }
 
 /* Перемикачі */
