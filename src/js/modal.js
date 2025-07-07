@@ -1,4 +1,5 @@
 import refs from '/js/refs';
+import { showLoader, hideLoader } from './loader';
 import * as render from '/js/render-function';
 import * as apiRest from '/js/books-api';
 import * as storage from '/js/storage'
@@ -10,6 +11,7 @@ const body = document.body;
 let accordionInstance = null;
 
 function setupQuantityControls(quantityInput, decreaseBtn, increaseBtn) {
+
   if (decreaseBtn && increaseBtn && quantityInput) {
     decreaseBtn.addEventListener('click', () => {
       let value = parseInt(quantityInput.value, 10);
@@ -42,14 +44,20 @@ function initModalListeners() {
 
 export async function openModal(bookId) {
   try {
+    // Очистка і рендер контенту
+    modalContainer.innerHTML = "";
     render.toggleClassElement(modalBackdrop, "is-hidden");
     render.toggleClassElement(refs.body, "locked");
 
+    showLoader(refs.btn_loader);
+
+    //типу завантажується
     const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}${bookId}`;
     const dataBook = await apiRest.getApiData(vQuery);
 
-    // Очистка і рендер контенту
-    modalContainer.innerHTML = "";
+    await new Promise(resolve => setTimeout(resolve, 400));
+    hideLoader(refs.btn_loader);
+
     await render.createMarcup(modalContainer, dataBook.data, render.markUpBooksById, true);
 
     //67 +/-
@@ -73,6 +81,7 @@ export async function openModal(bookId) {
     if (submitBuyNow) {
       submitBuyNow.addEventListener("submit", (e) => {
         e.preventDefault();
+        e.currentTarget.blur();
         render.showMessage("Гарний вибір", "Дякуємо за покупку!");
         closeModal();
       });
@@ -81,6 +90,7 @@ export async function openModal(bookId) {
     const addToCard = modalContent.querySelector("#add-to-cart");
     if (addToCard) {
       addToCard.addEventListener("click", (e) => {
+        e.currentTarget.blur();
         handleAddToCard(quantityInput.value, dataBook.data);
       });
     }
@@ -114,6 +124,7 @@ export async function openModal(bookId) {
       });
     }
   } catch (error) {
+    hideLoader(refs.btn_loader);
     modalContainer.innerHTML = "";
     modalContainer.innerHTML = `Sorry!!! Book unavailable!! <br/> ID = ${bookId} <br/>${error.message}`;
     render.addClassElement(modalContent, "modal-error");

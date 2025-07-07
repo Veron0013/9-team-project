@@ -1,6 +1,7 @@
-.loader {
+.loader,
+.btn-loader {
   width: 50px;
-  margin: 30px 150px;
+  margin: 30px auto;
   aspect-ratio: 1;
   border-radius: 50%;
   background:
@@ -10,7 +11,8 @@
   animation: l13 1s infinite linear;
 }
 
-.loader.hidden {
+.loader.hidden,
+.btn-loader.hidden {
   display: none;
   opacity: 0;
   visibility: hidden;
@@ -24,13 +26,17 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .loader {
+
+  .loader,
+  .btn-loader {
     margin: 50px auto;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .loader {
+
+  .loader,
+  .btn-loader {
     margin: 50px auto;
   }
 }

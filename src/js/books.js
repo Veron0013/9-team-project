@@ -25,7 +25,7 @@ async function renderCategories() {
 	try {
 		const vQuery = `${refs.BASE_URL}${refs.END_CATEGORIES}`
 		const dataBook = await apiRest.getApiData(vQuery);
-		console.log("cats", dataBook);
+		//console.log("cats", dataBook);
 		render.createMarcup(category_list, dataBook.data, render.markUpCategories, true);
 		return true;
 	}
@@ -37,7 +37,7 @@ async function renderCategories() {
 
 async function renderBooksByCat(bookCat, firstLoad = false) {
 	books_list.innerHTML = "";
-	showLoader();
+	showLoader(refs.main_loader);
 	//loader
 	refs.currentCat = bookCat;
 	try {
@@ -78,7 +78,7 @@ async function renderBooksByCat(bookCat, firstLoad = false) {
 			render.toggleClassElement(category_list, "is-open");
 			render.toggleClassElement(category_button_dropdown, "is-open");
 		}
-		hideLoader();
+		hideLoader(refs.main_loader);
 		showHideShowMoreButton();
 	}
 	catch (e) {
@@ -89,25 +89,6 @@ async function renderBooksByCat(bookCat, firstLoad = false) {
 		//console.log("error", e.message);
 		handleError(e);
 	}
-}
-
-function handleError(error) {
-	console.log(error);
-
-	if (error instanceof apiRest.ErrorService) {
-		notFoundTitle.textContent = error.message;
-		notFoundElDesc.innerHTML = error.secondaryMessage;
-	} else {
-		notFoundTitle.textContent = "Unexpected error occurred.";
-	}
-	render.removeClassElement(category_list, "is-open");
-	render.removeClassElement(category_button_dropdown, "is-open");
-	render.removeClassElement(notFoundEl, "hidden");
-	render.addClassElement(books_more_btn, "display-none");
-
-	updateCounterText(0, 0);
-	hideLoader();
-	console.log("Error:", error.stack);
 }
 
 function showHideShowMoreButton() {
@@ -130,10 +111,29 @@ function updateCounterText(viewed, total) {
 	counterText.textContent = `Showing ${viewed} of ${total}`;
 }
 
+function handleError(error) {
+	console.log(error);
+
+	if (error instanceof apiRest.ErrorService) {
+		notFoundTitle.textContent = error.message;
+		notFoundElDesc.innerHTML = error.secondaryMessage;
+	} else {
+		notFoundTitle.textContent = "Unexpected error occurred.";
+	}
+	render.removeClassElement(category_list, "is-open");
+	render.removeClassElement(category_button_dropdown, "is-open");
+	render.removeClassElement(notFoundEl, "hidden");
+	render.addClassElement(books_more_btn, "display-none");
+
+	updateCounterText(0, 0);
+	hideLoader(refs.main_loader);
+	console.log("Error:", error.stack);
+}
+
 //слухачі
 
 document.addEventListener("DOMContentLoaded", async () => {
-	showLoader();
+	showLoader(refs.main_loader);
 	dafaultPagination();
 
 	const hasCategories = await renderCategories();
@@ -195,18 +195,19 @@ category_list.addEventListener("click", (e) => {
 });
 
 //x на модалки книжки
-modal_book_close.addEventListener("click", () => {
-	render.addClassElement(modal_book, "is-hidden");
-	render.removeClassElement(refs.body, "locked");
-});
+//modal_book_close.addEventListener("click", () => {
+//	render.addClassElement(modal_book, "is-hidden");
+//	render.removeClassElement(refs.body, "locked");
+//});
 
 //більше!!! 
 books_more_btn.addEventListener("click", async () => {
 
-	showLoader();
+	showLoader(refs.main_loader);
 	render.addClassElement(books_more_btn, "display-none");
+	//типу завантажується
 	await new Promise(resolve => setTimeout(resolve, 400));
-	console.log("wait");
+	//console.log("wait");
 
 	books_more_btn.disabled = true;
 
@@ -234,6 +235,6 @@ books_more_btn.addEventListener("click", async () => {
 	render.createMarcup(books_list, renderData, render.markUpBooks, false);
 
 	showHideShowMoreButton();
-	hideLoader();
+	hideLoader(refs.main_loader);
 	books_more_btn.disabled = false;
 });
