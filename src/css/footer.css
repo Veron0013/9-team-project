@@ -308,14 +308,24 @@
 @media (max-width: 374px) {
   .footer-form-row {
     flex-direction: column;
+    gap: 8px;
   }
 
   .footer-copyright {
     font-size: 14px;
   }
 
+  .footer-input {
+    width: 100%;
+  }
+
+  .footer-btn {
+    width: 100%;
+  }
+
   .footer-form-label,
   .footer-form-note {
     align-self: center;
+    text-align: center;
   }
 }

@@ -3,13 +3,13 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 
 let swiperInstance = null;
 
 function initSwiper() {
   swiperInstance = new Swiper('.events-swiper', {
-    modules: [Navigation, Pagination],
+    modules: [Navigation, Pagination, Keyboard],
     loop: false,
     grabCursor: true,
     spaceBetween: 24,
@@ -23,6 +23,12 @@ function initSwiper() {
     pagination: {
       el: '.custom-swiper-pagination',
       clickable: true,
+    },
+
+    keyboard: {
+      enabled: true,
+      onlyInViewport: true,
+      pageUpDown: true,
     },
 
     breakpoints: {
