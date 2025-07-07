@@ -2,7 +2,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Keyboard } from 'swiper/modules';
 
 const swiper = new Swiper('.hero-swiper', {
   loop: false,
@@ -10,10 +10,15 @@ const swiper = new Swiper('.hero-swiper', {
   grabCursor: true,
   slidesPerView: 1,
   spaceBetween: 20,
-  modules: [Navigation],
+  modules: [Navigation, Keyboard],
   navigation: {
     nextEl: '.swiper-btn-next',
     prevEl: '.swiper-btn-prev',
+  },
+  keyboard: {
+    enabled: true,
+    onlyInViewport: true,
+    pageUpDown: true,
   },
   breakpoints: {
     768: {
