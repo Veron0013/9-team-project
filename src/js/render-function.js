@@ -37,7 +37,7 @@ export function markUpBooks(data) {
 							<h3 class="books-data-title">${title}</h3>
 							<p class="books-data-author">${author}</p>
 						</div>
-						<h3 class="books-data-price">$${price}</h3>
+						<p class="books-data-price">$${price}</p>
 					</div>
           <button class="secondary-button books-data-button">Learn More</button>
         </li>`	})

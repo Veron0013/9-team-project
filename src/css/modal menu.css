@@ -66,7 +66,8 @@
 }
 
 .back-to-top:hover {
-  background-color: var(--color-secondary-btn-hover);
+  border-color: var(--color-main-black);
+  background-color: var(--color-main-black);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--color-main-btn-disabled);
 }
