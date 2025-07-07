@@ -12,11 +12,14 @@ export default {
 	ALL_CATEGORIES: "All categories",
 	BOOK_LIST: "bookList",
 	BOOK_CARD_LIST: "bookCardList",
-	//elements
+	//constants variables
 	currentCategory: "",
 	itemsPerView: 24,
 	viewedBooks: 0,
 	itemsToAdd: 4,
+	//elements
+	main_loader: document.querySelector('.loader'),
+	btn_loader: document.querySelector('.btn-loader'),
 	body: document.body,
 	scr_btn_burger_close: "ico-sprite.svg#icon-x",
 	scr_btn_burger_normal: "ico-sprite.svg#icon-menu-alt-right"

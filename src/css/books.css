@@ -330,3 +330,11 @@
 	}
 
 }
+
+@media (max-width: 350px) {
+
+	.books-data-title,
+	.books-data-author {
+		max-width: 200px;
+	}
+}

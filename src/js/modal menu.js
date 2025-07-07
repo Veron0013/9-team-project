@@ -40,7 +40,8 @@ window.addEventListener("scroll", () => {
 	}
 });
 
-backoTop.addEventListener("click", () => {
+backoTop.addEventListener("click", (e) => {
+	e.currentTarget.blur();
 	render.scrollToTop();
 });
 

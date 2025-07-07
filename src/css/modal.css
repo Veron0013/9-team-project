@@ -14,7 +14,8 @@
 
 .modal-card-right {
   flex: 1;
-  width: 307px;
+  max-width: 307px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -32,7 +33,8 @@
   border-radius: 16px;
   margin: 32px 16px;
   padding: 32px 16px 64px;
-  min-width: 343px;
+  max-width: 343px;
+  width: 100%;
   max-height: 100vh;
   overflow-y: auto;
   position: relative;
@@ -120,8 +122,8 @@
 }
 
 .modal-card-image {
-  min-width: 309px;
-  min-height: 467px;
+  max-width: 309px;
+  width: 100%;
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   margin: 16px 0 24px 0;
@@ -239,7 +241,8 @@ body.modal-open {
 
 @media screen and (min-width: 768px) {
   .modal {
-    min-width: 704px;
+    max-width: 704px;
+    width: 100%;
     min-height: 664px;
     padding: 32px;
     gap: 24px;
@@ -255,8 +258,6 @@ body.modal-open {
   }
 
   .modal-card-image {
-    width: 309px;
-    height: 467px;
     margin: 0;
   }
 
@@ -321,3 +322,12 @@ body.modal-open {
   text-align: center;
   padding: 24px;
 }
+
+
+/*@media (max-width: 350px) {
+
+  .modal-card-image {
+    max-width: 275px;
+    max-height: 467px;
+  }
+}*/

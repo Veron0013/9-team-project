@@ -1,14 +1,11 @@
 import * as render from '/js/render-function';
 
-
-const loader = document.querySelector('.loader');
-
-export function showLoader() {
+export function showLoader(loader) {
     render.removeClassElement(loader, 'hidden');
-    console.log('loader show');
+    //console.log('loader show');
 }
 
-export function hideLoader() {
+export function hideLoader(loader) {
     render.addClassElement(loader, 'hidden');
-    console.log('loader hidden');
+    //console.log('loader hidden');
 }
