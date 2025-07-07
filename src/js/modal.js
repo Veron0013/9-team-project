@@ -1,4 +1,11 @@
+import refs from '/js/refs';
+import * as render from '/js/render-function';
+import * as apiRest from '/js/books-api';
+import * as storage from '/js/storage'
+
 const modalBackdrop = document.querySelector('#modal-backdrop');
+const modalContent = modalBackdrop.querySelector(".modal");
+const modalContainer = modalBackdrop.querySelector(".modal-card");
 const body = document.body;
 let accordionInstance = null;
 
@@ -35,65 +42,65 @@ function initModalListeners() {
 
 export async function openModal(bookId) {
   try {
-    const response = await fetch(`https://books-backend.p.goit.global/books/${bookId}`);
-    if (!response.ok) {
-      throw new Error('Не вдалося отримати дані про книгу');
+    render.toggleClassElement(modalBackdrop, "is-hidden");
+    render.toggleClassElement(refs.body, "locked");
+
+    const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}${bookId}`;
+    const dataBook = await apiRest.getApiData(vQuery);
+
+    // Очистка і рендер контенту
+    modalContainer.innerHTML = "";
+    await render.createMarcup(modalContainer, dataBook.data, render.markUpBooksById, true);
+
+    //67 +/-
+    setupQuantityControls(
+      modalContainer.querySelector("#book-quantity"),
+      modalContainer.querySelector("#decrease-quantity"),
+      modalContainer.querySelector("#increase-quantity")
+    );
+
+    const quantityInput = modalContainer.querySelector("#book-quantity");
+    const maxAvailable = dataBook?.data?.quantity || 100;
+
+    if (quantityInput) {
+      quantityInput.dataset.max = maxAvailable;
+      quantityInput.value = 1;
     }
 
-    const data = await response.json();
+    //67 submit
+    const submitBuyNow = modalContent.querySelector("#book-form");
 
-    const elements = {
-      bookImage: document.querySelector('#book-image'),
-      bookTitle: document.querySelector('#book-title'),
-      bookAuthor: document.querySelector('#book-author'),
-      bookPrice: document.querySelector('#book-price'),
-      quantityInput: document.querySelector('#book-quantity'),
-      bookDetails: document.querySelector('#book-details'),
-      bookShipping: document.querySelector('#book-shipping'),
-      bookReturns: document.querySelector('#book-returns'),
-    };
-
-    if (elements.bookImage) elements.bookImage.src = data.book_image;
-
-    const textContentMap = {
-      bookTitle: data.title,
-      bookAuthor: data.author,
-      bookPrice: `$${data.price}`,
-      bookDetails: data.description,
-      bookShipping:
-        'We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier service. Enjoy free standard shipping on orders over $50.',
-      bookReturns:
-        'You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.',
-    };
-
-    for (const [key, value] of Object.entries(textContentMap)) {
-      if (elements[key]) {
-        elements[key].textContent = value;
-      }
+    if (submitBuyNow) {
+      submitBuyNow.addEventListener("submit", (e) => {
+        e.preventDefault();
+        render.showMessage("Гарний вибір", "Дякуємо за покупку!");
+        closeModal();
+      });
     }
 
-    const maxAvailable = data.quantity || 100;
-    if (elements.quantityInput) {
-      elements.quantityInput.dataset.max = maxAvailable;
-      elements.quantityInput.value = 1;
+    const addToCard = modalContent.querySelector("#add-to-cart");
+    if (addToCard) {
+      addToCard.addEventListener("click", (e) => {
+        handleAddToCard(quantityInput.value, dataBook.data);
+      });
     }
 
-    modalBackdrop.classList.remove('is-hidden');
-    body.classList.add('locked');
+    // закриття
+    initModalListeners();
 
-    const container = document.querySelector('.accordion-container');
-    if (accordionInstance) {
-      accordionInstance.destroy();
-    }
+    // Аккордеон
+    const container = modalContainer.querySelector('.accordion-container');
+
     if (container) {
       const items = container.querySelectorAll('.ac');
       items.forEach(item => {
         const trigger = item.querySelector('.ac-trigger');
         const panel = item.querySelector('.ac-panel');
 
+        if (!trigger || !panel) return;
+
         trigger.addEventListener('click', () => {
           const isOpen = item.classList.contains('is-active');
-
           if (isOpen) {
             panel.style.height = '0px';
             item.classList.remove('is-active');
@@ -107,37 +114,18 @@ export async function openModal(bookId) {
       });
     }
   } catch (error) {
-    console.error('Помилка при відкритті модального вікна:', error);
+    modalContainer.innerHTML = "";
+    modalContainer.innerHTML = `Sorry!!! Book unavailable!! <br/> ID = ${bookId} <br/>${error.message}`;
+    render.addClassElement(modalContent, "modal-error");
   }
 }
+
+function handleAddToCard(qty, data) {
+  storage.StorageService.addToCard(refs.BOOK_CARD_LIST, data._id, data.price, qty);
+  render.showMessage(`У кошику ${qty} од. книжок ${data.title}`, "Кошик");
+};
 
 function closeModal() {
   modalBackdrop.classList.add('is-hidden');
-  body.classList.remove('modal-open');
+  render.removeClassElement(refs.body, "locked");
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-  initModalListeners();
-
-  const form = document.querySelector('#book-form');
-  if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Дякуємо за покупку');
-    });
-  }
-
-  const addToCartBtn = document.querySelector('#add-to-cart');
-  if (addToCartBtn) {
-    addToCartBtn.addEventListener('click', () => {
-      const quantity = document.querySelector('#book-quantity').value;
-      console.log(`Кількість обраних книг: ${quantity}`);
-    });
-  }
-
-  const quantityInput = document.querySelector('#book-quantity');
-  const decreaseBtn = document.querySelector('#decrease-quantity');
-  const increaseBtn = document.querySelector('#increase-quantity');
-
-  setupQuantityControls(quantityInput, decreaseBtn, increaseBtn);
-});

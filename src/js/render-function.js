@@ -1,4 +1,5 @@
-//Функцію для створення, рендеру або видалення розмітки
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 import refs from '/js/refs';
 
 export function clearElement(element) {
@@ -14,7 +15,11 @@ export function toggleClassElement(element, className) {
 	element.classList.toggle(className);
 }
 
-export function createMarcup(element, data, callBack, clearElement = false) {
+export function scrollToTop() {
+	window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+export async function createMarcup(element, data, callBack, clearElement = false) {
 
 	if (clearElement) {
 		element.innerHTML = "";
@@ -22,6 +27,7 @@ export function createMarcup(element, data, callBack, clearElement = false) {
 	element.insertAdjacentHTML("beforeend", callBack(data));
 }
 
+//наповнювачі
 export function markUpBooks(data) {
 	const mkData = data.map(({ _id, list_name, author, price, title, book_image, book_image_width, book_image_height }) => {
 		return `<li class="books-data-itm" data-id="${_id}">
@@ -59,32 +65,96 @@ export function markUpCategories(data) {
 					</li> ${mkData}`;
 }
 export function markUpBooksById({ _id, list_name, author, book_image, description, price, title, }) {
+	let desc = description.trim() !== "" ? description : title;
 	return `
-						<img src="${book_image}" alt="${list_name}" class="modal-card__image" />
-						<h3 class="modal-card__title">${title}</h3>
-						<p class="modal-card__author">${author}</p>
-						<p class="modal-card__price">$${price}</p>
-						<form id="book-form" class="modal-card__form">
-							<div class="modal-card__quantity">
-								<button type="button" id="minus-btn">-</button>
-								<span id="quantity">1</span>
-								<button type="button" id="plus-btn">+</button>
-							</div>
-							<button type="button" id="add-to-cart" class="modal-card__btn primary">Add to Cart
+		<img id="book-image" src="${book_image}" alt="${title}" class="modal-card-image" />
+			<div class="modal-card-right">
+				<div class="modal-card-info">
+					<h2 id="book-title" class="modal-card-title">${title}</h2>
+					<p id="book-author" class="modal-card-author">${author}</p>
+					<p id="book-price" class="modal-card-price">$${price}</p>
+				</div>
+				<form id="book-form" class="modal-card-form">
+					<div class="modal-card-quantity">
+						<button id="decrease-quantity" type="button">-</button>
+						<input id="book-quantity" type="number" min="1" value="1" />
+						<button id="increase-quantity" type="button">+</button>
+					</div>
+					<div class="modal-card-buttons">
+						<button
+							type="button"
+							id="add-to-cart"
+							class="modal-card-btn main-button"
+						>
+							Add to Cart
+						</button>
+						<button type="submit" class="modal-card-btn secondary-button">
+							Buy Now
+						</button>
+					</div>
+				</form>
+				<div class="accordion-container">
+					<div class="ac">
+						<h2 class="ac-header">
+							<button type="button" class="ac-trigger">
+								Details
+								<svg class="accordion-icon" width="16" height="16">
+									<use href="/ico-sprite.svg#icon-chevron-down"></use>
+								</svg>
 							</button>
-							<button type="submit" class="modal-card__btn secondary">Buy Now</button>
-						</form>
-						<div id="accordion" class="modal-card__accordion">
-						<h3 class="modal-book-details">DETAILS</h3>
-						<p class="modal-book-details-text">${description}</p>
-						<h3 class="modal-book-shipping">SHIPPING</h3>
-						<p class="modal-book-shipping-text">We ship across the United States within 2–5 business days. All orders are processed through USPS or a reliable courier service. Enjoy free standard shipping on orders over $50.</p>
-						<h3 class="modal-book-returns">RETURNS</h3>
-						<p class="modal-book-returns-text">You can return an item within 14 days of receiving your order, provided it hasn’t been used and is in its original condition. To start a return, please contact our support team — we’ll guide you through the process quickly and hassle-free.</p>
-						</div>`
+						</h2>
+						<div class="ac-panel">
+							<p id="book-details">${desc}</p>
+						</div>
+					</div>
+					<div class="ac">
+						<h2 class="ac-header">
+							<button type="button" class="ac-trigger">
+								Shipping
+								<svg class="accordion-icon" width="16" height="16">
+									<use href="/ico-sprite.svg#icon-chevron-down"></use>
+								</svg>
+							</button>
+						</h2>
+						<div class="ac-panel">
+							<p id="book-shipping">
+								We ship across the United States within 2–5 business days. All
+								orders are processed through USPS or a reliable courier service.
+								Enjoy free standard shipping on orders over $50.
+							</p>
+						</div>
+					</div>
+					<div class="ac">
+						<h2 class="ac-header">
+							<button type="button" class="ac-trigger">
+								Returns
+								<svg class="accordion-icon" width="16" height="16">
+									<use href="/ico-sprite.svg#icon-chevron-down"></use>
+								</svg>
+							</button>
+						</h2>
+						<div class="ac-panel">
+							<p id="book-returns">
+								You can return an item within 14 days of receiving your order,
+								provided it hasn’t been used and is in its original condition.
+								To start a return, please contact our support team — we’ll guide
+								you through the process quickly and hassle-free.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>`
 };
 
-//
-export function scrollToTop() {
-	window.scrollTo({ top: 0, behavior: "smooth" });
-}
+export function showMessage(message, title) {
+	setTimeout(() => {
+		iziToast.success({
+			title,
+			message,
+			position: 'topRight',
+			class: 'custom-toast',
+		});
+	}, 300);
+};
+
+

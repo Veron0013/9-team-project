@@ -40,8 +40,8 @@
   border: 1px solid var(--color-neutral-darkest);
 }*/
 
-.swiper-btn-prev,
-.swiper-btn-next {
+.swiper-btn-prev.main-button,
+.swiper-btn-next.main-button {
   display: none;
 }
 

@@ -18,7 +18,7 @@ export const StorageService = {
 	get(key) {
 		return JSON.parse(localStorage.getItem(key)) || [];
 	},
-	addToCard(key, id, price, qty = 1, action) {
+	addToCard(key, id, price, qty = 1, action = null) {
 		const data = this.get(key);
 		const index = data.findIndex(item => item.id === id);
 
@@ -26,7 +26,8 @@ export const StorageService = {
 			data.push({ id, price, qty });
 		} else {
 			const currentItem = data[index];
-			currentItem.qty = Math.max(0, currentItem.qty + (action === '+' ? qty : -qty));
+			currentItem.qty = qty;
+			//currentItem.qty = Math.max(0, currentItem.qty + (action === '+' ? qty : -qty));
 		}
 
 		localStorage.setItem(key, JSON.stringify(data));

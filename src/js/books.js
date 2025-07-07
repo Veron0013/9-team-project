@@ -91,29 +91,6 @@ async function renderBooksByCat(bookCat, firstLoad = false) {
 	}
 }
 
-const renderBookById = async (bookId) => {
-	return;
-	try {
-		const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}${bookId}`
-		const dataBook = await apiRest.getApiData(vQuery);
-
-		modal_book_data.innerHTML = "";
-		render.createMarcup(modal_book_data, dataBook.data, render.markUpBooksById, true);
-		render.toggleClassElement(modal_book, "is-hidden");
-		render.toggleClassElement(refs.body, "locked");
-
-		const btnAddToCard = document.querySelector("#add-to-card");
-		console.log(btnAddToCard);
-
-		btnAddToCard.addEventListener("click", (e) => {
-			//helper.showMessage("Вітаю", "Вас розіграли");
-		});
-	}
-	catch (e) {
-		console.log(e.message);
-	}
-}
-
 function handleError(error) {
 	console.log(error);
 
