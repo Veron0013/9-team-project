@@ -1,0 +1,96 @@
+.main-button {
+	border: 1px solid var(--color-main-btn);
+	background-color: var(--color-main-btn);
+	border-radius: 4px;
+	padding: 12px 24px;
+	/*width: 100px;
+	height: 48px;*/
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	color: var(--color-white);
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&.swiper-nav {
+		padding: 0;
+		width: 48px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&:hover,
+	&:focus {
+		border-color: var(--color-main-black);
+		background-color: var(--color-main-black);
+		color: var(--color-white);
+	}
+
+	&:active {
+		border-color: var(--color-main-btn-active);
+		background-color: var(--color-main-btn-active);
+		color: var(--color-white);
+	}
+
+	/*.main-button.swiper-nav {
+		width: 48px;
+		height: 48px;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}*/
+
+	&:disabled {
+		border-color: var(--color-main-black);
+		background-color: var(--color-main-black);
+		color: var(--color-white);
+		opacity: 0.2;
+		pointer-events: none;
+		cursor: default;
+	}
+}
+
+.button-disabled {
+	border-color: var(--color-main-black);
+	background-color: var(--color-main-black);
+	color: var(--color-white);
+	opacity: 0.2;
+	pointer-events: none;
+	cursor: default;
+}
+
+.secondary-button {
+	border: 1px solid var(--color-main-black);
+	background-color: transparent;
+	border-radius: 4px;
+	padding: 12px 24px;
+	/*width: 100px;
+	height: 48px;*/
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 150%;
+	color: var(--color-main-black);
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+	&:hover,
+	&:focus {
+		border-color: var(--color-main-black);
+		background-color: var(--color-secondary-btn-hover);
+		color: var(--color-main-black);
+	}
+
+	&:active {
+		border-color: var(--color-main-black);
+		background-color: var(--color-secondary-btn-active);
+		color: var(--color-main-black);
+	}
+
+	&:disabled {
+		border-color: var(--color-main-black);
+		background-color: transparent;
+		color: var(--color-main-black);
+		opacity: 0.2;
+	}
+}

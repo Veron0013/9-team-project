@@ -15,11 +15,13 @@ export function toggleClassElement(element, className) {
 }
 
 export function createMarcup(element, data, callBack, clearElement = false) {
+
 	if (clearElement) {
 		element.innerHTML = "";
 	}
 	element.insertAdjacentHTML("beforeend", callBack(data));
 }
+
 export function markUpBooks(data) {
 	const mkData = data.map(({ _id, list_name, author, price, title, book_image, book_image_width, book_image_height }) => {
 		return `<li class="books-data-itm" data-id="${_id}">
@@ -35,15 +37,16 @@ export function markUpBooks(data) {
 							<h3 class="books-data-title">${title}</h3>
 							<p class="books-data-author">${author}</p>
 						</div>
-						<h3 class="books-data-price">$${price}</h3>
+						<p class="books-data-price">$${price}</p>
 					</div>
-          <button class="books-data-button">Learn More</button>
+          <button class="secondary-button books-data-button">Learn More</button>
         </li>`	})
 		.join("");
 
 	return mkData;
 }
 export function markUpCategories(data) {
+
 	const mkData = data.filter((itm) => itm.list_name.trim() !== "")
 		.map(({ list_name }) => {
 			return `<li class="b-categories-itm" data-category="${list_name}">

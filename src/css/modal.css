@@ -8,18 +8,14 @@
   z-index: 1000;
 }
 
-  .modal-card__left {
-    flex-shrink: 0;
-  }
-
-  .modal-card__right {
-    flex: 1;
-    width: 307px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding-left: 24px;
-  }
+.modal-card__right {
+  flex: 1;
+  width: 307px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 24px;
+}
 
 .is-hidden {
   display: none;
@@ -28,13 +24,13 @@
 .modal {
   background: #fef7f1;
   border-radius: 16px;
+  margin: 32px 16px;
   padding: 32px 16px 64px;
-  max-width: 375px;
   min-width: 343px;
+  max-height: 100vh;
   overflow-y: auto;
   position: relative;
   z-index: 1000;
-  height: 100vh;
 }
 
 .modal-close {
@@ -51,19 +47,12 @@
   color: #0b0500;
 }
 
-.modal-close svg {
+.icon {
   width: 20px;
   height: 20px;
   fill: currentColor;
   pointer-events: none;
   display: block;
-}
-
-.quantity-control {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
 }
 
 .accordion-container {
@@ -73,6 +62,7 @@
 
 .ac {
   border-top: 1px solid #e0e0e0;
+  background-color: transparent;
 }
 
 .ac:last-child {
@@ -85,7 +75,6 @@
 
 .ac-trigger {
   width: 100%;
-  text-align: left;
   background: transparent;
   border: none;
   padding: 1rem 0;
@@ -98,23 +87,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-  margin-left: auto;
-}
-
-.ac-trigger::after {
-  content: "";
-  width: 12px;
-  height: 12px;
-  background-image: url('/icons/chevron-down.svg'); 
-  background-size: contain;
-  background-repeat: no-repeat;
-  transition: transform 0.3s ease;
-  display: inline-block;
-  margin-left: 0;
-  position: absolute;
-  right: 16px;
-  filter: brightness(0);
+  gap: 12px;
 }
 
 .ac.is-active .ac-trigger::after {
@@ -123,7 +96,7 @@
 
 .ac-panel {
   display: none;
-  padding: 0 0 1rem;
+  margin: 16px 0 24px;
   font-size: 14px;
   line-height: 1.5;
   color: #0b0500;
@@ -137,7 +110,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
 }
 
 .modal-card__image {
@@ -146,6 +119,7 @@
   border-radius: 8px;
   border: 1px solid #e0e0e0;
   margin: 16px 0 24px 0;
+  flex-shrink: 0;
 }
 
 .modal-card__text {
@@ -154,25 +128,25 @@
 
 .modal-card__title {
   font-weight: 600;
-    font-size: 40px;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    color: #0b0500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #0b0500;
 }
 
 .modal-card__author {
   font-weight: 400;
-    font-size: 14px;
-    line-height: 1.5;
-    color: #0b0500;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #0b0500;
 }
 
 .modal-card__price {
   font-weight: 400;
-    font-size: 24px;
-    line-height: 1.4;
-    letter-spacing: -0.01em;
-    color: #0b0500;
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #0b0500;
 }
 
 .modal-card__form {
@@ -183,30 +157,55 @@
   align-items: center;
 }
 
-.modal-card__label {
-  font-weight: 500;
-  margin-bottom: 0.25rem;
+.modal-card__buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-card__buttons {
+    flex-direction: row;
+  }
 }
 
 .modal-card__quantity {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-size: 1.1rem;
+  justify-content: flex-start;
+  gap: 8px;
+  align-self: flex-start;
+  border-radius: 12px;
+  padding: 6px 12px;
 }
 
 .modal-card__qty-btn {
-  width: 32px;
-  height: 32px;
-  font-size: 1.25rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #ddd;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: transparent;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+#book-quantity {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 18px;
+  background-color: transparent;
 }
 
 .modal-card__btn {
-  width: 100%;
+  width: auto;
+  flex: 1;
   padding: 0.75rem;
   font-size: 1rem;
   border-radius: 8px;
@@ -239,7 +238,8 @@ body.modal-open {
 
 @media screen and (min-width: 768px) {
   .modal {
-    max-width: 704px;
+    min-width: 704px;
+    min-height: 664px;
     padding: 32px;
     gap: 24px;
   }
@@ -253,7 +253,6 @@ body.modal-open {
     width: 309px;
     height: 467px;
     margin: 0;
-    flex-shrink: 0;
   }
 
   .modal-card__text {
@@ -262,25 +261,48 @@ body.modal-open {
   }
 
   .modal-card__form {
+    flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 1rem;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .modal {
     min-width: 1300px;
+    min-height: 902px;
     padding: 40px;
   }
+
   .modal-card__right {
     min-width: 759px;
     display: flex;
     flex-direction: column;
   }
+
+  .modal-card__form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
   .modal-card__title {
     font-size: 48px;
   }
+
   .modal-card__price {
     font-size: 28px;
   }
+
+}
+.accordion-icon {
+  transition: transform 0.3s ease;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  fill: #0b0500;
+  flex-shrink: 0;
+}
+
+.ac.is-active .accordion-icon {
+  transform: rotate(180deg);
 }

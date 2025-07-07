@@ -54,14 +54,14 @@ function updateNavButtons(swiperInstance) {
   const right = document.querySelector('.feedbacks-swiper-button-right');
 
   if (swiperInstance.isBeginning) {
-    left.classList.add('feedbacks-button-disabled');
+    left.classList.add('button-disabled');
   } else {
-    left.classList.remove('feedbacks-button-disabled');
+    left.classList.remove('button-disabled');
   }
 
   if (swiperInstance.isEnd) {
-    right.classList.add('feedbacks-button-disabled');
+    right.classList.add('button-disabled');
   } else {
-    right.classList.remove('feedbacks-button-disabled');
+    right.classList.remove('button-disabled');
   }
 }

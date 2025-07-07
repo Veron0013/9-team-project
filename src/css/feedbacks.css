@@ -104,7 +104,7 @@ ol {
   background-color: var(--color-scheme-2-text);
   opacity: 0.3;
   border-radius: 50%;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feedbacks-custom-swiper-pagination .feedbacks-swiper-pagination-bullet-active {
@@ -116,7 +116,7 @@ ol {
   gap: 16px;
 }
 
-.feedbacks-swiper-button-left,
+/*.feedbacks-swiper-button-left,
 .feedbacks-swiper-button-right {
   background-color: var(--color-accent, #e2570b);
   width: 48px;
@@ -130,16 +130,45 @@ ol {
   cursor: pointer;
 }
 
+.feedbacks-swiper-button-left:hover,
+.feedbacks-swiper-button-left:focus,
+.feedbacks-swiper-button-right:hover,
+.feedbacks-swiper-button-right:focus {
+  background: var(--color-scheme-1-background);
+  border: 1px solid var(--opacity-neutral-darkest-15);
+}
+
+.feedbacks-swiper-button-left:active,
+.feedbacks-swiper-button-right:active {
+  background: var(--color-bamboo-darker);
+}*/
+
 .feedbacks-svg,
 .feedbacks-svg {
   fill: #fff;
   align-items: center;
   width: 24px;
   height: 24px;
+  transition: fill 250ms ease;
 }
 
+/*.feedbacks-swiper-button-left:hover .feedbacks-svg,
+.feedbacks-swiper-button-left:focus .feedbacks-svg,
+.feedbacks-swiper-button-right:hover .feedbacks-svg,
+.feedbacks-swiper-button-right:focus .feedbacks-svg {
+  fill: black;
+}
+
+.feedbacks-swiper-button-left:active .feedbacks-svg,
+.feedbacks-swiper-button-right:active .feedbacks-svg {
+  fill: #fff;
+}*/
+
 .feedbacks-button-disabled {
-  opacity: 0.5;
+  border-color: var(--color-main-black);
+  background-color: var(--color-main-black);
+  color: var(--color-white);
+  opacity: 0.2;
   pointer-events: none;
   cursor: default;
 }

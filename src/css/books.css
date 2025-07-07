@@ -57,7 +57,7 @@
 }
 
 .dropdown-arrow {
-	transition: transform 0.3s ease;
+	transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .categories-dropdown.is-open .dropdown-arrow {
@@ -67,7 +67,7 @@
 .b-categories-list {
 	max-height: 0;
 	overflow: hidden;
-	transition: max-height 0.3s ease;
+	transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -105,6 +105,14 @@
 .b-categories-itm {
 	padding: 8px 12px;
 	cursor: pointer;
+
+	&:hover,
+	&:focus,
+	&:active,
+	&.is-active {
+		transform: translateY(-2px);
+		background-color: var(--color-input-bg);
+	}
 }
 
 .books-content {
@@ -220,6 +228,10 @@
 	background-color: var(--color-main-btn);
 }
 
+.not-found-description {
+	text-align: center;
+}
+
 @media (min-width: 768px) {
 
 	/*.books-categories-texts {
@@ -237,7 +249,7 @@
 	}
 
 	.books-data-itm {
-		max-width: 340px;
+		/*max-width: 340px;*/
 		max-height: 600px;
 		width: 100%;
 		height: 100%;

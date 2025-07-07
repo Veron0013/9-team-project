@@ -11,11 +11,13 @@
 @import url('./container.css');
 @import url('./section.css');
 @import url('./animations.css');
+@import url('./buttons.css');
 
 /* Sections style */
 @import url('./header.css');
 @import url('./hero.css');
 @import url('./books.css');
+@import url('./loader.css');
 @import url('./feedbacks.css');
 @import url('./events.css');
 @import url('./article.css');
@@ -24,10 +26,3 @@
 @import url('./modal.css');
 @import url('./modal menu.css');
 @import url('./form.css');
-
-/*@import url('./not-found.css');
-@import url('./search-form.css');
-@import url('./categories.css');
-@import url('./products.css');
-@import url('./modal.css');
-@import url('./cart.css');*/

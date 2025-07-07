@@ -7,6 +7,8 @@ const closeBtn = document.querySelector('.modal-close-btn');
 const backdrop = document.querySelector('.modal-overlay');
 const eventList = document.querySelector('.events-list');
 
+let eventName = "";
+
 eventList.addEventListener('click', event => {
   const curLi = event.target.closest('.events-item');
   if (!curLi) {
@@ -16,7 +18,7 @@ eventList.addEventListener('click', event => {
   if (!btn) {
     return;
   }
-  const eventName = curLi
+  eventName = curLi
     .querySelector('.events-card-heading')
     .textContent.trim();
 
@@ -83,8 +85,8 @@ function handleSubmit(event) {
 
     setTimeout(() => {
       iziToast.success({
-        title: 'Успішно!',
-        message: 'Форма відправлена.',
+        title: 'Дякуємо!',
+        message: `Ви успішно зареєструвалися на ${eventName}`,
         position: 'topRight',
         class: 'custom-toast',
       });

@@ -5,6 +5,9 @@ export default {
 	END_TOP_BOOKS: "/books/top-books",
 	END_CATEGORIE_ID: "/books/category?category=",
 	END_BOOK_ID: "/books/",
+	//error types
+	API_ERROR: "ApiError",
+	NO_BOOKS: "NoBooks",
 	//storage
 	ALL_CATEGORIES: "All categories",
 	BOOK_LIST: "bookList",
@@ -13,6 +16,7 @@ export default {
 	currentCategory: "",
 	itemsPerView: 24,
 	viewedBooks: 0,
+	itemsToAdd: 4,
 	body: document.body,
 	scr_btn_burger_close: "ico-sprite.svg#icon-x",
 	scr_btn_burger_normal: "ico-sprite.svg#icon-menu-alt-right"
