@@ -3,10 +3,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 
 const swiper = new Swiper('.feedbacks-swiper', {
   modules: [Navigation, Pagination],
+  modules: [Navigation, Keyboard],
   loop: false,
   grabCursor: true,
   spaceBetween: 20,
@@ -15,6 +16,11 @@ const swiper = new Swiper('.feedbacks-swiper', {
   navigation: {
     prevEl: '.feedbacks-swiper-button-left',
     nextEl: '.feedbacks-swiper-button-right',
+  },
+  keyboard: {
+    enabled: true,
+    onlyInViewport: true,
+    pageUpDown: true,
   },
 
   pagination: {
