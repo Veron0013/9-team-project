@@ -39,7 +39,7 @@ export function markUpBooks(data) {
 						</div>
 						<p class="books-data-price">$${price}</p>
 					</div>
-          <button class="secondary-button books-data-button">Learn More</button>
+          <button type="button" class="secondary-button books-data-button">Learn More</button>
         </li>`	})
 		.join("");
 

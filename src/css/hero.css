@@ -21,23 +21,24 @@
 
 .hero-btn {
   font-size: 8px;
-  color: var(--color-white);
-  border: 0.52px solid var(--color-bamboo);
-  border-radius: 2px;
+  padding: 0;
   width: 117px;
   height: 20px;
-  background-color: var(--color-bamboo);
+  /*color: var(--color-white);
+  border: 0.52px solid var(--color-bamboo);
+  border-radius: 2px;
+  background-color: var(--color-bamboo);*/
   margin-left: 16px;
   margin-bottom: 16px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /*transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);*/
 }
 
-.hero-btn:hover,
+/*.hero-btn:hover,
 .hero-btn:focus {
   background-color: var(--color-white);
   color: var(--color-neutral-darkest);
   border: 1px solid var(--color-neutral-darkest);
-}
+}*/
 
 .swiper-btn-prev,
 .swiper-btn-next {
@@ -69,29 +70,23 @@
 }
 
 .slide2 {
-  background-image: linear-gradient(
-      to right,
+  background-image: linear-gradient(to right,
       rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
+      rgba(0, 0, 0, 0.4)),
     url('/img/hero/baner-2-1x.webp');
 }
 
 .slide3 {
-  background-image: linear-gradient(
-      to right,
+  background-image: linear-gradient(to right,
       rgba(0, 0, 0, 0.2),
-      rgba(0, 0, 0, 0.2)
-    ),
+      rgba(0, 0, 0, 0.2)),
     url('/img/hero/baner-3-1x.webp');
 }
 
 .slide4 {
-  background-image: linear-gradient(
-      to right,
+  background-image: linear-gradient(to right,
       rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
+      rgba(0, 0, 0, 0.3)),
     url('/img/hero/baner-4-1x.webp');
 }
 
@@ -101,29 +96,23 @@
   }
 
   .slide2 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)
-      ),
+        rgba(0, 0, 0, 0.4)),
       url('/img/hero/baner-2-2x.webp');
   }
 
   .slide3 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.2)
-      ),
+        rgba(0, 0, 0, 0.2)),
       url('/img/hero/baner-3-2x.webp');
   }
 
   .slide4 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-      ),
+        rgba(0, 0, 0, 0.3)),
       url('/img/hero/baner-4-2x.webp');
   }
 }
@@ -169,7 +158,7 @@
     gap: 24px;
   }
 
-  .swiper-btn-prev,
+  /*.swiper-btn-prev,
   .swiper-btn-next {
     border-radius: 4px;
     cursor: pointer;
@@ -186,6 +175,7 @@
     color: var(--color-neutral-darkest);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   .swiper-btn-prev:hover,
   .swiper-btn-prev:focus,
   .swiper-btn-next:hover,
@@ -196,7 +186,7 @@
   .swiper-btn-next:active,
   .swiper-btn-prev:active {
     background-color: var(--color-bamboo-darker);
-  }
+  }*/
 
   .hero-svg {
     fill: var(--color-white);
@@ -205,14 +195,14 @@
     height: 24px;
   }
 
-  .hero-svg:hover,
+  /*.hero-svg:hover,
   .hero-svg:focus {
     fill: var(--color-neutral-darkest);
   }
 
   .hero-svg:active {
     fill: var(--color-white);
-  }
+  }*/
 
   .button-dis {
     opacity: 0.5;
@@ -225,29 +215,23 @@
   }
 
   .slide2 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)
-      ),
+        rgba(0, 0, 0, 0.4)),
       url('/img/hero/baner-2-tablet-1x.webp');
   }
 
   .slide3 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.2)
-      ),
+        rgba(0, 0, 0, 0.2)),
       url('/img/hero/baner-3-tablet-1x.webp');
   }
 
   .slide4 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-      ),
+        rgba(0, 0, 0, 0.3)),
       url('/img/hero/baner-4-tablet-1x.webp');
   }
 
@@ -257,29 +241,23 @@
     }
 
     .slide2 {
-      background-image: linear-gradient(
-          to right,
+      background-image: linear-gradient(to right,
           rgba(0, 0, 0, 0.4),
-          rgba(0, 0, 0, 0.4)
-        ),
+          rgba(0, 0, 0, 0.4)),
         url('/img/hero/baner-2-tablet-2x.webp');
     }
 
     .slide3 {
-      background-image: linear-gradient(
-          to right,
+      background-image: linear-gradient(to right,
           rgba(0, 0, 0, 0.2),
-          rgba(0, 0, 0, 0.2)
-        ),
+          rgba(0, 0, 0, 0.2)),
         url('/img/hero/baner-3-tablet-2x.webp');
     }
 
     .slide4 {
-      background-image: linear-gradient(
-          to right,
+      background-image: linear-gradient(to right,
           rgba(0, 0, 0, 0.3),
-          rgba(0, 0, 0, 0.3)
-        ),
+          rgba(0, 0, 0, 0.3)),
         url('/img/hero/baner-4-tablet-2x.webp');
     }
   }
@@ -324,29 +302,23 @@
   }
 
   .slide2 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.4),
-        rgba(0, 0, 0, 0.4)
-      ),
+        rgba(0, 0, 0, 0.4)),
       url('/img/hero/baner-2-desktop-1x.webp');
   }
 
   .slide3 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.2),
-        rgba(0, 0, 0, 0.2)
-      ),
+        rgba(0, 0, 0, 0.2)),
       url('/img/hero/baner-3-desktop-1x.webp');
   }
 
   .slide4 {
-    background-image: linear-gradient(
-        to right,
+    background-image: linear-gradient(to right,
         rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-      ),
+        rgba(0, 0, 0, 0.3)),
       url('/img/hero/baner-4-desktop-1x.webp');
   }
 
@@ -356,29 +328,23 @@
     }
 
     .slide2 {
-      background-image: linear-gradient(
-          to right,
+      background-image: linear-gradient(to right,
           rgba(0, 0, 0, 0.4),
-          rgba(0, 0, 0, 0.4)
-        ),
+          rgba(0, 0, 0, 0.4)),
         url('/img/hero/baner-2-desktop-2x.webp');
     }
 
     .slide3 {
-      background-image: linear-gradient(
-          to right,
+      background-image: linear-gradient(to right,
           rgba(0, 0, 0, 0.2),
-          rgba(0, 0, 0, 0.2)
-        ),
+          rgba(0, 0, 0, 0.2)),
         url('/img/hero/baner-3-desktop-2x.webp');
     }
 
     .slide4 {
-      background-image: linear-gradient(
-          to right,
+      background-image: linear-gradient(to right,
           rgba(0, 0, 0, 0.3),
-          rgba(0, 0, 0, 0.3)
-        ),
+          rgba(0, 0, 0, 0.3)),
         url('/img/hero/baner-4-desktop-2x.webp');
     }
   }
