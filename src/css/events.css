@@ -71,18 +71,23 @@
   padding-top: 8px;
   transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:focus {
-    transform: scale(1.02) translateX(6px);
+  &:hover .card-btn,
+  &:focus .card-btn,
+  &:hover .card-svg,
+  &:focus .card-svg {
+    transform: scale(1.2);
   }
 
-  &:active {
+  &:active .card-btn,
+  &:active .card-svg {
     opacity: 0.8;
   }
 
-  &:disabled {
+  &:disabled .card-btn,
+  &:disabled .card-svg {
     opacity: 0.2;
   }
+
 
 }
 
@@ -95,6 +100,8 @@
   border: none;
   background-color: transparent;
   padding: 0;
+  transform-origin: left center;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 
@@ -102,7 +109,8 @@
   width: 24px;
   height: 24px;
   display: block;
-
+  transform-origin: left center;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Перемикачі */
