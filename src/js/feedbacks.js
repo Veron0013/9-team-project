@@ -6,8 +6,8 @@ import Swiper from 'swiper';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 
 const swiper = new Swiper('.feedbacks-swiper', {
-  modules: [Navigation, Pagination],
-  modules: [Navigation, Keyboard],
+  //modules: [Navigation, Pagination],
+  modules: [Navigation, Keyboard, Pagination],
   loop: false,
   grabCursor: true,
   spaceBetween: 20,
