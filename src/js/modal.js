@@ -8,7 +8,6 @@ const modalBackdrop = document.querySelector('#modal-backdrop');
 const modalContent = modalBackdrop.querySelector(".modal");
 const modalContainer = modalBackdrop.querySelector(".modal-card");
 const body = document.body;
-let accordionInstance = null;
 
 function setupQuantityControls(quantityInput, decreaseBtn, increaseBtn) {
 
@@ -45,7 +44,7 @@ function initModalListeners() {
 export async function openModal(bookId) {
   try {
     // Очистка і рендер контенту
-    modalContainer.innerHTML = "";
+    render.clearElement(modalContainer);
     render.toggleClassElement(modalBackdrop, "is-hidden");
     render.toggleClassElement(refs.body, "locked");
 
@@ -83,6 +82,7 @@ export async function openModal(bookId) {
         e.preventDefault();
         e.currentTarget.blur();
         render.showMessage("Гарний вибір", "Дякуємо за покупку!");
+        storage.StorageService.removeItemFromStorage(bookId);
         closeModal();
       });
     }
@@ -92,6 +92,7 @@ export async function openModal(bookId) {
       addToCard.addEventListener("click", (e) => {
         e.currentTarget.blur();
         handleAddToCard(quantityInput.value, dataBook.data);
+        closeModal();
       });
     }
 
@@ -125,7 +126,7 @@ export async function openModal(bookId) {
     }
   } catch (error) {
     hideLoader(refs.btn_loader);
-    modalContainer.innerHTML = "";
+    render.clearElement(modalContainer);
     modalContainer.innerHTML = `Sorry!!! Book unavailable!! <br/> ID = ${bookId} <br/>${error.message}`;
     render.addClassElement(modalContent, "modal-error");
   }
@@ -139,4 +140,5 @@ function handleAddToCard(qty, data) {
 function closeModal() {
   modalBackdrop.classList.add('is-hidden');
   render.removeClassElement(refs.body, "locked");
+  storage.setQuantityFromLocalStorage(refs.BOOK_CARD_LIST);
 }

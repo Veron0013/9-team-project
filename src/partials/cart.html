@@ -1,0 +1,39 @@
+<div class="modal-overlay" id="cart-modal">
+  <div class="cart-modal">
+    <button class="cart-close-btn" id="cart-close-btn" aria-label="Close cart">
+      ×
+    </button>
+    <div class="cart-modal-content">
+      <div class="cart-products-section">
+        <h2 class="cart-title">Your Cart</h2>
+        <div class="loader cart-loader hidden"></div>
+        <ul class="cart-products">
+          <!-- JS вставляє товари сюди -->
+        </ul>
+
+        <div class="cart-empty display-none">
+          <img
+            class="cart-empty-img"
+            src="./img/cart/empty-cart.webp"
+            alt="empty cart"
+            width="150"
+          />
+          <h3 class="cart-empty-title">No books</h3>
+          <p class="cart-empty-desc">Looks like your cart is empty.</p>
+        </div>
+      </div>
+
+      <div class="cart-summary-section hidden">
+        <ul class="cart-summary-list">
+          <li><span>Items:</span><span data-count>0</span></li>
+          <li><span>Total:</span><span data-price>$0</span></li>
+          <li><span>Shipping:</span><span>Free</span></li>
+        </ul>
+        <button class="cart-buy-btn main-button buy-now">Buy now</button>
+        <button class="cart-buy-btn secondary-button shop-more">
+          Shop more...
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

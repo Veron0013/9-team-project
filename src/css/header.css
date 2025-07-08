@@ -82,6 +82,26 @@
 
 }
 
+.nav-count {
+  padding: 2px 9px;
+
+  color: var(--color-main-btn);
+  font-size: 12px;
+  font-weight: 600;
+
+  border: 1px solid var(--color-main-black);
+  border-radius: 15px;
+  background: var(--color-main-bg);
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .nav-link:hover &,
+  .nav-link:focus &,
+  .nav-link.nav-link--active & {
+    background: var(--color-main-btn);
+    color: var(--color-main-bg);
+  }
+}
+
 @media only screen and (min-width: 768px) {
 
   .header-container,

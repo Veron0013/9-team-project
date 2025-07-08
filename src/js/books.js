@@ -3,7 +3,7 @@ import { showLoader, hideLoader } from './loader';
 import * as render from '/js/render-function';
 import * as apiRest from '/js/books-api';
 import * as modal from '/js/modal';
-import * as storage from '/js/storage'
+import * as storage from '/js/storage';
 
 const modal_book = document.querySelector(".backdrop");
 
@@ -36,7 +36,7 @@ async function renderCategories() {
 }
 
 async function renderBooksByCat(bookCat, firstLoad = false) {
-	books_list.innerHTML = "";
+	render.clearElement(books_list);
 	showLoader(refs.main_loader);
 	//loader
 	refs.currentCat = bookCat;
@@ -133,6 +133,7 @@ function handleError(error) {
 //слухачі
 
 document.addEventListener("DOMContentLoaded", async () => {
+	storage.setQuantityFromLocalStorage(refs.BOOK_CARD_LIST);
 	showLoader(refs.main_loader);
 	dafaultPagination();
 
@@ -194,11 +195,6 @@ category_list.addEventListener("click", (e) => {
 
 });
 
-//x на модалки книжки
-//modal_book_close.addEventListener("click", () => {
-//	render.addClassElement(modal_book, "is-hidden");
-//	render.removeClassElement(refs.body, "locked");
-//});
 
 //більше!!! 
 books_more_btn.addEventListener("click", async () => {

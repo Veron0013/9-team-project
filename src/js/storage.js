@@ -11,6 +11,19 @@ import refs from "./refs";
 //  ]
 //}
 
+export function setQuantityFromLocalStorage(storageKey) {
+
+	const qty = StorageService.count(storageKey) || 0;
+
+	const labelEl = document.querySelectorAll("[data-cart-count]");
+
+	console.log(labelEl);
+
+	for (const item of labelEl) {
+		item.textContent = qty;
+	}
+}
+
 export const StorageService = {
 	add(key, data) {
 		localStorage.setItem(key, JSON.stringify(data));
@@ -49,6 +62,14 @@ export const StorageService = {
 	},
 	count(key) {
 		return this.get(key).length;
+	},
+	countItems(key) {
+		const data = this.get(key);
+		return data.reduce((acc, item) => acc + Number(item.qty), 0);
+	},
+	getItem(key, id) {
+		const data = this.get(key);
+		return data.find(item => item.id === id);;
 	},
 	isInCardList(key, id) {
 		return this

@@ -1,6 +1,7 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 import refs from '/js/refs';
+import * as storage from '/js/storage';
 
 export function clearElement(element) {
 	element.innerHTML = '';
@@ -19,10 +20,10 @@ export function scrollToTop() {
 	window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-export async function createMarcup(element, data, callBack, clearElement = false) {
+export async function createMarcup(element, data, callBack, emptyElement = false) {
 
-	if (clearElement) {
-		element.innerHTML = "";
+	if (emptyElement) {
+		clearElement(element);
 	}
 	element.insertAdjacentHTML("beforeend", callBack(data));
 }
@@ -145,6 +146,34 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 				</div>
 			</div>`
 };
+export function markUpCartBookList(data) {
+	const cartList = storage.StorageService.get(refs.BOOK_CARD_LIST);
+
+	const mkData = data.map(({ _id, list_name, author, price, title, book_image }) => {
+		const storageData = cartList.find(item => item.id === _id);
+		const qty = storageData ? storageData.qty : 1;
+
+		return `<li class="cart-item" data-id="${_id}">
+							<div class="cart-item-wrapper">
+								<div class="cart-item-thumb">
+									<img src="${book_image}" alt="${title}" class="cart-item-img" />
+								</div>
+								<div class="cart-item-info">
+									<h3 class="cart-item-title">${title}</h3>
+									<p class="cart-item-author">${author}</p>
+								</div>
+							</div>
+								<div class="cart-item-meta">
+									<span class="cart-item-price">Ціна: $${price}</span>
+									<span class="cart-item-qty"> Кількість: ${qty}</span>
+									<span class="cart-item-total">Разом: $${(price * qty).toFixed(2)}</span>
+								</div>
+
+						</li>`;
+	}).join("");
+
+	return mkData;
+}
 
 export function showMessage(message, title) {
 	setTimeout(() => {

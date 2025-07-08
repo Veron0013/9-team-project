@@ -18,9 +18,15 @@ export default {
 	viewedBooks: 0,
 	itemsToAdd: 4,
 	//elements
+	body: document.body,
+	mobile_menu: document.querySelector(".modal-menu"),
+	cart_products: document.querySelector('.cart-products'),
+	cart_modal: document.querySelector('#cart-modal'),
+	cart_close: document.querySelector('#cart-close-btn'),
+	cart_buy: document.querySelector('.cart-buy-btn'),
 	main_loader: document.querySelector('.loader'),
 	btn_loader: document.querySelector('.btn-loader'),
-	body: document.body,
+	//mobile menu icons
 	scr_btn_burger_close: "ico-sprite.svg#icon-x",
 	scr_btn_burger_normal: "ico-sprite.svg#icon-menu-alt-right"
 };
