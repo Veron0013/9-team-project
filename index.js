@@ -38,6 +38,7 @@ import{S as U,N as F,K as G,i as Q,a as ge,P as ae}from"./assets/vendor-CT7EhRfQ
 							id="add-to-cart"
 							class="modal-card-btn main-button"
 						>
+						
 							Add to Cart
 						</button>
 						<button type="submit" class="modal-card-btn secondary-button">
