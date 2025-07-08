@@ -50,6 +50,14 @@ export const StorageService = {
 	count(key) {
 		return this.get(key).length;
 	},
+	countItems(key) {
+		const data = this.get(key);
+		return data.reduce((acc, item) => acc + Number(item.qty), 0);
+	},
+	getItem(key, id) {
+		const data = this.get(key);
+		return data.find(item => item.id === id);;
+	},
 	isInCardList(key, id) {
 		return this
 			.get(key)

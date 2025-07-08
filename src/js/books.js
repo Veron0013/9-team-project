@@ -36,7 +36,7 @@ async function renderCategories() {
 }
 
 async function renderBooksByCat(bookCat, firstLoad = false) {
-	books_list.innerHTML = "";
+	render.clearElement(books_list);
 	showLoader(refs.main_loader);
 	//loader
 	refs.currentCat = bookCat;

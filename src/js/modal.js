@@ -8,7 +8,6 @@ const modalBackdrop = document.querySelector('#modal-backdrop');
 const modalContent = modalBackdrop.querySelector(".modal");
 const modalContainer = modalBackdrop.querySelector(".modal-card");
 const body = document.body;
-let accordionInstance = null;
 
 function setupQuantityControls(quantityInput, decreaseBtn, increaseBtn) {
 
@@ -45,7 +44,7 @@ function initModalListeners() {
 export async function openModal(bookId) {
   try {
     // Очистка і рендер контенту
-    modalContainer.innerHTML = "";
+    render.clearElement(modalContainer);
     render.toggleClassElement(modalBackdrop, "is-hidden");
     render.toggleClassElement(refs.body, "locked");
 
@@ -125,7 +124,7 @@ export async function openModal(bookId) {
     }
   } catch (error) {
     hideLoader(refs.btn_loader);
-    modalContainer.innerHTML = "";
+    render.clearElement(modalContainer);
     modalContainer.innerHTML = `Sorry!!! Book unavailable!! <br/> ID = ${bookId} <br/>${error.message}`;
     render.addClassElement(modalContent, "modal-error");
   }
