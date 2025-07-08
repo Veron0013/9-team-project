@@ -1,4 +1,5 @@
 import refs from '/js/refs';
+import { showLoader, hideLoader } from './loader';
 import * as render from '/js/render-function';
 import * as storage from '/js/storage';
 import * as apiRest from '/js/books-api';
@@ -6,6 +7,12 @@ import * as apiRest from '/js/books-api';
 //змінні
 const headerNav = document.querySelector(".header-nav-list");
 const emptyCart = refs.cart_modal.querySelector(".cart-empty");
+
+const buy_now = document.querySelector(".buy-now");
+const shop_more = document.querySelector(".shop-more");
+
+const cart_loader = document.querySelector(".cart-loader");
+const summary_section = document.querySelector(".cart-summary-section");
 
 const countEl = document.querySelector('[data-count]');
 const priceEl = document.querySelector('[data-price]');
@@ -20,19 +27,30 @@ export async function openCartForm(eventLink) {
 	render.toggleClassElement(refs.cart_modal, "is-open");
 	render.toggleClassElement(refs.body, "locked");
 
-	//лоадер
-
 	const isEmpty = storage.StorageService.count(refs.BOOK_CARD_LIST) === 0;
 
 	if (isEmpty) {
 		render.removeClassElement(emptyCart, "display-none");
+		render.removeClassElement(summary_section, "hidden");
+		countEl.textContent = storage.StorageService.countItems(refs.BOOK_CARD_LIST);
+		storage.StorageService.setTotalCard(priceEl);
+		buy_now.disabled = true;
 		return;
 	}
 
-	markUpCardListItems(refs.BOOK_CARD_LIST);
+	showLoader(cart_loader);
+	//типу чекаємо
+	await new Promise(resolve => setTimeout(resolve, 400));
+	hideLoader(cart_loader);
+
+	await markUpCardListItems(refs.BOOK_CARD_LIST);
+
+	render.removeClassElement(summary_section, "hidden");
 
 	countEl.textContent = storage.StorageService.countItems(refs.BOOK_CARD_LIST);
 	storage.StorageService.setTotalCard(priceEl);
+
+	buy_now.disabled = false;
 }
 
 export async function markUpCardListItems(storageKey) {
@@ -61,6 +79,7 @@ export async function markUpCardListItems(storageKey) {
 		return apiRest.getApiData(vQuery)
 			.then(data => data.data)
 			.catch(error => {
+				///треба щось цікавіше
 				console.log("Помилка для id:", prodId, error);
 				return null; // Пропускаємо зламані
 			});
@@ -69,19 +88,19 @@ export async function markUpCardListItems(storageKey) {
 	//console.log(promises);
 
 	const results = await Promise.all(promises);
-
 	// Фільтруємо null або undefined
 	const mkUpData = results.filter(Boolean);
 
-	console.log("марк", mkUpData);
+	//console.log("марк", mkUpData);
 
 	render.createMarcup(refs.cart_products, mkUpData, render.markUpCartBookList, true);
 }
 
 
 function closeModal() {
-	render.toggleClassElement(refs.cart_modal, "is-open");
-	render.toggleClassElement(refs.body, "locked");
+	storage.setQuantityFromLocalStorage(refs.BOOK_CARD_LIST);
+	render.removeClassElement(refs.cart_modal, "is-open");
+	render.removeClassElement(refs.body, "locked");
 }
 
 //слухачі
@@ -104,7 +123,19 @@ refs.cart_modal.addEventListener('click', e => {
 });
 
 document.addEventListener('keydown', e => {
-	if (e.key === 'Escape') closeModal();
+	if (e.key === 'Escape') {
+		closeModal()
+	};
 });
 
+buy_now.addEventListener("click", (e) => {
+	localStorage.removeItem(refs.BOOK_CARD_LIST);
+	render.showMessage("Гарний вибір", "Дякуємо за покупку!");
+	closeModal();
+	storage.StorageService.setQuantityFromLocalStorage(refs.BOOK_CARD_LIST);
+});
+
+shop_more.addEventListener("click", (e) => {
+	closeModal();
+})
 

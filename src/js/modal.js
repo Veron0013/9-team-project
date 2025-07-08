@@ -82,6 +82,7 @@ export async function openModal(bookId) {
         e.preventDefault();
         e.currentTarget.blur();
         render.showMessage("Гарний вибір", "Дякуємо за покупку!");
+        storage.StorageService.removeItemFromStorage(bookId);
         closeModal();
       });
     }
@@ -91,6 +92,7 @@ export async function openModal(bookId) {
       addToCard.addEventListener("click", (e) => {
         e.currentTarget.blur();
         handleAddToCard(quantityInput.value, dataBook.data);
+        closeModal();
       });
     }
 
@@ -138,4 +140,5 @@ function handleAddToCard(qty, data) {
 function closeModal() {
   modalBackdrop.classList.add('is-hidden');
   render.removeClassElement(refs.body, "locked");
+  storage.setQuantityFromLocalStorage(refs.BOOK_CARD_LIST);
 }

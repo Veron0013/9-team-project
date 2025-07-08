@@ -275,7 +275,8 @@ body.modal-open {
 @media screen and (min-width: 1440px) {
   .modal {
     min-width: 1300px;
-    min-height: 902px;
+    max-height: 902px;
+    min-height: 643px;
     padding: 40px;
   }
 

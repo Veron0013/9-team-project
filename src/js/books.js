@@ -133,6 +133,7 @@ function handleError(error) {
 //слухачі
 
 document.addEventListener("DOMContentLoaded", async () => {
+	storage.setQuantityFromLocalStorage(refs.BOOK_CARD_LIST);
 	showLoader(refs.main_loader);
 	dafaultPagination();
 
@@ -194,11 +195,6 @@ category_list.addEventListener("click", (e) => {
 
 });
 
-//x на модалки книжки
-//modal_book_close.addEventListener("click", () => {
-//	render.addClassElement(modal_book, "is-hidden");
-//	render.removeClassElement(refs.body, "locked");
-//});
 
 //більше!!! 
 books_more_btn.addEventListener("click", async () => {

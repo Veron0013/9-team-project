@@ -11,6 +11,19 @@ import refs from "./refs";
 //  ]
 //}
 
+export function setQuantityFromLocalStorage(storageKey) {
+
+	const qty = StorageService.count(storageKey) || 0;
+
+	const labelEl = document.querySelectorAll("[data-cart-count]");
+
+	console.log(labelEl);
+
+	for (const item of labelEl) {
+		item.textContent = qty;
+	}
+}
+
 export const StorageService = {
 	add(key, data) {
 		localStorage.setItem(key, JSON.stringify(data));

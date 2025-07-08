@@ -4,7 +4,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 const form = document.querySelector('.form');
 const inputs = form.querySelectorAll('.form-input, .form-user-comment');
 const closeBtn = document.querySelector('.modal-close-btn');
-const backdrop = document.querySelector('.modal-overlay');
+const backdrop = document.querySelector('#event-modal');
 const eventList = document.querySelector('.events-list');
 
 let eventName = "";
@@ -30,10 +30,10 @@ backdrop.addEventListener('click', clickClose);
 closeBtn.addEventListener('click', handleClick);
 
 function openModal(eventName) {
-  const modal = document.querySelector('.modal-overlay');
-  modal.classList.add('is-open');
+  //const modal = document.querySelector('.modal-overlay');
+  backdrop.classList.add('is-open');
 
-  const titleTwo = modal.querySelector('.form-subtitle');
+  const titleTwo = backdrop.querySelector('.form-subtitle');
   titleTwo.textContent = eventName;
   document.body.classList.add('locked');
 
@@ -41,8 +41,8 @@ function openModal(eventName) {
 }
 
 function closeModal() {
-  const modal = document.querySelector('.modal-overlay');
-  modal.classList.remove('is-open');
+  //const modal = document.querySelector('.modal-overlay');
+  backdrop.classList.remove('is-open');
   document.body.classList.remove('locked');
 
   window.removeEventListener('keydown', onEscKeyPress);
@@ -107,6 +107,7 @@ function clickClose(event) {
 }
 
 function onEscKeyPress(event) {
+
   if (event.key === 'Escape') {
     closeModal();
   }

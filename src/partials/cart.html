@@ -6,6 +6,7 @@
     <div class="cart-modal-content">
       <div class="cart-products-section">
         <h2 class="cart-title">Your Cart</h2>
+        <div class="loader cart-loader hidden"></div>
         <ul class="cart-products">
           <!-- JS вставляє товари сюди -->
         </ul>
@@ -22,13 +23,16 @@
         </div>
       </div>
 
-      <div class="cart-summary-section">
+      <div class="cart-summary-section hidden">
         <ul class="cart-summary-list">
           <li><span>Items:</span><span data-count>0</span></li>
           <li><span>Total:</span><span data-price>$0</span></li>
           <li><span>Shipping:</span><span>Free</span></li>
         </ul>
-        <button class="cart-buy-btn main-button">Buy now</button>
+        <button class="cart-buy-btn main-button buy-now">Buy now</button>
+        <button class="cart-buy-btn secondary-button shop-more">
+          Shop more...
+        </button>
       </div>
     </div>
   </div>
