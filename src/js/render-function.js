@@ -101,7 +101,7 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 							<button type="button" class="ac-trigger">
 								Details
 								<svg class="accordion-icon" width="16" height="16">
-									<use href="/ico-sprite.svg#icon-chevron-down"></use>
+									<use href="ico-sprite.svg#icon-chevron-down"></use>
 								</svg>
 							</button>
 						</h2>
@@ -114,7 +114,7 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 							<button type="button" class="ac-trigger">
 								Shipping
 								<svg class="accordion-icon" width="16" height="16">
-									<use href="/ico-sprite.svg#icon-chevron-down"></use>
+									<use href="ico-sprite.svg#icon-chevron-down"></use>
 								</svg>
 							</button>
 						</h2>
@@ -131,7 +131,7 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 							<button type="button" class="ac-trigger">
 								Returns
 								<svg class="accordion-icon" width="16" height="16">
-									<use href="/ico-sprite.svg#icon-chevron-down"></use>
+									<use href="ico-sprite.svg#icon-chevron-down"></use>
 								</svg>
 							</button>
 						</h2>
