@@ -69,83 +69,83 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 	let desc = description.trim() !== "" ? description : title;
 	return `
 		<img id="book-image" src="${book_image}" alt="${title}" class="modal-card-image" />
-			<div class="modal-card-right">
-				<div class="modal-card-info">
-					<h2 id="book-title" class="modal-card-title">${title}</h2>
-					<p id="book-author" class="modal-card-author">${author}</p>
-					<p id="book-price" class="modal-card-price">$${price}</p>
+		<div class="modal-card-right">
+			<div class="modal-card-info">
+				<h2 id="book-title" class="modal-card-title">${title}</h2>
+				<p id="book-author" class="modal-card-author">${author}</p>
+				<p id="book-price" class="modal-card-price">$${price}</p>
+			</div>
+			<form id="book-form" class="modal-card-form">
+				<div class="modal-card-quantity">
+					<button id="decrease-quantity" type="button">-</button>
+					<input id="book-quantity" type="number" min="1" value="1" />
+					<button id="increase-quantity" type="button">+</button>
 				</div>
-				<form id="book-form" class="modal-card-form">
-					<div class="modal-card-quantity">
-						<button id="decrease-quantity" type="button">-</button>
-						<input id="book-quantity" type="number" min="1" value="1" />
-						<button id="increase-quantity" type="button">+</button>
-					</div>
-					<div class="modal-card-buttons">
-						<button
-							type="button"
-							id="add-to-cart"
-							class="modal-card-btn main-button"
-						>
-						
-							Add to Cart
+				<div class="modal-card-buttons">
+					<button
+						type="button"
+						id="add-to-cart"
+						class="modal-card-btn main-button"
+					>
+					
+						Add to Cart
+					</button>
+					<button type="submit" class="modal-card-btn secondary-button">
+						Buy Now
+					</button>
+				</div>
+			</form>
+			<div class="accordion-container">
+				<div class="ac">
+					<h2 class="ac-header">
+						<button type="button" class="ac-trigger">
+							Details
+							<svg class="accordion-icon" width="16" height="16">
+								<use href="ico-sprite.svg#icon-chevron-down"></use>
+							</svg>
 						</button>
-						<button type="submit" class="modal-card-btn secondary-button">
-							Buy Now
-						</button>
-					</div>
-				</form>
-				<div class="accordion-container">
-					<div class="ac">
-						<h2 class="ac-header">
-							<button type="button" class="ac-trigger">
-								Details
-								<svg class="accordion-icon" width="16" height="16">
-									<use href="ico-sprite.svg#icon-chevron-down"></use>
-								</svg>
-							</button>
-						</h2>
-						<div class="ac-panel">
-							<p id="book-details">${desc}</p>
-						</div>
-					</div>
-					<div class="ac">
-						<h2 class="ac-header">
-							<button type="button" class="ac-trigger">
-								Shipping
-								<svg class="accordion-icon" width="16" height="16">
-									<use href="ico-sprite.svg#icon-chevron-down"></use>
-								</svg>
-							</button>
-						</h2>
-						<div class="ac-panel">
-							<p id="book-shipping">
-								We ship across the United States within 2–5 business days. All
-								orders are processed through USPS or a reliable courier service.
-								Enjoy free standard shipping on orders over $50.
-							</p>
-						</div>
-					</div>
-					<div class="ac">
-						<h2 class="ac-header">
-							<button type="button" class="ac-trigger">
-								Returns
-								<svg class="accordion-icon" width="16" height="16">
-									<use href="ico-sprite.svg#icon-chevron-down"></use>
-								</svg>
-							</button>
-						</h2>
-						<div class="ac-panel">
-							<p id="book-returns">
-								You can return an item within 14 days of receiving your order,
-								provided it hasn’t been used and is in its original condition.
-								To start a return, please contact our support team — we’ll guide
-								you through the process quickly and hassle-free.
-							</p>
-						</div>
+					</h2>
+					<div class="ac-panel">
+						<p id="book-details">${desc}</p>
 					</div>
 				</div>
-			</div>`
+				<div class="ac">
+					<h2 class="ac-header">
+						<button type="button" class="ac-trigger">
+							Shipping
+							<svg class="accordion-icon" width="16" height="16">
+								<use href="ico-sprite.svg#icon-chevron-down"></use>
+							</svg>
+						</button>
+					</h2>
+					<div class="ac-panel">
+						<p id="book-shipping">
+							We ship across the United States within 2–5 business days. All
+							orders are processed through USPS or a reliable courier service.
+							Enjoy free standard shipping on orders over $50.
+						</p>
+					</div>
+				</div>
+				<div class="ac">
+					<h2 class="ac-header">
+						<button type="button" class="ac-trigger">
+							Returns
+							<svg class="accordion-icon" width="16" height="16">
+								<use href="ico-sprite.svg#icon-chevron-down"></use>
+							</svg>
+						</button>
+					</h2>
+					<div class="ac-panel">
+						<p id="book-returns">
+							You can return an item within 14 days of receiving your order,
+							provided it hasn’t been used and is in its original condition.
+							To start a return, please contact our support team — we’ll guide
+							you through the process quickly and hassle-free.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>`
 };
 
 export function markUpCartBookList(data) {

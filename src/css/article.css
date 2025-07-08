@@ -1,0 +1,125 @@
+/*! MOBILE FIRST(375px)  */
+
+.article {
+    background: #fceee6;
+    padding: 64px 0;
+}
+
+.article .container {
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.article-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+}
+
+.article-list-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+}
+
+.article-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #181818;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.02em;
+}
+
+.article-list-text p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #181818;
+    margin: 0;
+    font-weight: 400;
+}
+
+.article-list-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.article-card picture,
+.article-card img {
+    width: 100%;
+    max-width: 343px;
+    border-radius: 20px;
+    display: block;
+    object-fit: cover;
+    border: none;
+}
+
+/*! TABLET (≥768px) */
+@media (min-width: 768px) and (max-width: 1439px) {
+    .article .container {
+        max-width: 768px;
+        padding: 0 32px;
+    }
+
+    .article-list {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .article-list-img {
+        display: block;
+        justify-content: center;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .article-card picture,
+    .article-card img {
+        max-width: 704px;
+        border-radius: 20px;
+        border: transparent;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+/*! DESKTOP (≥1440px) */
+@media (min-width: 1440px) {
+    .article .container {
+        max-width: 1440px;
+        padding: 0 64px;
+    }
+
+    .article-list {
+        flex-direction: row;
+        align-items: center;
+        gap: 80px;
+    }
+
+    .article-list-text {
+        flex: 1 1 0;
+        max-width: 640px;
+        padding-right: 0;
+    }
+
+    .article-list-img {
+        flex: 0 0 640px;
+        justify-content: flex-end;
+        max-width: 640px;
+    }
+
+    .article-card picture,
+    .article-card img {
+        max-width: 640px;
+        height: 474px;
+    }
+}
