@@ -1,0 +1,150 @@
+.article-sect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 16px;
+  gap: 80px;
+  width: 100%;
+  margin: 0 auto;
+  background: #fceee6;
+}
+
+.article-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  gap: 32px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.article-text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 343px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.article-title {
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: #0b0500;
+  margin: 0;
+  width: 100%;
+}
+
+.article-text {
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: #0b0500;
+  margin: 0;
+  width: 100%;
+}
+
+.article-image-block {
+  flex-grow: 0;
+  flex-basis: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 343px;
+}
+
+.article-image {
+  width: 100%;
+  max-width: 343px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+/* Tablet */
+@media (min-width: 768px) {
+  .article-sect {
+    padding: 64px 32px;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .article-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    max-width: 704px;
+  }
+
+  .article-text-block {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .article-title {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .article-text {
+    text-align: center;
+  }
+
+  .article-image-block {
+    width: 100%;
+  }
+  .article-image {
+    max-width: 100%;
+  }
+}
+/* Desktop */
+@media (min-width: 1024px) {
+  .article-sect {
+    padding: 64px 0;
+    gap: 80px;
+    max-width: 1440px;
+  }
+
+  .article-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    max-width: 1312px;
+    padding: 0 64px;
+  }
+
+  .article-text-block {
+    align-items: flex-start;
+    text-align: left;
+    width: 640px;
+  }
+
+  .article-title {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-align: left;
+  }
+
+  .article-text {
+    text-align: left;
+  }
+
+  .article-image-block {
+    flex-grow: 1;
+    flex-basis: 0;
+    width: auto;
+  }
+
+  .article-image {
+    max-width: 640px;
+  }
+}
