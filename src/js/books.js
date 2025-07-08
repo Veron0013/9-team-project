@@ -3,7 +3,7 @@ import { showLoader, hideLoader } from './loader';
 import * as render from '/js/render-function';
 import * as apiRest from '/js/books-api';
 import * as modal from '/js/modal';
-import * as storage from '/js/storage'
+import * as storage from '/js/storage';
 
 const modal_book = document.querySelector(".backdrop");
 
