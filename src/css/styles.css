@@ -1,8 +1,9 @@
 /**
   |============================
   | include css partials with
-  | default @import url()
+  | (с) team IX
   |============================
+  
 */
 /* Common styles */
 @import url('./modern-normalize.css');

@@ -118,6 +118,12 @@
 }
 
 @media screen and (min-width: 768px) {
+
+  .swiper-btn-prev.main-button,
+  .swiper-btn-next.main-button {
+    display: flex;
+  }
+
   .hero-text {
     font-size: 32px;
     line-height: 1.2;

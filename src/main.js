@@ -7,3 +7,4 @@ import './js/form';
 import './js/events';
 import './js/loader';
 import './js/footer';
+//(с) команда IX
