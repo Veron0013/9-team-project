@@ -65,7 +65,7 @@ export function markUpCategories(data) {
 						<p class="b-categories-itm-text">${refs.ALL_CATEGORIES}</p>
 					</li> ${mkData}`;
 }
-export function markUpBooksById({ _id, list_name, author, book_image, description, price, title, }) {
+export function markUpBooksById({ _id, list_name, author, book_image, description, price, title, }) {//(с) команда IX
 	let desc = description.trim() !== "" ? description : title;
 	return `
 		<img id="book-image" src="${book_image}" alt="${title}" class="modal-card-image" />
@@ -87,6 +87,7 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 							id="add-to-cart"
 							class="modal-card-btn main-button"
 						>
+						
 							Add to Cart
 						</button>
 						<button type="submit" class="modal-card-btn secondary-button">
@@ -146,6 +147,7 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 				</div>
 			</div>`
 };
+
 export function markUpCartBookList(data) {
 	const cartList = storage.StorageService.get(refs.BOOK_CARD_LIST);
 
