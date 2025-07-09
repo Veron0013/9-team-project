@@ -51,7 +51,7 @@ export async function openModal(bookId) {
     showLoader(refs.btn_loader);
 
     //типу завантажується
-    const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}123${bookId}`;
+    const vQuery = `${refs.BASE_URL}${refs.END_BOOK_ID}${bookId}`;
     const dataBook = await apiRest.getApiData(vQuery);
 
     await new Promise(resolve => setTimeout(resolve, 400));
