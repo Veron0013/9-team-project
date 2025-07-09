@@ -27,18 +27,19 @@ export async function openCartForm(eventLink) {
   render.toggleClassElement(refs.cart_modal, 'is-open');
   render.toggleClassElement(refs.body, 'locked');
 
-  const isEmpty = storage.StorageService.count(refs.BOOK_CARD_LIST) === 0;
+  //const isEmpty = storage.StorageService.count(refs.BOOK_CARD_LIST) === 0;
 
-  if (isEmpty) {
-    render.removeClassElement(emptyCart, 'display-none');
-    render.removeClassElement(summary_section, 'hidden');
-    countEl.textContent = storage.StorageService.countItems(
-      refs.BOOK_CARD_LIST
-    );
-    storage.StorageService.setTotalCard(priceEl);
-    buy_now.disabled = true;
-    return;
-  }
+  if (checkIfCartIsEmpty()) return;
+  //{
+  //render.removeClassElement(emptyCart, 'display-none');
+  //render.removeClassElement(summary_section, 'hidden');
+  //countEl.textContent = storage.StorageService.countItems(
+  //  refs.BOOK_CARD_LIST
+  //);
+  //storage.StorageService.setTotalCard(priceEl);
+  //buy_now.disabled = true;
+  //  return;
+  //}
 
   showLoader(cart_loader);
   //типу чекаємо
@@ -111,7 +112,7 @@ function closeModal() {
 }
 
 //слухачі
-document.addEventListener('DOMContentLoaded', async () => {});
+document.addEventListener('DOMContentLoaded', async () => { });
 
 //хедер клік
 headerNav.addEventListener('click', e => {
@@ -147,13 +148,30 @@ shop_more.addEventListener('click', e => {
 refs.cart_products.addEventListener('click', onRemoveCartItemClick);
 
 function checkIfCartIsEmpty() {
-  const updatedData = storage.StorageService.get(refs.BOOK_CARD_LIST);
 
-  if (updatedData.length === 0) {
+  const isEmpty = storage.StorageService.count(refs.BOOK_CARD_LIST) === 0;
+
+  if (isEmpty) {
     render.removeClassElement(emptyCart, 'display-none');
-    render.addClassElement(summary_section, 'hidden');
+    render.removeClassElement(summary_section, 'hidden');
+    countEl.textContent = storage.StorageService.countItems(
+      refs.BOOK_CARD_LIST
+    );
+    storage.StorageService.setTotalCard(priceEl);
     buy_now.disabled = true;
+    return true;
   }
+
+  return false;
+
+
+  //const updatedData = storage.StorageService.get(refs.BOOK_CARD_LIST);
+
+  //if (updatedData.length === 0) {
+  //  render.removeClassElement(emptyCart, 'display-none');
+  //  render.addClassElement(summary_section, 'hidden');
+  //  buy_now.disabled = true;
+  //}
 }
 
 function onRemoveCartItemClick(event) {

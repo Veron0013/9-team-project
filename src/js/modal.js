@@ -125,6 +125,7 @@ export async function openModal(bookId) {
       });
     }
   } catch (error) {
+    initModalListeners();
     hideLoader(refs.btn_loader);
     render.clearElement(modalContainer);
     modalContainer.innerHTML = `Sorry!!! Book unavailable!! <br/> ID = ${bookId} <br/>${error.message}`;

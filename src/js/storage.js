@@ -17,7 +17,7 @@ export function setQuantityFromLocalStorage(storageKey) {
 
 	const labelEl = document.querySelectorAll("[data-cart-count]");
 
-	console.log(labelEl);
+	//console.log(labelEl);
 
 	for (const item of labelEl) {
 		item.textContent = qty;
