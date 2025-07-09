@@ -7,7 +7,7 @@ import * as storage from '/js/storage'
 const modalBackdrop = document.querySelector('#modal-backdrop');
 const modalContent = modalBackdrop.querySelector(".modal");
 const modalContainer = modalBackdrop.querySelector(".modal-card");
-const body = document.body;
+//const body = document.body;
 
 function setupQuantityControls(quantityInput, decreaseBtn, increaseBtn) {
 
