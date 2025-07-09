@@ -4,34 +4,49 @@ import refs from '/js/refs';
 import * as storage from '/js/storage';
 
 export function clearElement(element) {
-	element.innerHTML = '';
+  element.innerHTML = '';
 }
 export function removeClassElement(element, className) {
-	element.classList.remove(className);
+  element.classList.remove(className);
 }
 export function addClassElement(element, className) {
-	element.classList.add(className);
+  element.classList.add(className);
 }
 export function toggleClassElement(element, className) {
-	element.classList.toggle(className);
+  element.classList.toggle(className);
 }
 
 export function scrollToTop() {
-	window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-export async function createMarcup(element, data, callBack, emptyElement = false) {
-
-	if (emptyElement) {
-		clearElement(element);
-	}
-	element.insertAdjacentHTML("beforeend", callBack(data));
+export async function createMarcup(
+  element,
+  data,
+  callBack,
+  emptyElement = false
+) {
+  if (emptyElement) {
+    clearElement(element);
+  }
+  element.insertAdjacentHTML('beforeend', callBack(data));
 }
 
 //наповнювачі
 export function markUpBooks(data) {
-	const mkData = data.map(({ _id, list_name, author, price, title, book_image, book_image_width, book_image_height }) => {
-		return `<li class="books-data-itm" data-id="${_id}">
+  const mkData = data
+    .map(
+      ({
+        _id,
+        list_name,
+        author,
+        price,
+        title,
+        book_image,
+        book_image_width,
+        book_image_height,
+      }) => {
+        return `<li class="books-data-itm" data-id="${_id}">
           <div class="books-data-img-container">
             <img
               src="${book_image}"
@@ -47,27 +62,39 @@ export function markUpBooks(data) {
 						<p class="books-data-price">$${price}</p>
 					</div>
           <button type="button" class="secondary-button books-data-button">Learn More</button>
-        </li>`	})
-		.join("");
+        </li>`;
+      }
+    )
+    .join('');
 
-	return mkData;
+  return mkData;
 }
 export function markUpCategories(data) {
-
-	const mkData = data.filter((itm) => itm.list_name.trim() !== "")
-		.map(({ list_name }) => {
-			return `<li class="b-categories-itm" data-category="${list_name}">
+  const mkData = data
+    .filter(itm => itm.list_name.trim() !== '')
+    .map(({ list_name }) => {
+      return `<li class="b-categories-itm" data-category="${list_name}">
           	<p class="b-categories-itm-text">${list_name}</p>
-        	</li>`	})
-		.join("");
+        	</li>`;
+    })
+    .join('');
 
-	return `<li class="b-categories-itm" data-category="all">
+  return `<li class="b-categories-itm" data-category="all">
 						<p class="b-categories-itm-text">${refs.ALL_CATEGORIES}</p>
 					</li> ${mkData}`;
 }
-export function markUpBooksById({ _id, list_name, author, book_image, description, price, title, }) {//(с) команда IX
-	let desc = description.trim() !== "" ? description : title;
-	return `
+export function markUpBooksById({
+  _id,
+  list_name,
+  author,
+  book_image,
+  description,
+  price,
+  title,
+}) {
+  //(с) команда IX
+  let desc = description.trim() !== '' ? description : title;
+  return `
 		<img id="book-image" src="${book_image}" alt="${title}" class="modal-card-image" />
 		<div class="modal-card-right">
 			<div class="modal-card-info">
@@ -147,14 +174,16 @@ export function markUpBooksById({ _id, list_name, author, book_image, descriptio
 			</div>
 		</div>`
 };
+
 export function markUpCartBookList(data) {
-	const cartList = storage.StorageService.get(refs.BOOK_CARD_LIST);
+  const cartList = storage.StorageService.get(refs.BOOK_CARD_LIST);
 
-	const mkData = data.map(({ _id, list_name, author, price, title, book_image }) => {
-		const storageData = cartList.find(item => item.id === _id);
-		const qty = storageData ? storageData.qty : 1;
+  const mkData = data
+    .map(({ _id, list_name, author, price, title, book_image }) => {
+      const storageData = cartList.find(item => item.id === _id);
+      const qty = storageData ? storageData.qty : 1;
 
-		return `<li class="cart-item" data-id="${_id}">
+      return `<li class="cart-item" data-id="${_id}">
 							<div class="cart-item-wrapper">
 								<div class="cart-item-thumb">
 									<img src="${book_image}" alt="${title}" class="cart-item-img" />
@@ -168,23 +197,24 @@ export function markUpCartBookList(data) {
 									<span class="cart-item-price">Ціна: $${price}</span>
 									<span class="cart-item-qty"> Кількість: ${qty}</span>
 									<span class="cart-item-total">Разом: $${(price * qty).toFixed(2)}</span>
+									
 								</div>
+								<button class="cart-item-btn secondary-button">remove from cart</button>
 
 						</li>`;
-	}).join("");
+    })
+    .join('');
 
-	return mkData;
+  return mkData;
 }
 
 export function showMessage(message, title) {
-	setTimeout(() => {
-		iziToast.success({
-			title,
-			message,
-			position: 'topRight',
-			class: 'custom-toast',
-		});
-	}, 300);
-};
-
-
+  setTimeout(() => {
+    iziToast.success({
+      title,
+      message,
+      position: 'topRight',
+      class: 'custom-toast',
+    });
+  }, 300);
+}

@@ -87,6 +87,10 @@
   margin-top: 16px;
   width: 100%;
 }
+.cart-item-btn {
+  padding: 4px 4px;
+  font-size: 12px;
+}
 
 @media (min-width: 768px) {
   .cart-modal-content {
@@ -128,7 +132,6 @@
   overflow: hidden;
   border-radius: 4px;
   background-color: var(--color-main-bg);
-
 }
 
 .cart-item-img {
