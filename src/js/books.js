@@ -217,8 +217,10 @@ books_more_btn.addEventListener("click", async () => {
 	if (!mkData.length) {
 
 		//тост 
-		renderBooksByCat(refs.currentCat);
-		refs.scrollToTop();
+		render.showMessage("Дані не вдалося дозавантажити. Спробуйте ще раз...", "Помилка!!!", "red");
+		renderBooksByCat(refs.currentCat, true);
+		showMoreCloseOperations();
+		render.scrollToTop();
 		return;
 	}
 
@@ -230,7 +232,16 @@ books_more_btn.addEventListener("click", async () => {
 
 	render.createMarcup(books_list, renderData, render.markUpBooks, false);
 
+	showMoreCloseOperations();
+
+});
+
+function showMoreCloseOperations() {
+	render.removeClassElement(category_list, "is-open");
+	render.removeClassElement(category_button_dropdown, "is-open");
 	showHideShowMoreButton();
 	hideLoader(refs.main_loader);
 	books_more_btn.disabled = false;
-});
+	console.log("ok");
+
+}

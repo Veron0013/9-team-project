@@ -111,7 +111,7 @@ function closeModal() {
 }
 
 //слухачі
-document.addEventListener('DOMContentLoaded', async () => {});
+document.addEventListener('DOMContentLoaded', async () => { });
 
 //хедер клік
 headerNav.addEventListener('click', e => {
