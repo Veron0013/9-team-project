@@ -5,10 +5,10 @@ import * as apiRest from '/js/books-api';
 import * as modal from '/js/modal';
 import * as storage from '/js/storage';
 
-const modal_book = document.querySelector(".backdrop");
+//const modal_book = document.querySelector(".backdrop");
 
-const modal_book_data = document.querySelector(".modal-card");
-const modal_book_close = document.querySelector(".modal-close");
+//const modal_book_data = document.querySelector(".modal-card");
+//const modal_book_close = document.querySelector(".modal-close");
 
 const books_list = document.querySelector(".books-data-list");
 const category_list = document.querySelector(".b-categories-list");

@@ -172,8 +172,8 @@ export function markUpBooksById({
 					</div>
 				</div>
 			</div>
-		</div>`;
-}
+		</div>`
+};
 
 export function markUpCartBookList(data) {
   const cartList = storage.StorageService.get(refs.BOOK_CARD_LIST);
