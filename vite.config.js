@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    base: '/9-team-project/',
+    base: './',
     root: 'src',
     build: {
       sourcemap: true,
