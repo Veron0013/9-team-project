@@ -242,6 +242,6 @@ function showMoreCloseOperations() {
 	showHideShowMoreButton();
 	hideLoader(refs.main_loader);
 	books_more_btn.disabled = false;
-	console.log("ok");
+	//console.log("ok");
 
 }
